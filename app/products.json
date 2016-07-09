@@ -1,0 +1,82 @@
+[
+    {
+    "dept_id" : 1,
+    "department" : "Electronics",
+    "prod_link" : "https://www.groupon.com/deals/gg-cleandr-for-computers-laser-lens-cleaner?z=skip&utm_medium=afl&utm_campaign=204638&mediaId=212556&utm_source=GPN",
+    "imgSrc" : "https://img.grouponcdn.com/deal/EDTGxgfhTD5RaNhVsGfvD7DHpfc/ED-2666x1599/v1/t200x300.jpg",
+    "productText" : "CleanDr for Computers Laser Lens Cleaner",
+    "ActualPrice" : 19.99,
+    "OfferPrice" : 9.99,
+    "starRating" : 4
+},
+{
+    "dept_id" : 1,
+    "department" : "Electronics",
+    "prod_link" : "https://www.groupon.com/deals/gg-apple-earpods-with-mic-3?z=skip&utm_medium=afl&utm_campaign=204638&mediaId=212556&utm_source=GPN",
+    "imgSrc" : "https://img.grouponcdn.com/deal/gLcqV8aGe5eeEhkJxHP5/GW-700x420/v1/t200x300.jpg",
+    "productText" : "Apple EarPods with Remote and Mic",
+    "ActualPrice" : 29.99,
+    "OfferPrice" : 9.99,
+    "starRating" : 5
+},
+{
+    "dept_id" : 1,
+    "department" : "Electronics",
+    "prod_link" : "https://www.groupon.com/deals/gg-accellorize-portable-power-bank-1-or-2-pack?z=skip&utm_medium=afl&utm_campaign=204638&mediaId=212556&utm_source=GPN",
+    "imgSrc" : "https://img.grouponcdn.com/deal/763FRM8qYaaiEo6QbtGQ/VR-960x576/v1/t200x300.jpg",
+    "productText" : "Accellorize 2,200mAh, 8,000mAh, or 10,000mAh Portable Power Bank (1 or 2-Pack)",
+    "ActualPrice" : 49.99,
+    "OfferPrice" : 5.99,
+    "starRating" : 3
+},
+{
+    "dept_id" : 1,
+    "department" : "Electronics",
+    "prod_link" : "https://www.groupon.com/deals/gg-shatterguardz-tempered-glass-phone-screen-protectors-3-pack?z=skip&utm_medium=afl&utm_campaign=204638&mediaId=212556&utm_source=GPN",
+    "imgSrc" : "https://img.grouponcdn.com/deal/c5w79zmn6LpginDzey2C/FH-700x420/v1/t200x300.jpg",
+    "productText" : "ShatterGuardz Tempered Glass Screen Protector for iPhone and Samsung Galaxy SmartPhones",
+    "ActualPrice" : 49.99,
+    "OfferPrice" : 5.99,
+    "starRating" : 4
+},
+{
+    "dept_id" : 4,
+    "department" : "Kids",
+    "prod_link" : "https://www.groupon.com/deals/gg-cleandr-for-computers-laser-lens-cleaner?z=skip&utm_medium=afl&utm_campaign=204638&mediaId=212556&utm_source=GPN",
+    "imgSrc" : "https://img.grouponcdn.com/deal/iSbgGaExNYujjznr8Rky/N9-960x576/v1/t200x300.jpg",
+    "productText" : "Safety First Summit Booster or Boost Air Car Seat",
+    "ActualPrice" : 79.50,
+    "OfferPrice" : 39.97,
+    "starRating" : 5
+},
+{
+    "dept_id" : 4,
+    "department" : "Kids",
+    "prod_link" : "https://www.groupon.com/deals/gg-apple-earpods-with-mic-3?z=skip&utm_medium=afl&utm_campaign=204638&mediaId=212556&utm_source=GPN",
+    "imgSrc" : "https://img.grouponcdn.com/deal/eweJCXExmp4dSKW6oPsu/7s-960x576/v1/t200x300.jpg",
+    "productText" : "Playgro Travel Play Mats",
+    "ActualPrice" : 24.95   ,
+    "OfferPrice" : 14.99,
+    "starRating" : 1
+},
+{
+    "dept_id" : 4,
+    "department" : "Kids",
+    "prod_link" : "https://www.groupon.com/deals/gg-accellorize-portable-power-bank-1-or-2-pack?z=skip&utm_medium=afl&utm_campaign=204638&mediaId=212556&utm_source=GPN",
+    "imgSrc" : "https://img.grouponcdn.com/deal/3sYFGURzPtsfEtuWqdCtpmfU7z7W/3s-2000x1200/v1/t200x300.jpg",
+    "productText" : "Boys' Straight Outta School Tees",
+    "ActualPrice" : 18.95,
+    "OfferPrice" : 14.99,
+    "starRating" : 0
+},
+{
+    "dept_id" : 4,
+    "department" : "Kids",
+    "prod_link" : "https://www.groupon.com/deals/gg-shatterguardz-tempered-glass-phone-screen-protectors-3-pack?z=skip&utm_medium=afl&utm_campaign=204638&mediaId=212556&utm_source=GPN",
+    "imgSrc" : "https://img.grouponcdn.com/deal/d42CjkZRQvGe29LXXjZN/KX-1400x840/v1/t200x300.jpg",
+    "productText" : "Inflatable Baby Water Mat",
+    "ActualPrice" : 30.00,
+    "OfferPrice" : 9.99,
+    "starRating" : 3
+}
+]

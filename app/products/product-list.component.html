@@ -1,0 +1,23 @@
+<!--<div class="col-lg-12">
+    <div class="col-lg-3">
+    </div>
+    <div class="col-lg-8 col-sm-8 nav-search-field">
+        <input type="text" id='txtSearch' placeHolder="Search any product here" class="txtSearch" [(ngModel)]="listFilter" />
+    </div>
+</div>-->
+
+    
+
+<div *ngFor='#prodByDept of productByDepts | productFilter : listFilter'>
+    <div class="col-lg-6 products wrapper">
+        <div class="ribbon-wrapper-green"><div class="ribbon-green">DEAL</div></div>
+        <a [href]='prodByDept.prod_link'><img [src]='prodByDept.imgSrc' />
+            <h5>{{prodByDept.productText}}</h5>
+        </a>
+        <strike style="color:red;font-weight:bold">{{prodByDept.ActualPrice | currency:'GBP':true:'1.2-2' }}</strike>
+        <strong style="color:Green;">{{prodByDept.OfferPrice | currency:'GBP':true:'1.2-2'}}</strong>
+          <ai-star [rating]='prodByDept.starRating' (ratingClicked)='onRatingClicked($event)'> </ai-star>
+    </div>
+    
+</div>
+

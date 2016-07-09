@@ -1,0 +1,114 @@
+
+[{
+    "dept_id" : 1,
+	"Department" : "Electronics",
+	"productType": [
+	{
+	"productTypeId":1,
+    "name" : "Computers and Laptops",
+    "redirectUrl" : "/#Products.html?prod='Computers'"
+	},
+	
+	{
+	"productTypeId":2,
+    "name" : "Mobiles",
+    "redirectUrl" : "/#Products.html?prod='Mobiles'"
+	},
+	
+	{
+	"productTypeId":3,
+    "name" : "Tablets",
+    "redirectUrl" : "/#Products.html?prod='Tablets'"
+	},
+	
+	{
+	"productTypeId":4,
+    "name" : "Television",
+    "redirectUrl" : "/#Products.html?prod='Television'"
+	}]
+	
+},
+
+
+
+{
+    "dept_id" : 2,
+	"Department" : "Men",
+	"productType": [
+	{
+	"productTypeId":5,
+    "name" : "Shoes",
+    "redirectUrl" : "/#Products.html?prod='Men_shoes'"
+	},
+	
+	{
+	"productTypeId":6,
+    "name" : "Watches",
+    "redirectUrl" : "/#Products.html?prod='men_watches'"
+	},
+	
+	{
+	"productTypeId":7,
+    "name" : "Trousers",
+    "redirectUrl" : "/#Products.html?prod='men_Trousers'"
+	},
+	
+	{
+	"productTypeId":4,
+    "name" : "Shorts",
+    "redirectUrl" : "/#Products.html?prod='men_Shorts'"
+	}]
+	
+}
+,
+{
+    "dept_id" : 3,
+	"Department" : "Women",
+	"productType": [
+	{
+	"productTypeId":5,
+    "name" : "Shoes",
+    "redirectUrl" : "/#Products.html?prod='women_shoes'"
+	},
+	
+	{
+	"productTypeId":6,
+    "name" : "Watches",
+    "redirectUrl" : "/#Products.html?prod='women_watches'"
+	},
+	
+	{
+	"productTypeId":7,
+    "name" : "Trousers",
+    "redirectUrl" : "/#Products.html?prod='women_Trousers'"
+	},
+	
+	{
+	"productTypeId":4,
+    "name" : "sunglasses",
+    "redirectUrl" : "/#Products.html?prod='women_sunglasses'"
+	}]
+	
+},
+{
+   
+    "dept_id" : 4,
+    "Department" : "Kids",
+    "productType" : [ 
+        {
+            "productTypeId" : 20,
+            "name" : "Toys",
+            "redirectUrl" : "/#Products.html?prod=kids_toys"
+        }, 
+        {
+            "productTypeId" : 21,
+            "name" : "Shoes",
+            "redirectUrl" : "/#Products.html?prod=kids_shoes"
+        }, 
+        {
+            "productTypeId" : 22,
+            "name" : "Clothing",
+            "redirectUrl" : "/#Products.html?prod=kids_clothing"
+        }
+    ]
+}]
