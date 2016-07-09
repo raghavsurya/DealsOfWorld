@@ -11,7 +11,7 @@
 <div *ngFor='#prodByDept of productByDepts | productFilter : listFilter'>
     <div class="col-lg-6 products wrapper">
         <div class="ribbon-wrapper-green"><div class="ribbon-green">DEAL</div></div>
-        <a [href]='prodByDept.prod_link'><img [src]='prodByDept.imgSrc' />
+        <a [href]='prodByDept.prod_link' target="_blank"><img [src]='prodByDept.imgSrc' />
             <h5>{{prodByDept.productText}}</h5>
         </a>
         <strike style="color:red;font-weight:bold">{{prodByDept.ActualPrice | currency:'GBP':true:'1.2-2' }}</strike>
