@@ -4,12 +4,13 @@
     <div class="col-lg-8 col-sm-8 nav-search-field">
         <input type="text" id='txtSearch' placeHolder="Search any product here" class="txtSearch" [(ngModel)]="listFilter" />
     </div>
+    testing
 </div>-->
 
     
 
 <div *ngFor='#prodByDept of productByDepts | productFilter : listFilter'>
-    <div class="col-lg-6 products wrapper">
+    <div class="col-lg-6 products wrapper"> 
         <div class="ribbon-wrapper-green"><div class="ribbon-green">DEAL</div></div>
         <a [href]='prodByDept.prod_link' target="_blank"><img [src]='prodByDept.imgSrc' />
             <h5>{{prodByDept.productText}}</h5>
