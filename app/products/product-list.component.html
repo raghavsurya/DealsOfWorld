@@ -10,7 +10,7 @@
     
 
 <div *ngFor='#prodByDept of productByDepts | productFilter : listFilter'>
-    <div class="col-lg-6 products wrapper"> 
+    <div class="col-lg-4 products wrapper"> 
         <div class="ribbon-wrapper-green"><div class="ribbon-green">DEAL</div></div>
         <a [href]='prodByDept.prodLink' target="_blank"><img [src]='prodByDept.imgSrc' />
             <h5>{{prodByDept.productText}}</h5>
