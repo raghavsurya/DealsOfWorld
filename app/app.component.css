@@ -403,8 +403,8 @@ writing-mode: lr-tb;
 
     .wrapper {
  
-     width: 172px;
-    height: 230px;
+  width: 275px;
+  height: 284x;
   background: white;
   border-radius: 10px;
   -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.3);
@@ -497,6 +497,6 @@ writing-mode: lr-tb;
 #footnote .connect a.googleplus {
 	background-position: 0 -168px;
 }
-.wrapper > a > img{
-    height:85px;
+.wrapper > a > img{ 
+    height:143px;
 }
