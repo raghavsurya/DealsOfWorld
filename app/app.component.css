@@ -464,3 +464,39 @@ writing-mode: lr-tb;
 .ribbon-green:after {
   right: 0;
 }​
+#footnote{
+    width: 135px !important;
+    height: 50px !important;
+}
+#footnote .clearfix{
+     width: 135px !important;
+    height: 50px !important;
+}
+#footnote .connect a {
+	background: url('Assets/Images/icons.png') no-repeat;
+}
+
+#footnote .connect {
+	float: left;
+	display: inline-block;
+	margin: 0 10px;
+	padding: 6px 0;
+}
+#footnote .connect a {
+	display: inline-block;
+	height: 18px;
+	width: 18px;
+	margin-right: 6px;
+}
+#footnote .connect a.facebook {
+	background-position: 0 -112px;
+}
+#footnote .connect a.twitter {
+	background-position: 0 -140px;
+}
+#footnote .connect a.googleplus {
+	background-position: 0 -168px;
+}
+.wrapper > a > img{
+    height:143px;
+}

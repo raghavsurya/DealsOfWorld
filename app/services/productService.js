@@ -26,7 +26,7 @@ System.register(['angular2/core', 'angular2/http'], function(exports_1, context_
                     this._http = _http;
                 }
                 ProductService.prototype.getProducts = function () {
-                    return this._http.get('app/products.json').map(function (res) { return res.json(); });
+                    return this._http.get('http://localhost:3000/api/v1/Products').map(function (res) { return res.json(); });
                     //   .do(data => console.log('Data returned: ' +JSON.stringify(data)))
                 };
                 ProductService.prototype.ngOnInit = function () {

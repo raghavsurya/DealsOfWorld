@@ -14,7 +14,7 @@ export class ProductService implements OnInit{
 
     }
       getProducts(): Observable<IProductsByDept[]>{
-          return this._http.get('app/products.json').map(res => <IProductsByDept[]>res.json())
+          return this._http.get('http://localhost:3000/api/v1/Products').map(res => <IProductsByDept[]>res.json())
        //   .do(data => console.log('Data returned: ' +JSON.stringify(data)))
    
        }

@@ -1,10 +1,10 @@
 export interface IProductsByDept{
-   dept_id: number;
+   deptId: number;
     department : string;
-    prod_link :string;
+    prodLink :string;
     imgSrc :string;
     productText : string;
-    ActualPrice : number;
-    OfferPrice : number;
+    actualPrice : number;
+    offerPrice : number;
     starRating: number;
 }

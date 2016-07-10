@@ -18,8 +18,8 @@ router.get('/Departments', function(req, res, next) {
 });
  
  router.get('/Products', function(req, res, next) {
-     var collection = db.collection('ProductsByDepartment');
-    collection.find().toArray(function(err, departments) {
+     var collection = db.collection('ProductsByDepartment')
+    collection.find().limit(50).toArray(function(err, departments) {
         if (err) {
             res.send(err);
         } else {

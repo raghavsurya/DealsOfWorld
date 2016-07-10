@@ -27,7 +27,16 @@ import {ProductService} from './services/productService'
                         
                     </div>
                 </a>
-				<div style="padding-top:5%">
+                <div id="footnote"> 
+                    <div class="clearfix"> 
+                    <div class="connect"> 
+                    <a href="http://www.facebook.com/sharer.php?u=http://dealsofworld.com/" target="_blank" title="Share on Facebook" class="facebook"></a>
+                    <a href="http://twitter.com/home?status=Currently reading http://dealsofworld.com/" target="_blank" title="Share on Twitter" class="twitter"></a>
+                    <a href="https://plus.google.com/share?url=http://dealsofworld.com/" target="_blank" title="Share on Google+" class="googleplus"></a> 
+                    </div> 
+                    </div> 
+                 </div>
+				<div style="padding-top:2%">
                 <div class="searchSection">
                     <input type="text" placeholder="Search" [(ngModel)]="listFilter" />
                 </div>
@@ -81,6 +90,16 @@ import {ProductService} from './services/productService'
 			  </div>
 
 			  	<div class="googleAds">
+                  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    <!-- Daily Deals -->
+                    <ins class="adsbygoogle"
+                        style="display:block"
+                        data-ad-client="ca-pub-2821335634646729"
+                        data-ad-slot="7006887296"
+                        data-ad-format="auto"></ins>
+                    <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
 				  </div>
 			  </div>
   
