@@ -22,4 +22,20 @@
     
 </div>
 
-	
+	<script type="text/javascript">
+        $(".wrapper").slice(20).hide();
+        var mincount = 20;
+    var maxcount = 40;
+
+
+    $(window).scroll(function() 
+                        {
+                        if($(window).scrollTop() + $(window).height() >= $(document).height() - 400) {
+                                $(".wrapper").slice(mincount,maxcount).fadeIn(800);
+
+    mincount = mincount+20;
+    maxcount = maxcount+20
+
+    }
+});
+        </script>
