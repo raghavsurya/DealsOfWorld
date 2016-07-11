@@ -45,18 +45,28 @@ router.get('/Departments', function(req, res, next) {
  router.get('/SideMenus/:country/:vendor', function(req, res, next) {
      var country = req.params.country;
       var vendor = req.params.vendor;
+       var collection = db.collection('ProductsByDepartment');
       if(vendor == undefined)
       {
-          vendor = "";
+         collection.distinct("department", {"country":country}, function(err, departments) {   
+        if (err) {
+            res.send(err);
+        } else {
+            res.json(departments); 
+        }
+    });
       }
-     var collection = db.collection('ProductsByDepartment');
-    collection.distinct("vendor", {"country":country, "vendor":vendor}, function(err, departments) {   
+      else{
+          collection.distinct("department", {"country":country, "vendor":vendor}, function(err, departments) {   
         if (err) {
             res.send(err);
         } else {
             res.json(departments);
         }
     });
+      }
+    
+    
 });
 /* PUT/UPDATE a Todo */
 router.put('/Department/:dept_id', function(req, res, next) {
