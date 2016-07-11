@@ -32,7 +32,7 @@ router.get('/Departments', function(req, res, next) {
  router.get('/Menus/:country', function(req, res, next) {
      var country = req.params.country;
      var collection = db.collection('ProductsByDepartment');
-    collection.distinct("vendor", {"country":"uk"}, function(err, departments) {   
+    collection.distinct("vendor", {"country":country}, function(err, departments) {   
         if (err) {
             res.send(err);
         } else {
@@ -41,25 +41,23 @@ router.get('/Departments', function(req, res, next) {
     });
 });
  
-/* POST/SAVE a Todo */
-router.post('/Department', function(req, res, next) {
-    var todo = req.body;
-    if (!todo.text || !(todo.isCompleted + '')) {
-        res.status(400);
-        res.json({
-            "error": "Invalid Data"
-        });
-    } else {
-        db.todos.save(todo, function(err, result) {
-            if (err) {
-                res.send(err);
-            } else {
-                res.json(result);
-            }
-        })
-    }
+
+ router.get('/SideMenus/:country/:vendor', function(req, res, next) {
+     var country = req.params.country;
+      var vendor = req.params.vendor;
+      if(vendor == undefined)
+      {
+          vendor = "";
+      }
+     var collection = db.collection('ProductsByDepartment');
+    collection.distinct("vendor", {"country":country, "vendor":vendor}, function(err, departments) {   
+        if (err) {
+            res.send(err);
+        } else {
+            res.json(departments);
+        }
+    });
 });
- 
 /* PUT/UPDATE a Todo */
 router.put('/Department/:dept_id', function(req, res, next) {
     var todo = req.body;

@@ -44,14 +44,7 @@ import {Observable} from 'rxjs/Observable'
                 </div>
                 <div class="menuLists">
                     <ul>
-                        <li><button class="button button1"><span>Walmart</span></button></li>
-                        <li><button class="button button1"><span>Macy's</span></button></li>
-                        <li><button class="button button1"><span>Best Buy</span></button></li>
-                        <li><button class="button button1"><span>Amazon</span></button></li>
-                        <li><button class="button button1"><span>Extended Stay America</span></button></li>
-                        <li><button class="button button1"><span>Sam's Club</span></button></li>
-                        <li class="showMore"><button class="button moreButton"><span>More >></span></button></li>
-                      
+                        <li *ngFor='#menu of menus'><button class="button button1"><span>{{menu | uppercase}}</span></button></li>
                     </ul>
                 </div>
 				</div>
@@ -60,30 +53,8 @@ import {Observable} from 'rxjs/Observable'
 		<div class="bodyWrapper">
         <div id="sideMenu" >
             <ul id="menu-v">
-                <li><a href="#"><span class="glyphicon glyphicon-tag"></span> Electronics </a></li>
-                <li>
-                    <a href="#"><span class="glyphicon glyphicon-tag"></span> Men</a>
-                   
-                </li>
-                <li>
-                    <a href="#"><span class="glyphicon glyphicon-tag"></span> Women</a>
-                   
-                </li>
-                <li><a href="#"><span class="glyphicon glyphicon-tag"></span> Food and Drink</a></li>
-                <li>
-                    <a href="#"><span class="glyphicon glyphicon-tag"></span> Shopping</a>
-                   
-                </li>
-                <li><a href="#"><span class="glyphicon glyphicon-tag"></span> Things to do</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-tag"></span> Baby care and Toys</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-tag"></span>  Cruise Travel</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-tag"></span> Tour travel</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-tag"></span> Home Improvement</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-tag"></span> Home and Garden</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-tag"></span> Automtive</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-tag"></span> Resort and Travel</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-tag"></span> Sports and Outdoor</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-tag"></span> Entertainment and Media</a></li>
+                <li *ngFor='#menu of sideMenus><a href="#"><span class="glyphicon glyphicon-tag"></span> {{menu}}}} </a></li>
+                
             </ul>
 			  
         </div>
@@ -103,6 +74,7 @@ import {Observable} from 'rxjs/Observable'
 export class AppComponent  {
   
     menus: any[];
+    sideMenus: any[];
     deptLinks: IDepartments[];
     country: string;
     
@@ -110,6 +82,8 @@ export class AppComponent  {
      constructor(http: Http, @Inject('rootVar') rootVar:string ){
             http.get('http://DealsOfWorld.com:3000/api/v1/Menus/'+ rootVar).map(res => res.json())
     .subscribe(allMenus => this.menus = allMenus) ;
+      http.get('http://DealsOfWorld.com:3000/api/v1/SideMenus/'+ rootVar).map(res => res.json())
+    .subscribe(allSideMenus => this.sideMenus = allSideMenus) ;
     }
    getProdByType(id: number) : void {
        alert(id);

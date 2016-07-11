@@ -21,7 +21,8 @@ body {
     float:left;width:27%;
     
 }
-.bodyWrapper{width:86%;float:left; 
+.bodyWrapper{
+    width:86%;float:left; 
 }
 #sticky.stick{
     margin-top: 0 !important;
@@ -54,7 +55,7 @@ body {
 }
 
 .menuLists{
-    margin-left:17%;
+       margin: 6px 0 0 18%;
 }
 .menuSection img{
     opacity: 0.11
@@ -178,7 +179,7 @@ writing-mode: lr-tb;
     box-sizing: border-box;
     padding: 3px 0 0 20px;
    
-    border: 2px solid #ee1111;
+    border: 2px solid #9E314C;
     border-radius: 4px;
     font-size: 16px;
     background-color: #ffffff;
@@ -194,7 +195,7 @@ writing-mode: lr-tb;
     }
 .searchSection >input:focus, .searchSection >input:hover  {
     width: 525px;
-     border: 2px solid #f9a114;
+     border: 2px solid #9E314C;
       background-color: #ffffff;
        color:#000000 !important
 }
@@ -337,7 +338,7 @@ writing-mode: lr-tb;
    -webkit-transition-duration: 0.5s; /* Safari */
     transition-duration: 0.5s;
     cursor: pointer;
-    font: normal 15px 'Segoe UI', 'Raleway', sans-serif;
+    font: normal 10px 'Segoe UI', 'Raleway', sans-serif;
     font-weight: bold
 } 
 
@@ -346,11 +347,11 @@ writing-mode: lr-tb;
 }
 
     .button1 {
-    background-color:#e11111;
+    background-color:#9E314C;
     color: #ffffff;
     border-radius: 2px;
     
-   
+    border: 1px solid #ffffff;
 }
     
 .button1:hover {
@@ -380,7 +381,7 @@ writing-mode: lr-tb;
     }
     .products{
         border-radius:5px;
-        
+        color:#9E314C;
         width:295px;
         height:250px;
         margin:4%;
@@ -389,7 +390,7 @@ writing-mode: lr-tb;
        
     }
     .products:hover{
- background: #FFCC00;
+ background: #ffffff;
  color:#ffffff;
  -webkit-transition: background-color 500ms linear;
     -moz-transition: background-color 500ms linear;
@@ -399,10 +400,10 @@ writing-mode: lr-tb;
     } 
     h5{
               font: 16px 'Segoe UI', 'Raleway', sans-serif !important;
-    color: #000000;
+   
     padding: 2% 0 6% 0% !important;
     /* font-weight: bold !important; */
-    color: #0066c0 !important;
+    color: #9E314C !important;
     }
 
     .wrapper {
@@ -440,12 +441,12 @@ writing-mode: lr-tb;
   left: -5px;
   top: 15px;
   width: 120px;
-  background-color: #f9a114;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#f9a114), to(#ee1111)); 
-  background-image: -webkit-linear-gradient(top, #f9a114, #ee1111); 
-  background-image:    -moz-linear-gradient(top, #f9a114, #ee1111); 
-  background-image:     -ms-linear-gradient(top, #f9a114, #ee1111); 
-  background-image:      -o-linear-gradient(top, #f9a114, #ee1111); 
+  background-color: #9E314C;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#9E314C), to(#ee1111)); 
+  background-image: -webkit-linear-gradient(top, #9E314C, #ee1111); 
+  background-image:    -moz-linear-gradient(top, #9E314C, #ee1111); 
+  background-image:     -ms-linear-gradient(top, #9E314C, #ee1111); 
+  background-image:      -o-linear-gradient(top, #9E314C, #ee1111); 
   color: #fff;
   -webkit-box-shadow: 0px 0px 3px rgba(0,0,0,0.3);
   -moz-box-shadow:    0px 0px 3px rgba(0,0,0,0.3);
@@ -586,11 +587,14 @@ writing-mode: lr-tb;
     /* margin: 40px 5px 5px 0px; */
     margin:0;}
 .showMoreButton.red {
-        background: #723131;
+        background: #00a300;
     padding: 2px 15px;
     /* margin: 40px 5px 5px 0px; */
     margin: 0;
-    min-height: 2.5em;}
-.showMoreButton a{
+    min-height: 2.5em;
+    }
+.showMoreButton a, .showMoreButton a:hover{
     color:#ffffff;
+    text-decoration: none;
+    font: normal 15px 'Segoe UI', 'Raleway', sans-serif;
 }
