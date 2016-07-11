@@ -69,6 +69,8 @@ var callback = function(){
 visitorGeolocation.checkcookie(callback);
 rootVar = visitorGeolocation.getField('countryCode');
 if(rootVar == "GB") rootVar = "uk";
+if(rootVar == "US") rootVar = "us";
+if(rootVar == "IN") rootVar = "in";
 
 </script>
 </body>
