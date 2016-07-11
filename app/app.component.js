@@ -32,27 +32,58 @@ System.register(['angular2/core', './products/product-list.component', 'angular2
             }],
         execute: function() {
             AppComponent = (function () {
-                function AppComponent(http, rootVar) {
+                function AppComponent(http, rootVar, _productService) {
                     var _this = this;
+                    this._productService = _productService;
                     this.pageTitle = 'Deals of World Application';
                     http.get('http://DealsOfWorld.com:3000/api/v1/Menus/' + rootVar).map(function (res) { return res.json(); })
                         .subscribe(function (allMenus) { return _this.menus = allMenus; });
-                    http.get('http://DealsOfWorld.com:3000/api/v1/SideMenus/' + rootVar).map(function (res) { return res.json(); })
+                    http.get('http://DealsOfWorld.com:3000/api/v1/SideMenus/' + rootVar + '/all').map(function (res) { return res.json(); })
                         .subscribe(function (allSideMenus) { return _this.sideMenus = allSideMenus; });
                 }
-                AppComponent.prototype.getProdByType = function (id) {
-                    alert(id);
+                AppComponent.prototype.ngAfterViewInit = function () {
+                    this.getChildProperty();
                 };
+                AppComponent.prototype.getChildProperty = function () {
+                    console.log(this.productList.productByDepts);
+                };
+                AppComponent.prototype.LoadProductsAndMenus = function (menu, isMainMenu) {
+                    var _this = this;
+                    this.isMainMenu = isMainMenu;
+                    if (this.isMainMenu) {
+                        this.selectedMenu = menu;
+                    }
+                    else {
+                        this.selectedSideMenu = menu;
+                    }
+                    //When filtering both by Vendor and Side menu
+                    if (this.selectedMenu != null && this.selectedSideMenu != null) {
+                        this._productService.getProductsByVendorAndDept(this.selectedMenu, this.selectedSideMenu)
+                            .subscribe(function (products) { return _this.productList.productByDepts = products; });
+                    }
+                    else if (this.selectedMenu != null && this.selectedSideMenu == null) {
+                        this._productService.getProductsByVendor(this.selectedMenu)
+                            .subscribe(function (products) { return _this.productList.productByDepts = products; });
+                    }
+                    else if (this.selectedSideMenu != null && this.selectedMenu == null) {
+                        this._productService.getProductsByDept(this.selectedSideMenu)
+                            .subscribe(function (products) { return _this.productList.productByDepts = products; });
+                    }
+                };
+                __decorate([
+                    core_1.ViewChild(product_list_component_1.ProductListComponent), 
+                    __metadata('design:type', product_list_component_1.ProductListComponent)
+                ], AppComponent.prototype, "productList", void 0);
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'dw-app',
                         //viewProviders: [HTTP_PROVIDERS],
                         directives: [product_list_component_1.ProductListComponent],
                         providers: [productService_1.ProductService, http_1.HTTP_PROVIDERS],
-                        template: "\n\t<div id=\"sticky-anchor\"></div>\n   <div id=\"sticky\" class=\"menuSection\">\n   <div class=\"bg\"></div>\n            <span class=\"showMenuOnMobile\">Show on Mobile</span>\n            <div>\n                <a href=\"#\">\n                    <div class=\"logoSection\">\n                       \n                        \n                    </div>\n                </a>\n                <div id=\"footnote\"> \n                    <div class=\"clearfix\"> \n                    <div class=\"connect\"> \n                    <a href=\"http://www.facebook.com/sharer.php?u=http://dealsofworld.com/\" target=\"_blank\" title=\"Share on Facebook\" class=\"facebook\"></a>\n                    <a href=\"http://twitter.com/home?status=Currently reading http://dealsofworld.com/\" target=\"_blank\" title=\"Share on Twitter\" class=\"twitter\"></a>\n                    <a href=\"https://plus.google.com/share?url=http://dealsofworld.com/\" target=\"_blank\" title=\"Share on Google+\" class=\"googleplus\"></a> \n                    </div> \n                    </div> \n                   <div class=\"showMoreButton red\"><div class=\"shine\"></div><a href=\"#\">Sign in</a></div>\n                 </div>\n\t\t\t\t<div style=\"padding-top:2%\">\n                <div class=\"searchSection\">\n                    <input type=\"text\" placeholder=\"Search\" [(ngModel)]=\"listFilter\" />\n                </div>\n                <div class=\"menuLists\">\n                    <ul>\n                        <li *ngFor='#menu of menus'><button class=\"button button1\"><span>{{menu | uppercase}}</span></button></li>\n                    </ul>\n                </div>\n\t\t\t\t</div>\n            </div>\n        </div>\n\t\t<div class=\"bodyWrapper\">\n        <div id=\"sideMenu\" >\n            <ul id=\"menu-v\">\n                <li *ngFor='#menu of sideMenus><a href=\"#\"><span class=\"glyphicon glyphicon-tag\"></span> {{menu}}}} </a></li>\n                \n            </ul>\n\t\t\t  \n        </div>\n\t\t<div style=\"float:left;width:73%;\"> \n\t\t\t  <dw-products></dw-products>\n\t\t\t  </div>\n\n\t\t\t  \n\t\t\t  </div>\n  \n<div>\n\n    "
+                        template: "\n\t<div id=\"sticky-anchor\"></div>\n   <div id=\"sticky\" class=\"menuSection\">\n   <div class=\"bg\"></div>\n            <span class=\"showMenuOnMobile\">Show on Mobile</span>\n            <div>\n                <a href=\"#\">\n                    <div class=\"logoSection\">\n                       \n                        \n                    </div>\n                </a>\n                <div id=\"footnote\"> \n                    <div class=\"clearfix\"> \n                    <div class=\"connect\"> \n                    <a href=\"http://www.facebook.com/sharer.php?u=http://dealsofworld.com/\" target=\"_blank\" title=\"Share on Facebook\" class=\"facebook\"></a>\n                    <a href=\"http://twitter.com/home?status=Currently reading http://dealsofworld.com/\" target=\"_blank\" title=\"Share on Twitter\" class=\"twitter\"></a>\n                    <a href=\"https://plus.google.com/share?url=http://dealsofworld.com/\" target=\"_blank\" title=\"Share on Google+\" class=\"googleplus\"></a> \n                    </div> \n                    </div> \n                   <div class=\"showMoreButton red\"><div class=\"shine\"></div><a href=\"#\">Sign in</a></div>\n                 </div>\n\t\t\t\t<div style=\"padding-top:2%\">\n                <div class=\"searchSection\">\n                    <input type=\"text\" placeholder=\"Search\" [(ngModel)]=\"listFilter\" />\n                </div>\n                <div class=\"menuLists\">\n                    <ul>\n                        <li *ngFor='#menu of menus'><button class=\"button button1\" (click)=LoadProductsAndMenus(menu, true)><span>{{menu | uppercase}}</span></button></li>\n                    </ul>\n                </div>\n\t\t\t\t</div>\n            </div>\n        </div>\n\t\t<div class=\"bodyWrapper\">\n        <div id=\"sideMenu\" >\n            <ul id=\"menu-v\">\n                <li *ngFor='#menu of sideMenus><a href=\"#\" (click)=LoadProductsAndMenus(menu, false)><span class=\"glyphicon glyphicon-tag\"></span> {{menu}}}} </a></li>\n                </ul>\n\t\t\t  \n        </div>\n\t\t<div style=\"float:left;width:73%;\"> \n\t\t\t  <dw-products></dw-products>\n\t\t\t  </div>\n\n\t\t\t  \n\t\t\t  </div>\n  \n<div>\n\n    "
                     }),
                     __param(1, core_1.Inject('rootVar')), 
-                    __metadata('design:paramtypes', [http_1.Http, String])
+                    __metadata('design:paramtypes', [http_1.Http, String, productService_1.ProductService])
                 ], AppComponent);
                 return AppComponent;
             }());

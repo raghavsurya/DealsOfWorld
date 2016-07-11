@@ -1,5 +1,5 @@
 //Container Component
-import { Component, OnInit, Inject } from 'angular2/core'
+import { Component, OnInit, Inject, AfterViewInit, ViewChild } from 'angular2/core'
 import { ProductListComponent } from './products/product-list.component'
 import { Http, HTTP_PROVIDERS } from 'angular2/http'
 import 'rxjs/Rx'; //for map from http response & Load all features
@@ -44,7 +44,7 @@ import {Observable} from 'rxjs/Observable'
                 </div>
                 <div class="menuLists">
                     <ul>
-                        <li *ngFor='#menu of menus'><button class="button button1"><span>{{menu | uppercase}}</span></button></li>
+                        <li *ngFor='#menu of menus'><button class="button button1" (click)=LoadProductsAndMenus(menu, true)><span>{{menu | uppercase}}</span></button></li>
                     </ul>
                 </div>
 				</div>
@@ -53,9 +53,8 @@ import {Observable} from 'rxjs/Observable'
 		<div class="bodyWrapper">
         <div id="sideMenu" >
             <ul id="menu-v">
-                <li *ngFor='#menu of sideMenus><a href="#"><span class="glyphicon glyphicon-tag"></span> {{menu}}}} </a></li>
-                
-            </ul>
+                <li *ngFor='#menu of sideMenus><a href="#" (click)=LoadProductsAndMenus(menu, false)><span class="glyphicon glyphicon-tag"></span> {{menu}}}} </a></li>
+                </ul>
 			  
         </div>
 		<div style="float:left;width:73%;"> 
@@ -72,22 +71,55 @@ import {Observable} from 'rxjs/Observable'
 })
 
 export class AppComponent  {
-  
+ 
     menus: any[];
     sideMenus: any[];
     deptLinks: IDepartments[];
     country: string;
+    selectedMenu: string;
+    selectedSideMenu: string;
+    isMainMenu: boolean;
+     @ViewChild(ProductListComponent) productList:ProductListComponent;
+  ngAfterViewInit() {
+      this.getChildProperty();
+  }
+  getChildProperty() {
+     console.log(this.productList.productByDepts);
+  }
     
     pageTitle: string = 'Deals of World Application';
-     constructor(http: Http, @Inject('rootVar') rootVar:string ){
+     constructor(http: Http, @Inject('rootVar') rootVar:string, private _productService: ProductService  ){
             http.get('http://DealsOfWorld.com:3000/api/v1/Menus/'+ rootVar).map(res => res.json())
     .subscribe(allMenus => this.menus = allMenus) ;
-      http.get('http://DealsOfWorld.com:3000/api/v1/SideMenus/'+ rootVar).map(res => res.json())
+      http.get('http://DealsOfWorld.com:3000/api/v1/SideMenus/'+ rootVar + '/all').map(res => res.json())
     .subscribe(allSideMenus => this.sideMenus = allSideMenus) ;
     }
-   getProdByType(id: number) : void {
-       alert(id);
-   }
+ 
+LoadProductsAndMenus(menu: string, isMainMenu: boolean) : void{
+this.isMainMenu = isMainMenu;
+    if(this.isMainMenu){
+        this.selectedMenu = menu;
+    }
+    else{
+        this.selectedSideMenu = menu;
+    }
+    //When filtering both by Vendor and Side menu
+    if(this.selectedMenu != null && this.selectedSideMenu != null){
+        this._productService.getProductsByVendorAndDept(this.selectedMenu, this.selectedSideMenu )
+       .subscribe(products => this.productList.productByDepts = products);
+   
+    }
+    //When filtering only by Vendors
+    else if(this.selectedMenu != null && this.selectedSideMenu == null){
+        this._productService.getProductsByVendor(this.selectedMenu)
+       .subscribe(products => this.productList.productByDepts = products);
+    }
+    //When filtering only by Side menu
+    else if(this.selectedSideMenu != null && this.selectedMenu == null){
+        this._productService.getProductsByDept(this.selectedSideMenu )
+       .subscribe(products => this.productList.productByDepts = products);
+    }
+}
   
 }
 

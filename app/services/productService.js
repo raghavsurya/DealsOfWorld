@@ -10,6 +10,9 @@ System.register(['angular2/core', 'angular2/http'], function(exports_1, context_
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
+    var __param = (this && this.__param) || function (paramIndex, decorator) {
+        return function (target, key) { decorator(target, key, paramIndex); }
+    };
     var core_1, http_1;
     var ProductService;
     return {
@@ -22,21 +25,35 @@ System.register(['angular2/core', 'angular2/http'], function(exports_1, context_
             }],
         execute: function() {
             ProductService = (function () {
-                function ProductService(_http) {
+                function ProductService(_http, rootVar) {
                     this._http = _http;
+                    this.countryCode = rootVar;
                 }
                 ProductService.prototype.getProducts = function (startIndex) {
-                    return this._http.get('http://DealsOfWorld.com:3000/api/v1/Products/' + startIndex)
+                    return this._http.get('http://DealsOfWorld.com:3000/api/v1/Products/' + startIndex + '/' + this.countryCode)
                         .map(function (res) { return res.json(); });
                     //   .do(data => console.log('Data returned: ' +JSON.stringify(data)))
+                };
+                ProductService.prototype.getProductsByVendor = function (mainMenu) {
+                    return this._http.get('http://DealsOfWorld.com:3000/api/v1/ProductsByVendor/' + this.countryCode + '/' + mainMenu)
+                        .map(function (res) { return res.json(); });
+                };
+                ProductService.prototype.getProductsByVendorAndDept = function (mainMenu, department) {
+                    return this._http.get('http://DealsOfWorld.com:3000/api/v1/ProductsByDeptByVendor/' + this.countryCode + '/' + department + "/" + mainMenu)
+                        .map(function (res) { return res.json(); });
+                };
+                ProductService.prototype.getProductsByDept = function (department) {
+                    return this._http.get('http://DealsOfWorld.com:3000/api/v1/ProductsByDept/' + this.countryCode + '/' + department)
+                        .map(function (res) { return res.json(); });
                 };
                 ProductService.prototype.ngOnInit = function () {
                     console.log('In OnInit');
                 };
                 ProductService = __decorate([
                     core_1.Component({}),
-                    core_1.Injectable(), 
-                    __metadata('design:paramtypes', [http_1.Http])
+                    core_1.Injectable(),
+                    __param(1, core_1.Inject('rootVar')), 
+                    __metadata('design:paramtypes', [http_1.Http, String])
                 ], ProductService);
                 return ProductService;
             }());

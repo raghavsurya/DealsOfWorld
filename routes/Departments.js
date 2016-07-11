@@ -17,10 +17,11 @@ router.get('/Departments', function(req, res, next) {
     });
 });
  
- router.get('/Products/:startIndex', function(req, res, next) {
+ router.get('/Products/:startIndex/:country', function(req, res, next) {
      var startIndex = req.params.startIndex;
+      var countryToFind = req.params.country;
      var collection = db.collection('ProductsByDepartment')
-    collection.find().skip(startIndex*50).limit(50).toArray(function(err, departments) { 
+    collection.find({country:countryToFind}).skip(startIndex*50).limit(50).toArray(function(err, departments) { 
         if (err) {
             res.send(err);
         } else {
@@ -46,7 +47,7 @@ router.get('/Departments', function(req, res, next) {
      var country = req.params.country;
       var vendor = req.params.vendor;
        var collection = db.collection('ProductsByDepartment');
-      if(vendor == undefined)
+      if(vendor == undefined || vendor== "all")
       {
          collection.distinct("department", {"country":country}, function(err, departments) {   
         if (err) {
@@ -67,6 +68,54 @@ router.get('/Departments', function(req, res, next) {
       }
     
     
+});
+
+ router.get('/ProductsByDept/:country/:department', function(req, res, next) {
+     var country = req.params.country;
+      var dept = req.params.department;
+       var collection = db.collection('ProductsByDepartment');
+     
+         collection.find({country:country ,department:dept}).toArray(function(err, departments) {   
+        if (err) {
+            res.send(err);
+        } else {
+            res.json(departments); 
+        }
+    });
+     
+});
+router.get('/ProductsByDeptByVendor/:country/:department/:vendor', function(req, res, next) {
+     var country = req.params.country;
+      var dept = req.params.department;
+      var vendor =req.params.vendor;
+
+       var collection = db.collection('ProductsByDepartment');
+     
+         collection.find({country:country ,department:dept, vendor:vendor}).limit(50).toArray(function(err, departments) {   
+        if (err) {
+            res.send(err);
+        } else {
+            res.json(departments); 
+        }
+    });
+     
+});
+
+router.get('/ProductsByVendor/:country/:vendor', function(req, res, next) {
+     var country = req.params.country;
+     
+      var vendor =req.params.vendor;
+
+       var collection = db.collection('ProductsByDepartment');
+     
+         collection.find({country:country ,vendor:vendor}).limit(50).toArray(function(err, departments) {   
+        if (err) {
+            res.send(err);
+        } else {
+            res.json(departments); 
+        }
+    });
+     
 });
 /* PUT/UPDATE a Todo */
 router.put('/Department/:dept_id', function(req, res, next) {
