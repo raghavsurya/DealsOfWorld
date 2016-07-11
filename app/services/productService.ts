@@ -13,6 +13,7 @@ export class ProductService implements OnInit{
     constructor(private _http: Http){
 
     }
+    
       getProducts(startIndex: number): Observable<IProductsByDept[]>{
           return this._http.get('http://DealsOfWorld.com:3000/api/v1/Products/'+ startIndex) 
         

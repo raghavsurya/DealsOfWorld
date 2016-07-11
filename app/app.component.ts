@@ -1,5 +1,5 @@
 //Container Component
-import { Component, OnInit } from 'angular2/core'
+import { Component, OnInit, Inject } from 'angular2/core'
 import { ProductListComponent } from './products/product-list.component'
 import { Http, HTTP_PROVIDERS } from 'angular2/http'
 import 'rxjs/Rx'; //for map from http response & Load all features
@@ -8,6 +8,7 @@ import {IProductType} from './Interfaces/Departments'
 
 import {Observer} from 'rxjs/Observer';
 import {ProductService} from './services/productService'
+import {Observable} from 'rxjs/Observable'
 
 
 @Component({
@@ -101,16 +102,19 @@ import {ProductService} from './services/productService'
 
 export class AppComponent  {
   
+    menus: any[];
     deptLinks: IDepartments[];
+    country: string;
     
     pageTitle: string = 'Deals of World Application';
-     constructor(http: Http){
-            http.get('app/ppl.json').map(res => res.json())
-    .subscribe(deptLinks => this.deptLinks = deptLinks) ;
+     constructor(http: Http, @Inject('rootVar') rootVar:string ){
+            http.get('http://DealsOfWorld.com:3000/api/v1/Menus/'+ rootVar).map(res => res.json())
+    .subscribe(allMenus => this.menus = allMenus) ;
     }
    getProdByType(id: number) : void {
        alert(id);
    }
+  
 }
 
 

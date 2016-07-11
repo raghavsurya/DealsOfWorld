@@ -29,15 +29,14 @@ router.get('/Departments', function(req, res, next) {
     });
 });
 
-router.get('/Departments/:dept_id', function(req, res, next) {
-      var collection = db.collection('Departments');
-      
-    collection.findOne({dept_id :3
-    }, function(err, todos) {
+ router.get('/Menus/:country', function(req, res, next) {
+     var country = req.params.country;
+     var collection = db.collection('ProductsByDepartment');
+    collection.distinct("vendor", {"country":"uk"}, function(err, departments) {   
         if (err) {
             res.send(err);
         } else {
-            res.json(todos);
+            res.json(departments);
         }
     });
 });
