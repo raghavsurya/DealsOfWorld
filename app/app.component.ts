@@ -85,7 +85,7 @@ import {ProductService} from './services/productService'
             </ul>
 			  
         </div>
-		<div style="float:left;width:73%;">
+		<div style="float:left;width:73%;"> 
 			  <dw-products></dw-products>
 			  </div>
 
