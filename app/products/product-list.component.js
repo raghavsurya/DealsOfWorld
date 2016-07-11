@@ -31,20 +31,36 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', '../pipes/productF
                 productService_1 = productService_1_1;
             }],
         execute: function() {
+            // import {PaginatePipe, PaginationControlsCmp} from 'ng2-pagination';
+            // import {PaginatePipe, PaginationService, PaginationControlsCmp, IPaginationInstance} from 'ng2-pagination';
             ProductListComponent = (function () {
                 function ProductListComponent(_productService) {
                     this._productService = _productService;
+                    this.totalItems = 50;
+                    this.currentPage = 0;
                     this.pageTitle = 'Product List';
                     this.headerOfPanel = 'Deals of the world. ';
                     this.listFilter = "";
                 }
+                ProductListComponent.prototype.pageChanged = function (event) {
+                    console.log(event);
+                };
+                ;
                 ProductListComponent.prototype.ngOnInit = function () {
                     var _this = this;
-                    this._productService.getProducts()
+                    this._productService.getProducts(0)
                         .subscribe(function (products) { return _this.productByDepts = products; }, function (error) { return _this.errorMessage = error; });
                 };
                 ProductListComponent.prototype.onRatingClicked = function (message) {
                     this.pageTitle = 'Product List: ' + message;
+                };
+                ProductListComponent.prototype.getNextSetOfProducts = function (page) {
+                    var _this = this;
+                    this.currentPage = page;
+                    console.log(this.productByDepts);
+                    this._productService.getProducts(page)
+                        .subscribe(function (products) { return _this.productByDepts = _this.productByDepts.concat(products); }, function (error) { return _this.errorMessage = error; });
+                    console.log(this.productByDepts);
                 };
                 ProductListComponent = __decorate([
                     core_1.Component({
@@ -52,7 +68,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', '../pipes/productF
                         viewProviders: [http_1.HTTP_PROVIDERS],
                         templateUrl: 'app/products/product-list.component.html',
                         pipes: [productFilter_1.ProductFilterPipe],
-                        directives: [star_component_1.StarComponent]
+                        directives: [star_component_1.StarComponent],
                     }), 
                     __metadata('design:paramtypes', [productService_1.ProductService])
                 ], ProductListComponent);

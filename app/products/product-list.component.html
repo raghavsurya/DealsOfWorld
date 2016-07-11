@@ -9,7 +9,7 @@
 
     
 
-<div *ngFor='#prodByDept of productByDepts | productFilter : listFilter'>
+<div *ngFor='#prodByDept of productByDepts'>
     <div class="col-lg-4 products wrapper"> 
         <div class="ribbon-wrapper-green"><div class="ribbon-green">DEAL</div></div>
         <a [href]='prodByDept.prodLink' target="_blank"><img [src]='prodByDept.imgSrc' />
@@ -19,12 +19,16 @@
         <strong style="color:Green;">{{prodByDept.offerPrice}}</strong>
           <!--<ai-star [rating]='prodByDept.starRating' (ratingClicked)='onRatingClicked($event)'> </ai-star>-->
     </div>
-    
+   
 </div>
+ <div class="showMoreButton blue"><div class="shine"></div><a (click)="getNextSetOfProducts(currentPage + 1)">Show More</a></div>   
+<!--<div class="is-text-centered">
+    <pagination-controls (pageChange)="page = $event"></pagination-controls>
+</div>-->
 
 	<script type="text/javascript">
-        $(".wrapper").slice(20).hide();
-        var mincount = 20;
+        $(".wrapper").slice(50).hide();
+        var mincount = 50;
     var maxcount = 40;
 
 

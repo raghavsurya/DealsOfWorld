@@ -35,6 +35,7 @@ import {ProductService} from './services/productService'
                     <a href="https://plus.google.com/share?url=http://dealsofworld.com/" target="_blank" title="Share on Google+" class="googleplus"></a> 
                     </div> 
                     </div> 
+                   <div class="showMoreButton red"><div class="shine"></div><a href="#">Sign in</a></div>
                  </div>
 				<div style="padding-top:2%">
                 <div class="searchSection">

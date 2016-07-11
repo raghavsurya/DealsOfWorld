@@ -17,9 +17,10 @@ router.get('/Departments', function(req, res, next) {
     });
 });
  
- router.get('/Products', function(req, res, next) {
+ router.get('/Products/:startIndex', function(req, res, next) {
+     var startIndex = req.params.startIndex;
      var collection = db.collection('ProductsByDepartment')
-    collection.find().limit(50).toArray(function(err, departments) {
+    collection.find().skip(startIndex*50).limit(50).toArray(function(err, departments) { 
         if (err) {
             res.send(err);
         } else {

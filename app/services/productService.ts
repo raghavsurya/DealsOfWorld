@@ -13,8 +13,11 @@ export class ProductService implements OnInit{
     constructor(private _http: Http){
 
     }
-      getProducts(): Observable<IProductsByDept[]>{
-          return this._http.get('http://localhost:3000/api/v1/Products').map(res => <IProductsByDept[]>res.json())
+      getProducts(startIndex: number): Observable<IProductsByDept[]>{
+          return this._http.get('http://DealsOfWorld.com:3000/api/v1/Products/'+ startIndex) 
+        
+          .map(res => <IProductsByDept[]>res.json())
+           
        //   .do(data => console.log('Data returned: ' +JSON.stringify(data)))
    
        }
