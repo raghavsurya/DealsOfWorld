@@ -1,6 +1,6 @@
 
 html {
-    background-color: #666666;
+    background-color: #ffffff;
     margin: 0;
     padding: 0;
     
@@ -21,7 +21,7 @@ body {
     float:left;width:27%;
     
 }
-.bodyWrapper{width:100%;float:left;
+.bodyWrapper{width:78%;float:left;
 }
 #sticky.stick{
     margin-top: 0 !important;
@@ -34,7 +34,7 @@ body {
         float: right;
     
     width: 14%;
-    background-color: #CD3333;
+    background-color: #ffffff;
     height: 500px;
    
      -webkit-box-shadow: 4px 0px 2px -2px #787878;

@@ -89,18 +89,7 @@ import {ProductService} from './services/productService'
 			  <dw-products></dw-products>
 			  </div>
 
-			  	<div class="googleAds">
-                  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                    <!-- Daily Deals -->
-                    <ins class="adsbygoogle"
-                        style="display:block"
-                        data-ad-client="ca-pub-2821335634646729"
-                        data-ad-slot="7006887296"
-                        data-ad-format="auto"></ins>
-                    <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
-				  </div>
+			  
 			  </div>
   
 <div>
