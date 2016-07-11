@@ -89,9 +89,9 @@ router.get('/ProductsByDeptByVendor/:country/:department/:vendor', function(req,
       var dept = req.params.department;
       var vendor =req.params.vendor;
 
-       var collection = db.collection('ProductsByDepartment');
+       var collection = db.collection('ProductsByDepartment'); 
      
-         collection.find({country:country ,department:dept, vendor:vendor}).limit(50).toArray(function(err, departments) {   
+         collection.find({country:country ,department:dept, vendor:vendor}).toArray(function(err, departments) {   
         if (err) {
             res.send(err);
         } else {

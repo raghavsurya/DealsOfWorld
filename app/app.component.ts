@@ -44,16 +44,16 @@ import {Observable} from 'rxjs/Observable'
                 </div>
                 <div class="menuLists">
                     <ul>
-                        <li *ngFor='#menu of menus'><button class="button button1" (click)=LoadProductsAndMenus(menu, true)><span>{{menu | uppercase}}</span></button></li>
+                        <li *ngFor='#menu of menus'><button class="button button1" (click)="LoadProductsAndMenus(menu, true)"><span>{{menu}}</span></button></li>
                     </ul>
-                </div>
+                </div> 
 				</div>
             </div>
         </div>
 		<div class="bodyWrapper">
         <div id="sideMenu" >
             <ul id="menu-v">
-                <li *ngFor='#menu of sideMenus><a href="#" (click)=LoadProductsAndMenus(menu, false)><span class="glyphicon glyphicon-tag"></span> {{menu}}}} </a></li>
+                <li *ngFor='#menu of sideMenus'><a href="#" (click)="LoadProductsAndMenus(menu, false)"><span class="glyphicon glyphicon-tag"></span> {{menu}} </a></li>
                 </ul>
 			  
         </div>

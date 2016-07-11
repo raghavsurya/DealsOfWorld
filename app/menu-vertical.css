@@ -31,7 +31,7 @@ color:#ffffff;
 }
 #menu-v li a
 {
-    font: normal 15px  'Segoe UI', 'Raleway', sans-serif;;
+    font: normal 12px  'Segoe UI', 'Raleway', sans-serif;;
 
     display: block;
     /*overflow: auto; force hasLayout in IE7 */
