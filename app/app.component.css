@@ -405,11 +405,10 @@ writing-mode: lr-tb;
 
     .wrapper {
  
-    height: 284px;
+    height: 314px;
     background: white;
-    border-radius: 10px;
+    border-radius: 10px; 
     width: 324px;
-    
     -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.3);
     box-shadow: 0px 0px 8px rgba(0,0,0,0.3);
     position: relative;
