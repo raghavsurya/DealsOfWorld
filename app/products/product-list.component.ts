@@ -45,13 +45,34 @@ export class ProductListComponent implements OnInit{
        onRatingClicked(message: string): void {
         this.pageTitle = 'Product List: ' + message;
     } 
-    getNextSetOfProducts(page: number): void{
+    getNextSetOfProducts(page: number, userselectedMenu: string, userselectedSideMenu: string, searchString: string, methodName: string): void{
         this.currentPage = page;
-        console.log(this.productByDepts); 
+        if(methodName == "getProductsByVendorAndDept"){
+            this._productService.getProductsByVendorAndDept(page, userselectedMenu, userselectedSideMenu)
+       .subscribe(products => this.productByDepts = this.productByDepts.concat(products),
+       error => this.errorMessage = <any>error); 
+        }
+        else if(methodName == "getProductsByVendor"){
+            this._productService.getProductsByVendor(page, userselectedMenu)
+       .subscribe(products => this.productByDepts = this.productByDepts.concat(products),
+       error => this.errorMessage = <any>error); 
+        }
+        else if(methodName == "getProductsByDept"){
+            this._productService.getProductsByDept(page, userselectedMenu)
+       .subscribe(products => this.productByDepts = this.productByDepts.concat(products),
+       error => this.errorMessage = <any>error); 
+        }
+        else if(methodName == "getProductsBySearchTerm"){
+            this._productService.getProductsBySearchTerm(page, searchString )
+       .subscribe(products => this.productByDepts = this.productByDepts.concat(products),
+       error => this.errorMessage = <any>error); 
+        }
+        else{
         this._productService.getProducts(page)
        .subscribe(products => this.productByDepts = this.productByDepts.concat(products),
        error => this.errorMessage = <any>error); 
-         console.log(this.productByDepts);      
+        }
+           
    }
       
 }

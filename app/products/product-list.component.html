@@ -22,7 +22,7 @@
     </div>
    
 </div>
- <div *ngIf="productByDepts && productByDepts.length > 0" class="showMoreButton blue"><div class="shine"></div><a (click)="getNextSetOfProducts(currentPage + 1)">Show More</a></div>   
+ <div *ngIf="productByDepts && productByDepts.length > 0" class="showMoreButton blue"><div class="shine"></div><a (click)="getNextSetOfProducts(currentPage + 1, userselectedMenu, userselectedSideMenu, searchString, methodName)">Show More</a></div>   
 <!--<div class="is-text-centered">
     <pagination-controls (pageChange)="page = $event"></pagination-controls>
 </div>-->

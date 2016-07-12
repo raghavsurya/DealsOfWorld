@@ -23,26 +23,26 @@ export class ProductService implements OnInit{
    
        }
 
-       getProductsByVendor(mainMenu:string): Observable<IProductsByDept[]>{
-          return this._http.get('http://DealsOfWorld.com:3000/api/v1/ProductsByVendor/'+ this.countryCode + '/' + mainMenu) 
+       getProductsByVendor(page:number, mainMenu:string): Observable<IProductsByDept[]>{
+          return this._http.get('http://DealsOfWorld.com:3000/api/v1/ProductsByVendor/'+ page + "/" + this.countryCode + '/' + mainMenu) 
         
           .map(res => <IProductsByDept[]>res.json())
        }
 
-        getProductsByVendorAndDept(mainMenu:string, department: string): Observable<IProductsByDept[]>{
-          return this._http.get('http://DealsOfWorld.com:3000/api/v1/ProductsByDeptByVendor/'+ this.countryCode + '/' + department + "/" + mainMenu) 
+        getProductsByVendorAndDept(page:number, mainMenu:string, department: string): Observable<IProductsByDept[]>{
+          return this._http.get('http://DealsOfWorld.com:3000/api/v1/ProductsByDeptByVendor/'+ page + "/" + this.countryCode + '/' + department + "/" + mainMenu) 
         
           .map(res => <IProductsByDept[]>res.json())
         }
 
-         getProductsByDept(department:string): Observable<IProductsByDept[]>{
-          return this._http.get('http://DealsOfWorld.com:3000/api/v1/ProductsByDept/'+ this.countryCode + '/' + department) 
+         getProductsByDept(page:number, department:string): Observable<IProductsByDept[]>{
+          return this._http.get('http://DealsOfWorld.com:3000/api/v1/ProductsByDept/'+ page + "/" + this.countryCode + '/' + department) 
         
           .map(res => <IProductsByDept[]>res.json())
        }
 
-        getProductsBySearchTerm(searchTerm:string): Observable<IProductsByDept[]>{
-          return this._http.get('http://DealsOfWorld.com:3000/api/v1/ProductsBySearchTerm/'+ this.countryCode + '/' + searchTerm) 
+        getProductsBySearchTerm(page:number, searchTerm:string): Observable<IProductsByDept[]>{
+          return this._http.get('http://DealsOfWorld.com:3000/api/v1/ProductsBySearchTerm/' + page + "/" + this.countryCode + '/' + searchTerm) 
         
           .map(res => <IProductsByDept[]>res.json())
        }

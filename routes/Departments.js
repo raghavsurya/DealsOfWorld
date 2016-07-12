@@ -19,7 +19,7 @@ router.get('/Departments', function(req, res, next) {
  
  router.get('/Products/:startIndex/:country', function(req, res, next) {
      var startIndex = req.params.startIndex;
-      var countryToFind = req.params.country;
+      var countryToFind = new RegExp([req.params.country].join(""), "i");
      var collection = db.collection('ProductsByDepartment')
     collection.find({country:countryToFind}).skip(startIndex*50).limit(50).toArray(function(err, departments) { 
         if (err) {
@@ -31,7 +31,8 @@ router.get('/Departments', function(req, res, next) {
 });
 
  router.get('/Menus/:country', function(req, res, next) {
-     var country = req.params.country;
+    //var startIndex = new RegExp([req.params.startIndex].join(""), "i");
+      var country = new RegExp([req.params.country].join(""), "i");
      var collection = db.collection('ProductsByDepartment');
     collection.distinct("vendor", {"country":country}, function(err, departments) {   
         if (err) {
@@ -44,11 +45,13 @@ router.get('/Departments', function(req, res, next) {
  
 
  router.get('/SideMenus/:country/:vendor', function(req, res, next) {
-     var country = req.params.country;
-      var vendor = req.params.vendor;
+  
+
        var collection = db.collection('ProductsByDepartment');
       if(vendor == undefined || vendor== "all")
       {
+             var country = new RegExp([req.params.country].join(""), "i");
+     
          collection.distinct("department", {"country":country}, function(err, departments) {   
         if (err) {
             res.send(err);
@@ -58,6 +61,8 @@ router.get('/Departments', function(req, res, next) {
     });
       }
       else{
+             var country = new RegExp([req.params.country].join(""), "i");
+      var vendor = new RegExp([req.params.vendor].join(""), "i");
           collection.distinct("department", {"country":country, "vendor":vendor}, function(err, departments) {   
         if (err) {
             res.send(err);
@@ -70,12 +75,13 @@ router.get('/Departments', function(req, res, next) {
     
 });
 
- router.get('/ProductsByDept/:country/:department', function(req, res, next) {
-     var country = req.params.country;
-      var dept = req.params.department;
+ router.get('/ProductsByDept/:startIndex/:country/:department', function(req, res, next) {
+     var country = new RegExp([req.params.country].join(""), "i");
+      var dept = new RegExp([req.params.department].join(""), "i");
+      var startIndex = req.params.startIndex;
        var collection = db.collection('ProductsByDepartment');
      
-         collection.find({country:country ,department:dept}).toArray(function(err, departments) {   
+         collection.find({country:country ,department:dept}).skip(startIndex*50).limit(50).toArray(function(err, departments) {   
         if (err) {
             res.send(err);
         } else {
@@ -85,14 +91,14 @@ router.get('/Departments', function(req, res, next) {
      
 });
 
-router.get('/ProductsBySearchTerm/:country/:searchTerm', function(req, res, next) {
+router.get('/ProductsBySearchTerm/:startIndex/:country/:searchTerm', function(req, res, next) {
      var search = req.params.searchTerm;
-      var country = req.params.country;
-    
+      var country = new RegExp([req.params.country].join(""), "i");
+    var startIndex = req.params.startIndex;
         var regex = new RegExp([".*", search, ".*"].join(""), "i");
        var collection = db.collection('ProductsByDepartment');
      
-         collection.find({country:country ,productText:regex}).toArray(function(err, departments) {   
+         collection.find({country:country ,productText:regex}).skip(startIndex*50).limit(50).toArray(function(err, departments) {   
         if (err) {
             res.send(err);
         } else {
@@ -102,14 +108,14 @@ router.get('/ProductsBySearchTerm/:country/:searchTerm', function(req, res, next
      
 });
 
-router.get('/ProductsByDeptByVendor/:country/:department/:vendor', function(req, res, next) {
-     var country = req.params.country;
-      var dept = req.params.department;
-      var vendor =req.params.vendor;
-
+router.get('/ProductsByDeptByVendor/:startIndex/:country/:department/:vendor', function(req, res, next) {
+     var country = new RegExp([req.params.country].join(""), "i");
+      var dept = new RegExp([req.params.department].join(""), "i");
+      var vendor =new RegExp([req.params.vendor].join(""), "i");
+var startIndex = req.params.startIndex;
        var collection = db.collection('ProductsByDepartment'); 
      
-         collection.find({country:country ,department:dept, vendor:vendor}).toArray(function(err, departments) {   
+         collection.find({country:country ,department:dept, vendor:vendor}).skip(startIndex*50).limit(50).toArray(function(err, departments) {   
         if (err) {
             res.send(err);
         } else {
@@ -119,14 +125,14 @@ router.get('/ProductsByDeptByVendor/:country/:department/:vendor', function(req,
      
 });
 
-router.get('/ProductsByVendor/:country/:vendor', function(req, res, next) {
-     var country = req.params.country;
-     
-      var vendor =req.params.vendor;
+router.get('/ProductsByVendor/:startIndex/:country/:vendor', function(req, res, next) {
+     var country = new RegExp([req.params.country].join(""), "i");
+     var startIndex = req.params.startIndex;
+      var vendor = new RegExp([req.params.vendor].join(""), "i");
 
        var collection = db.collection('ProductsByDepartment');
      
-         collection.find({country:country ,vendor:vendor}).limit(50).toArray(function(err, departments) {   
+         collection.find({country:country ,vendor:vendor}).skip(startIndex*50).limit(50).toArray(function(err, departments) {   
         if (err) {
             res.send(err);
         } else {

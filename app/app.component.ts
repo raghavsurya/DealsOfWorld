@@ -92,12 +92,13 @@ import {Observable} from 'rxjs/Observable'
 </div>
 
 <div>
-    `
+   <div class="modal" *ngIf=""></div>  `
     
 })
 
 export class AppComponent  {
- 
+    methodName: string;
+ showLoader:boolean;
     menus: any[];
     searchString: string
     sideMenus: any[];
@@ -128,7 +129,7 @@ export class AppComponent  {
     }
  
 LoadProductsAndMenus(menu: string, isMainMenu: boolean) : void{
-
+this.showLoader = true;
 this.isMainMenu = isMainMenu;
     if(this.isMainMenu){
         this.selectedMenu = menu;
@@ -140,29 +141,38 @@ this.isMainMenu = isMainMenu;
     }
     //When filtering both by Vendor and Side menu
     if(this.selectedMenu != null && this.selectedSideMenu != null){
-        this._productService.getProductsByVendorAndDept(this.selectedMenu, this.selectedSideMenu )
+        this.methodName = "getProductsByVendorAndDept";
+        this._productService.getProductsByVendorAndDept(0, this.selectedMenu, this.selectedSideMenu )
        .subscribe(products => this.productList.productByDepts = products);
    
     }
     //When filtering only by Vendors
     else if(this.selectedMenu != null && this.selectedSideMenu == null){
-        this._productService.getProductsByVendor(this.selectedMenu)
+          this.methodName = "getProductsByVendor";
+        this._productService.getProductsByVendor(0, this.selectedMenu)
        .subscribe(products => this.productList.productByDepts = products);
     }
     //When filtering only by Side menu
     else if(this.selectedSideMenu != null && this.selectedMenu == null){
-        this._productService.getProductsByDept(this.selectedSideMenu )
+        this.methodName = "getProductsByDept";
+        this._productService.getProductsByDept(0, this.selectedSideMenu )
        .subscribe(products => this.productList.productByDepts = products);
     }
+    this.showLoader = false;
 }
 ChangeCountry(country):void{
+    this.showLoader = true;
     sessionStorage["countryCode"] = country;
     window.location.reload();
+
 }
 
 SearchProducts():void{
- this._productService.getProductsBySearchTerm(this.searchString )
+    this.showLoader = true;
+     this.methodName = "getProductsBySearchTerm";
+ this._productService.getProductsBySearchTerm(0, this.searchString )
        .subscribe(products => this.productList.productByDepts = products);
+       this.showLoader = false;
 }
   
 }

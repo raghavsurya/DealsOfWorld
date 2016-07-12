@@ -51,13 +51,29 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', '../pipes/productF
                 ProductListComponent.prototype.onRatingClicked = function (message) {
                     this.pageTitle = 'Product List: ' + message;
                 };
-                ProductListComponent.prototype.getNextSetOfProducts = function (page) {
+                ProductListComponent.prototype.getNextSetOfProducts = function (page, userselectedMenu, userselectedSideMenu, searchString, methodName) {
                     var _this = this;
                     this.currentPage = page;
-                    console.log(this.productByDepts);
-                    this._productService.getProducts(page)
-                        .subscribe(function (products) { return _this.productByDepts = _this.productByDepts.concat(products); }, function (error) { return _this.errorMessage = error; });
-                    console.log(this.productByDepts);
+                    if (methodName == "getProductsByVendorAndDept") {
+                        this._productService.getProductsByVendorAndDept(page, userselectedMenu, userselectedSideMenu)
+                            .subscribe(function (products) { return _this.productByDepts = _this.productByDepts.concat(products); }, function (error) { return _this.errorMessage = error; });
+                    }
+                    else if (methodName == "getProductsByVendor") {
+                        this._productService.getProductsByVendor(page, userselectedMenu)
+                            .subscribe(function (products) { return _this.productByDepts = _this.productByDepts.concat(products); }, function (error) { return _this.errorMessage = error; });
+                    }
+                    else if (methodName == "getProductsByDept") {
+                        this._productService.getProductsByDept(page, userselectedMenu)
+                            .subscribe(function (products) { return _this.productByDepts = _this.productByDepts.concat(products); }, function (error) { return _this.errorMessage = error; });
+                    }
+                    else if (methodName == "getProductsBySearchTerm") {
+                        this._productService.getProductsBySearchTerm(page, searchString)
+                            .subscribe(function (products) { return _this.productByDepts = _this.productByDepts.concat(products); }, function (error) { return _this.errorMessage = error; });
+                    }
+                    else {
+                        this._productService.getProducts(page)
+                            .subscribe(function (products) { return _this.productByDepts = _this.productByDepts.concat(products); }, function (error) { return _this.errorMessage = error; });
+                    }
                 };
                 ProductListComponent = __decorate([
                     core_1.Component({
