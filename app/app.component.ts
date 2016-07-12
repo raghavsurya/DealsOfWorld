@@ -38,7 +38,7 @@ import {Observable} from 'rxjs/Observable'
                     </div> 
                    <div class="showMoreButton red"><div class="shine"></div><a href="#">Sign in</a></div>
                  </div>
-				<div style="padding-top:2%">~
+				<div style="padding-top:2%">
                 <div class="searchSection">
                     <input type="text" placeholder="Search" [(ngModel)]="listFilter" />
                    <div class="dropdown">
