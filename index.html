@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Deals Portal</title>
+    <title>Deals of World</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <link href="../node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
@@ -27,7 +27,7 @@
       <script src="../node_modules/angular2/bundles/http.dev.js"></script>
       <script src="../app/scripts/menu-vertical.js"></script>
         <script src="../app/scripts/scroll.js"></script>
-        <script src="node_modules/ng2-pagination/dist/ng2-pagination-bundle.js"></script>
+
       
     <script>
         System.config({
@@ -68,9 +68,10 @@ var callback = function(){
                };
 visitorGeolocation.checkcookie(callback);
 rootVar = visitorGeolocation.getField('countryCode');
-if(rootVar == "GB") rootVar = "uk";
-if(rootVar == "US") rootVar = "us";
-if(rootVar == "IN") rootVar = "in";
+rootVar= rootVar.toLowerCase();
+console.log(rootVar);
+if(rootVar == "gb") rootVar = "uk";
+
 
 </script>
 </body>

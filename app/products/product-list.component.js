@@ -41,11 +41,8 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', '../pipes/productF
                     this.pageTitle = 'Product List';
                     this.headerOfPanel = 'Deals of the world. ';
                     this.listFilter = "";
+                    //  this.userselectedMenu = selectedMenu;
                 }
-                ProductListComponent.prototype.pageChanged = function (event) {
-                    console.log(event);
-                };
-                ;
                 ProductListComponent.prototype.ngOnInit = function () {
                     var _this = this;
                     this._productService.getProducts(0)

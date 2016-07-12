@@ -1,5 +1,5 @@
 //Container Component
-import { Component, OnInit, Inject, AfterViewInit, ViewChild } from 'angular2/core'
+import { Component, OnInit, Inject, AfterViewInit, ViewChild, Input } from 'angular2/core'
 import { ProductListComponent } from './products/product-list.component'
 import { Http, HTTP_PROVIDERS } from 'angular2/http'
 import 'rxjs/Rx'; //for map from http response & Load all features
@@ -38,7 +38,7 @@ import {Observable} from 'rxjs/Observable'
                     </div> 
                    <div class="showMoreButton red"><div class="shine"></div><a href="#">Sign in</a></div>
                  </div>
-				<div style="padding-top:2%">
+				<div style="padding-top:2%">~
                 <div class="searchSection">
                     <input type="text" placeholder="Search" [(ngModel)]="listFilter" />
                 </div>
@@ -58,7 +58,7 @@ import {Observable} from 'rxjs/Observable'
 			  
         </div>
 		<div style="float:left;width:73%;"> 
-			  <dw-products></dw-products>
+			  <dw-products [selectedMenu]= "userselectedMenu"></dw-products>
 			  </div>
 
 			  
@@ -76,8 +76,8 @@ export class AppComponent  {
     sideMenus: any[];
     deptLinks: IDepartments[];
     country: string;
-    selectedMenu: string;
-    selectedSideMenu: string;
+  selectedMenu: string;
+     selectedSideMenu: string;
     isMainMenu: boolean;
      @ViewChild(ProductListComponent) productList:ProductListComponent;
   ngAfterViewInit() {
@@ -85,6 +85,7 @@ export class AppComponent  {
   }
   getChildProperty() {
      console.log(this.productList.productByDepts);
+
   }
     
     pageTitle: string = 'Deals of World Application';
@@ -96,12 +97,15 @@ export class AppComponent  {
     }
  
 LoadProductsAndMenus(menu: string, isMainMenu: boolean) : void{
+
 this.isMainMenu = isMainMenu;
     if(this.isMainMenu){
         this.selectedMenu = menu;
+        this.productList.userselectedMenu = this.selectedMenu;
     }
     else{
         this.selectedSideMenu = menu;
+         this.productList.userselectedSideMenu = this.selectedSideMenu;
     }
     //When filtering both by Vendor and Side menu
     if(this.selectedMenu != null && this.selectedSideMenu != null){

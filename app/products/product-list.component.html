@@ -7,8 +7,9 @@
     testing
 </div>-->
 
-    
-
+  <div class="breadcrumbNav" *ngIf="userselectedMenu || userselectedSideMenu">
+    Products showing under: <span>{{userselectedMenu}}</span> > <span>{{userselectedSideMenu}}</span>
+    </div>
 <div *ngFor='#prodByDept of productByDepts'>
     <div class="col-lg-4 products wrapper"> 
         <div class="ribbon-wrapper-green"><div class="ribbon-green">DEAL</div></div>
@@ -21,25 +22,22 @@
     </div>
    
 </div>
- <div class="showMoreButton blue"><div class="shine"></div><a (click)="getNextSetOfProducts(currentPage + 1)">Show More</a></div>   
+ <div *ngIf="productByDepts && productByDepts.length > 0" class="showMoreButton blue"><div class="shine"></div><a (click)="getNextSetOfProducts(currentPage + 1)">Show More</a></div>   
 <!--<div class="is-text-centered">
     <pagination-controls (pageChange)="page = $event"></pagination-controls>
 </div>-->
 
-	<script type="text/javascript">
-        $(".wrapper").slice(50).hide();
-        var mincount = 50;
-    var maxcount = 40;
+    <div  *ngIf="!productByDepts || productByDepts.length <= 0" class="page-container page-container-responsive">
+    <div class="row row-space-top-8 row-space-8 row-table">
+      
+        <div id="noProducts" class="col-12 col-middle text-center">
+            <h1 class="text-jumbo text-ginormous">Oops!</h1>
+          <h2><i>We do not yet have deals for you in the selected department</i></h2>
+        
+          
+          <img src="app/Assets/Images/404.gif" width="313" height="428" alt="Girl has dropped her ice cream.">
+        </div>
+      </div>
+    </div>
 
-
-    $(window).scroll(function() 
-                        {
-                        if($(window).scrollTop() + $(window).height() >= $(document).height() - 400) {
-                                $(".wrapper").slice(mincount,maxcount).fadeIn(800);
-
-    mincount = mincount+20;
-    maxcount = maxcount+20
-
-    }
-});
-        </script>
+   

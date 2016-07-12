@@ -21,11 +21,11 @@ import {Observable} from 'rxjs/Observable'
 
 
 export class ProductListComponent implements OnInit{
+  
      private totalItems: number = 50;
     private currentPage: number = 0;
-    private pageChanged(event: any):void {
-         console.log(event);
-    };
+     userselectedMenu: string
+  userselectedSideMenu: string
     pageTitle: string = 'Product List';
     headerOfPanel: string = 'Deals of the world. ';
     listFilter: string = "";
@@ -33,7 +33,7 @@ export class ProductListComponent implements OnInit{
     productByDepts: IProductsByDept[];
 
      constructor(private _productService: ProductService){
-   
+      //  this.userselectedMenu = selectedMenu;
      }
       
     
