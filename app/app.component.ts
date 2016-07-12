@@ -41,6 +41,15 @@ import {Observable} from 'rxjs/Observable'
 				<div style="padding-top:2%">~
                 <div class="searchSection">
                     <input type="text" placeholder="Search" [(ngModel)]="listFilter" />
+                   <div class="dropdown">
+  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><img src="app/Assets/Images/{{country}}.png" />
+  <span class="caret"></span></button>
+  <ul class="dropdown-menu">
+    <li><a href="#" (click)="ChangeCountry('uk')"><img src="app/Assets/Images/UK.png" alt="" /><span> UK</span></a></li>
+    <li><a href="#" (click)="ChangeCountry('us')"><img src="app/Assets/Images/US.png" alt="" /><span>  USA</span></a></li>
+    <li><a href="#" (click)="ChangeCountry('in')"><img src="app/Assets/Images/IN.png" alt="" /><span>  India</span></a></li>
+  </ul>
+</div>
                 </div>
                 <div class="menuLists">
                     <ul>
@@ -94,6 +103,7 @@ export class AppComponent  {
     .subscribe(allMenus => this.menus = allMenus) ;
       http.get('http://DealsOfWorld.com:3000/api/v1/SideMenus/'+ rootVar + '/all').map(res => res.json())
     .subscribe(allSideMenus => this.sideMenus = allSideMenus) ;
+    this.country = rootVar.toUpperCase();
     }
  
 LoadProductsAndMenus(menu: string, isMainMenu: boolean) : void{
@@ -123,6 +133,10 @@ this.isMainMenu = isMainMenu;
         this._productService.getProductsByDept(this.selectedSideMenu )
        .subscribe(products => this.productList.productByDepts = products);
     }
+}
+ChangeCountry(country):void{
+    sessionStorage["countryCode"] = country;
+    window.location.reload();
 }
   
 }

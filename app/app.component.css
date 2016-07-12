@@ -171,10 +171,11 @@ writing-mode: lr-tb;
     margin: 0% 0 0 18%;
  /*   background-color: #CD3333*/
     color: #ffffff !important;
+    width:640px;
 
 }
     .searchSection > input {
-          width: 525px;
+          width: 449px;
     height: 31px;
     box-sizing: border-box;
     padding: 3px 0 0 20px;
@@ -194,10 +195,34 @@ writing-mode: lr-tb;
     background-position: right -12px;
     }
 .searchSection >input:focus, .searchSection >input:hover  {
-    width: 525px;
+    width: 449px;
      border: 2px solid #9E314C;
       background-color: #ffffff;
        color:#000000 !important
+}
+.dropdown{
+           float: right;
+    margin-top: -10.5%;
+    margin-right: 10%;
+   
+}
+.dropdown button{
+ background-color: #ffffff;
+ border:0;
+}
+.dropdown button:hover, .dropdown button:focus{
+ background-color: #ffffff;
+}
+.dropdown-menu li a img{
+    opacity:1;
+}
+.dropdown button img{
+    opacity:1;
+}
+
+.dropdown-menu li a span{
+    font-weight: bold;
+    padding:10px;
 }
 /*Menu Section ****CUSTOM** DESKTOP* END */
 

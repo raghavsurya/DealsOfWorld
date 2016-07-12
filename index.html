@@ -52,7 +52,8 @@
     <html>
 <head>
 <script type="text/javascript">
-var rootVar = "";
+
+var rootVar;
 </script>
  <script src="app/scripts/geoLocation.js"></script>
 </head>
@@ -67,7 +68,13 @@ var callback = function(){
                 ('Visitor country code : ' + visitorGeolocation.getField('countryCode'))
                };
 visitorGeolocation.checkcookie(callback);
+if(!sessionStorage["countryCode"]){
 rootVar = visitorGeolocation.getField('countryCode');
+}
+else{
+    rootVar = sessionStorage["countryCode"];
+}
+
 rootVar= rootVar.toLowerCase();
 console.log(rootVar);
 if(rootVar == "gb") rootVar = "uk";
