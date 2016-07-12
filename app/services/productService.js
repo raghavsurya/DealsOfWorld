@@ -46,6 +46,10 @@ System.register(['angular2/core', 'angular2/http'], function(exports_1, context_
                     return this._http.get('http://DealsOfWorld.com:3000/api/v1/ProductsByDept/' + this.countryCode + '/' + department)
                         .map(function (res) { return res.json(); });
                 };
+                ProductService.prototype.getProductsBySearchTerm = function (searchTerm) {
+                    return this._http.get('http://DealsOfWorld.com:3000/api/v1/ProductsBySearchTerm/' + this.countryCode + '/' + searchTerm)
+                        .map(function (res) { return res.json(); });
+                };
                 ProductService.prototype.ngOnInit = function () {
                     console.log('In OnInit');
                 };

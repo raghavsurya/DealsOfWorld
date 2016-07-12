@@ -10,7 +10,7 @@
   <div class="breadcrumbNav" *ngIf="userselectedMenu || userselectedSideMenu">
     Products showing under: <span>{{userselectedMenu}}</span> > <span>{{userselectedSideMenu}}</span>
     </div>
-<div *ngFor='#prodByDept of productByDepts'>
+<div *ngFor='#prodByDept of productByDepts | productFilter : searchString'>
     <div class="col-lg-4 products wrapper"> 
         <div class="ribbon-wrapper-green"><div class="ribbon-green">DEAL</div></div>
         <a [href]='prodByDept.prodLink' target="_blank"><img [src]='prodByDept.imgSrc' />

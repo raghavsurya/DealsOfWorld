@@ -39,9 +39,7 @@ import {Observable} from 'rxjs/Observable'
                    <div class="showMoreButton red"><div class="shine"></div><a href="#">Sign in</a></div>
                  </div>
 				<div style="padding-top:2%">
-                <div class="searchSection">
-                    <input type="text" placeholder="Search" [(ngModel)]="listFilter" />
-                   <div class="dropdown">
+        <div class="dropdown">
   <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><img src="app/Assets/Images/{{country}}.png" />
   <span class="caret"></span></button>
   <ul class="dropdown-menu">
@@ -49,8 +47,17 @@ import {Observable} from 'rxjs/Observable'
     <li><a href="#" (click)="ChangeCountry('us')"><img src="app/Assets/Images/US.png" alt="" /><span>  USA</span></a></li>
     <li><a href="#" (click)="ChangeCountry('in')"><img src="app/Assets/Images/IN.png" alt="" /><span>  India</span></a></li>
   </ul>
-</div>
-                </div>
+</div>	          
+<section class="webdesigntuts-workshop">
+
+	<form>	
+    
+		<input [(ngModel)]="searchString" type="search"  placeholder="What are you looking for?">		    	
+		<button (click)="SearchProducts()">Search</button>
+	</form>
+     
+</section>
+          
                 <div class="menuLists">
                     <ul>
                         <li *ngFor='#menu of menus'><button class="button button1" (click)="LoadProductsAndMenus(menu, true)"><span>{{menu}}</span></button></li>
@@ -82,6 +89,7 @@ import {Observable} from 'rxjs/Observable'
 export class AppComponent  {
  
     menus: any[];
+    searchString: string
     sideMenus: any[];
     deptLinks: IDepartments[];
     country: string;
@@ -94,7 +102,9 @@ export class AppComponent  {
   }
   getChildProperty() {
      console.log(this.productList.productByDepts);
-
+     if(this.searchString != undefined){
+      this.productList.listFilter = this.searchString;
+     }
   }
     
     pageTitle: string = 'Deals of World Application';
@@ -104,6 +114,7 @@ export class AppComponent  {
       http.get('http://DealsOfWorld.com:3000/api/v1/SideMenus/'+ rootVar + '/all').map(res => res.json())
     .subscribe(allSideMenus => this.sideMenus = allSideMenus) ;
     this.country = rootVar.toUpperCase();
+   
     }
  
 LoadProductsAndMenus(menu: string, isMainMenu: boolean) : void{
@@ -137,6 +148,11 @@ this.isMainMenu = isMainMenu;
 ChangeCountry(country):void{
     sessionStorage["countryCode"] = country;
     window.location.reload();
+}
+
+SearchProducts():void{
+ this._productService.getProductsBySearchTerm(this.searchString )
+       .subscribe(products => this.productList.productByDepts = products);
 }
   
 }

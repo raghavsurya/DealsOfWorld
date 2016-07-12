@@ -84,6 +84,24 @@ router.get('/Departments', function(req, res, next) {
     });
      
 });
+
+router.get('/ProductsBySearchTerm/:country/:searchTerm', function(req, res, next) {
+     var search = req.params.searchTerm;
+      var country = req.params.country;
+    
+        var regex = new RegExp([".*", search, ".*"].join(""), "i");
+       var collection = db.collection('ProductsByDepartment');
+     
+         collection.find({country:country ,productText:regex}).toArray(function(err, departments) {   
+        if (err) {
+            res.send(err);
+        } else {
+            res.json(departments); 
+        }
+    });
+     
+});
+
 router.get('/ProductsByDeptByVendor/:country/:department/:vendor', function(req, res, next) {
      var country = req.params.country;
       var dept = req.params.department;

@@ -172,10 +172,10 @@ if(!sessionStorage["countryCode"]){
 rootVar = visitorGeolocation.getField('countryCode');
 if(!rootVar)
 {
-   visitorGeolocation = new geolocate(false, true, 'visitorGeolocation');
-   sessionStorage["countryCode"] = visitorGeolocation.getField('countryCode');
-   rootVar = sessionStorage["countryCode"];
+   rootVar = "us";
+   sessionStorage["countryCode"] = rootVar;//visitorGeolocation.getField('countryCode');
 }
+if(rootVar == "GB") rootVar = "uk";
     rootVar= rootVar.toLowerCase();
 }
 else{

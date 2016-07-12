@@ -40,6 +40,12 @@ export class ProductService implements OnInit{
         
           .map(res => <IProductsByDept[]>res.json())
        }
+
+        getProductsBySearchTerm(searchTerm:string): Observable<IProductsByDept[]>{
+          return this._http.get('http://DealsOfWorld.com:3000/api/v1/ProductsBySearchTerm/'+ this.countryCode + '/' + searchTerm) 
+        
+          .map(res => <IProductsByDept[]>res.json())
+       }
  
 
  ngOnInit(): void {
