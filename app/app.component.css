@@ -23,6 +23,7 @@ body {
 }
 .bodyWrapper{
     width:86%;float:left; 
+    
 }
 #sticky.stick{
     margin-top: 0 !important;
@@ -58,7 +59,7 @@ body {
      margin: 34px 0 0 18%;
 }
 .menuSection img{
-    opacity: 0.11
+   /* opacity: 0.11*/
 }
 
 .menuLists > ul >li {
@@ -775,4 +776,55 @@ background: #111;
 	background: linear-gradient(#393939, #292929);
 	box-shadow: 0 1px 0 #000, inset 1px 0 1px #222;
 	top: 1px;
+}
+
+#overlay {
+  background: #fff;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: .8;
+}
+
+.modal {
+    display:    block;
+    position:   fixed;
+    z-index:    1000;
+    top:        0;
+    left:       0;
+    height:     100%;
+    width:      100%;
+    background: 
+                url('http://sampsonresume.com/labs/pIkfp.gif') 
+                50% 50% 
+                no-repeat;
+    opacity: 0.4
+}
+
+/* When the body has the loading class, we turn
+   the scrollbar off with overflow:hidden */
+body.loading {
+    overflow: hidden;   
+}
+
+/* Anytime the body has the loading class, our
+   modal element will be visible */
+body.loading .modal {
+    display: block;
+}
+.googleAdsTop{
+       width: 150px;
+    height: 61px;
+    position: fixed;
+    border: 0;
+    float: left;
+    width: 40%;
+    /* height: 100%; */
+    /* position: absolute; */
+    top: 0;
+    left: 0;
+    z-index: 10;
+    margin-left: 30%;
 }
