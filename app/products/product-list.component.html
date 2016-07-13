@@ -18,10 +18,13 @@
         </a>
         <strike style="color:red;font-weight:bold">{{prodByDept.actualPrice}}</strike>
         <strong style="color:Green;">{{prodByDept.offerPrice}}</strong>
+        <p style="color:green;" *ngIf="prodByDept.code">Coupon Code: <strong style="color:red;font-weight:bold"> {{prodByDept.code}}</strong></p> 
+        <p style="color:green;padding-top:2%;font-size:9pt" *ngIf="prodByDept.expiryDate">Expires by: <strong style="color:red;font-weight:normal;font-size:9pt"> {{prodByDept.expiryDate}}</strong></p>
           <!--<ai-star [rating]='prodByDept.starRating' (ratingClicked)='onRatingClicked($event)'> </ai-star>-->
     </div>
    
 </div>
+<div class="modal" *ngIf="showLoader"></div>
  <div *ngIf="productByDepts && productByDepts.length > 0" class="showMoreButton blue"><div class="shine"></div><a (click)="getNextSetOfProducts(currentPage + 1, userselectedMenu, userselectedSideMenu, searchStr, methodName)">Show More</a></div>   
 <!--<div class="is-text-centered">
     <pagination-controls (pageChange)="page = $event"></pagination-controls>

@@ -53,7 +53,7 @@ System.register(['angular2/core', './products/product-list.component', 'angular2
                 };
                 AppComponent.prototype.LoadProductsAndMenus = function (menu, isMainMenu) {
                     var _this = this;
-                    this.showLoader = true;
+                    this.productList.showLoader = true;
                     this.isMainMenu = isMainMenu;
                     this.productList.currentPage = 0;
                     if (this.isMainMenu) {
@@ -80,18 +80,18 @@ System.register(['angular2/core', './products/product-list.component', 'angular2
                         this._productService.getProductsByDept(0, this.selectedSideMenu)
                             .subscribe(function (products) { return _this.productList.productByDepts = products; });
                     }
-                    this.showLoader = false;
+                    this.productList.showLoader = false;
                 };
                 AppComponent.prototype.ChangeCountry = function (country) {
                     this.productList.currentPage = 0;
-                    this.showLoader = true;
+                    this.productList.showLoader = true;
                     sessionStorage["countryCode"] = country;
                     window.location.reload();
                 };
                 AppComponent.prototype.SearchProducts = function () {
                     var _this = this;
                     this.productList.currentPage = 0;
-                    this.showLoader = true;
+                    this.productList.showLoader = true;
                     this.productList.methodName = "getProductsBySearchTerm";
                     this.productList.searchStr = this.searchString;
                     if (!this.productList.searchStr) {
@@ -99,7 +99,7 @@ System.register(['angular2/core', './products/product-list.component', 'angular2
                     }
                     this._productService.getProductsBySearchTerm(0, this.searchString)
                         .subscribe(function (products) { return _this.productList.productByDepts = products; });
-                    this.showLoader = false;
+                    this.productList.showLoader = false;
                 };
                 __decorate([
                     core_1.ViewChild(product_list_component_1.ProductListComponent), 

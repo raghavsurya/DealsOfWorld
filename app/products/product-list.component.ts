@@ -33,6 +33,7 @@ export class ProductListComponent implements OnInit{
     productByDepts: IProductsByDept[];
     methodName: string = "";
     searchStr: string = "";
+    showLoader:boolean;
 
      constructor(private _productService: ProductService){
       //  this.userselectedMenu = selectedMenu;
@@ -48,6 +49,7 @@ export class ProductListComponent implements OnInit{
         this.pageTitle = 'Product List: ' + message;
     } 
     getNextSetOfProducts(page: number, userselectedMenu: string, userselectedSideMenu: string, searchString: string, methodName: string): void{
+       this.showLoader = true;
         this.currentPage = page;
         if(methodName == "getProductsByVendorAndDept"){
             this._productService.getProductsByVendorAndDept(page, userselectedMenu, userselectedSideMenu)
@@ -74,6 +76,7 @@ export class ProductListComponent implements OnInit{
        .subscribe(products => this.productByDepts = this.productByDepts.concat(products),
        error => this.errorMessage = <any>error); 
         }
+        this.showLoader = false;
            
    }
       

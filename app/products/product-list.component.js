@@ -55,6 +55,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', '../pipes/productF
                 };
                 ProductListComponent.prototype.getNextSetOfProducts = function (page, userselectedMenu, userselectedSideMenu, searchString, methodName) {
                     var _this = this;
+                    this.showLoader = true;
                     this.currentPage = page;
                     if (methodName == "getProductsByVendorAndDept") {
                         this._productService.getProductsByVendorAndDept(page, userselectedMenu, userselectedSideMenu)
@@ -76,6 +77,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', '../pipes/productF
                         this._productService.getProducts(page)
                             .subscribe(function (products) { return _this.productByDepts = _this.productByDepts.concat(products); }, function (error) { return _this.errorMessage = error; });
                     }
+                    this.showLoader = false;
                 };
                 ProductListComponent = __decorate([
                     core_1.Component({

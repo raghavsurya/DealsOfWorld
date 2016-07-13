@@ -129,7 +129,7 @@ export class AppComponent  {
     }
  
 LoadProductsAndMenus(menu: string, isMainMenu: boolean) : void{
-this.showLoader = true;
+this.productList.showLoader = true;
 this.isMainMenu = isMainMenu;
 this.productList.currentPage = 0;
     if(this.isMainMenu){
@@ -159,11 +159,11 @@ this.productList.currentPage = 0;
         this._productService.getProductsByDept(0, this.selectedSideMenu )
        .subscribe(products => this.productList.productByDepts = products);
     }
-    this.showLoader = false;
+    this.productList.showLoader = false;
 }
 ChangeCountry(country):void{
     this.productList.currentPage = 0;
-    this.showLoader = true;
+    this.productList.showLoader = true;
     sessionStorage["countryCode"] = country;
     window.location.reload();
 
@@ -171,7 +171,7 @@ ChangeCountry(country):void{
 
 SearchProducts():void{
     this.productList.currentPage = 0;
-    this.showLoader = true;
+    this.productList.showLoader = true;
     this.productList.methodName = "getProductsBySearchTerm";
     this.productList.searchStr = this.searchString;
     if(!this.productList.searchStr){
@@ -179,7 +179,7 @@ SearchProducts():void{
     }
  this._productService.getProductsBySearchTerm(0, this.searchString )
        .subscribe(products => this.productList.productByDepts = products);
-       this.showLoader = false;
+       this.productList.showLoader = false;
 }
   
 }

@@ -7,4 +7,6 @@ export interface IProductsByDept{
     actualPrice : number;
     offerPrice : number;
     starRating: number;
+    code: string,
+    expiryDate: Date
 }
