@@ -33,7 +33,7 @@ app.use(function(req, res, next) {
     next(err);
 });
  
-var server = app.listen(80, function() {
+var server = app.listen(3000, function() {
     var host = 'localhost';
     var port = server.address().port;
     console.log('App listening at http://%s:%s', host, port);

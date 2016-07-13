@@ -15,7 +15,7 @@ export class ProductService implements OnInit{
     }
     
       getProducts(startIndex: number): Observable<IProductsByDept[]>{
-          return this._http.get('http://DealsOfWorld.com/api/v1/Products/'+ startIndex + '/' + this.countryCode) 
+          return this._http.get('http://DealsOfWorld.com:3000/api/v1/Products/'+ startIndex + '/' + this.countryCode) 
         
           .map(res => <IProductsByDept[]>res.json())
            
@@ -24,19 +24,19 @@ export class ProductService implements OnInit{
        }
 
        getProductsByVendor(page:number, mainMenu:string): Observable<IProductsByDept[]>{
-          return this._http.get('http://DealsOfWorld.com/api/v1/ProductsByVendor/'+ page + "/" + this.countryCode + '/' + mainMenu) 
+          return this._http.get('http://DealsOfWorld.com:3000/api/v1/ProductsByVendor/'+ page + "/" + this.countryCode + '/' + mainMenu) 
         
           .map(res => <IProductsByDept[]>res.json())
        }
 
         getProductsByVendorAndDept(page:number, mainMenu:string, department: string): Observable<IProductsByDept[]>{
-          return this._http.get('http://DealsOfWorld.com/api/v1/ProductsByDeptByVendor/'+ page + "/" + this.countryCode + '/' + department + "/" + mainMenu) 
+          return this._http.get('http://DealsOfWorld.com:3000/api/v1/ProductsByDeptByVendor/'+ page + "/" + this.countryCode + '/' + department + "/" + mainMenu) 
         
           .map(res => <IProductsByDept[]>res.json())
         }
 
          getProductsByDept(page:number, department:string): Observable<IProductsByDept[]>{
-          return this._http.get('http://DealsOfWorld.com/api/v1/ProductsByDept/'+ page + "/" + this.countryCode + '/' + department) 
+          return this._http.get('http://DealsOfWorld.com:3000/api/v1/ProductsByDept/'+ page + "/" + this.countryCode + '/' + department) 
         
           .map(res => <IProductsByDept[]>res.json())
        }

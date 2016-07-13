@@ -36,9 +36,9 @@ System.register(['angular2/core', './products/product-list.component', 'angular2
                     var _this = this;
                     this._productService = _productService;
                     this.pageTitle = 'Deals of World Application';
-                    http.get('http://DealsOfWorld.com/api/v1/Menus/' + rootVar).map(function (res) { return res.json(); })
+                    http.get('http://DealsOfWorld.com:3000/api/v1/Menus/' + rootVar).map(function (res) { return res.json(); })
                         .subscribe(function (allMenus) { return _this.menus = allMenus; });
-                    http.get('http://DealsOfWorld.com/api/v1/SideMenus/' + rootVar + '/all').map(function (res) { return res.json(); })
+                    http.get('http://DealsOfWorld.com:3000/api/v1/SideMenus/' + rootVar + '/all').map(function (res) { return res.json(); })
                         .subscribe(function (allSideMenus) { return _this.sideMenus = allSideMenus; });
                     this.country = rootVar.toUpperCase();
                 }

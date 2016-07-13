@@ -30,20 +30,20 @@ System.register(['angular2/core', 'angular2/http'], function(exports_1, context_
                     this.countryCode = rootVar;
                 }
                 ProductService.prototype.getProducts = function (startIndex) {
-                    return this._http.get('http://DealsOfWorld.com/api/v1/Products/' + startIndex + '/' + this.countryCode)
+                    return this._http.get('http://DealsOfWorld.com:3000/api/v1/Products/' + startIndex + '/' + this.countryCode)
                         .map(function (res) { return res.json(); });
                     //   .do(data => console.log('Data returned: ' +JSON.stringify(data)))
                 };
                 ProductService.prototype.getProductsByVendor = function (page, mainMenu) {
-                    return this._http.get('http://DealsOfWorld.com/api/v1/ProductsByVendor/' + page + "/" + this.countryCode + '/' + mainMenu)
+                    return this._http.get('http://DealsOfWorld.com:3000/api/v1/ProductsByVendor/' + page + "/" + this.countryCode + '/' + mainMenu)
                         .map(function (res) { return res.json(); });
                 };
                 ProductService.prototype.getProductsByVendorAndDept = function (page, mainMenu, department) {
-                    return this._http.get('http://DealsOfWorld.com/api/v1/ProductsByDeptByVendor/' + page + "/" + this.countryCode + '/' + department + "/" + mainMenu)
+                    return this._http.get('http://DealsOfWorld.com:3000/api/v1/ProductsByDeptByVendor/' + page + "/" + this.countryCode + '/' + department + "/" + mainMenu)
                         .map(function (res) { return res.json(); });
                 };
                 ProductService.prototype.getProductsByDept = function (page, department) {
-                    return this._http.get('http://DealsOfWorld.com/api/v1/ProductsByDept/' + page + "/" + this.countryCode + '/' + department)
+                    return this._http.get('http://DealsOfWorld.com:3000/api/v1/ProductsByDept/' + page + "/" + this.countryCode + '/' + department)
                         .map(function (res) { return res.json(); });
                 };
                 ProductService.prototype.getProductsBySearchTerm = function (page, searchTerm) {
