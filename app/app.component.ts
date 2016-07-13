@@ -83,7 +83,7 @@ import {Observable} from 'rxjs/Observable'
 
   </div>
   <div style="float:left;width:73%;">
-    <dw-products [selectedMenu]="userselectedMenu">
+    <dw-products [selectedMenu]="userselectedMenu", [methodName]="", [searchString]>
       <div class="modal"></div>
     </dw-products>
   </div>
@@ -141,20 +141,20 @@ this.isMainMenu = isMainMenu;
     }
     //When filtering both by Vendor and Side menu
     if(this.selectedMenu != null && this.selectedSideMenu != null){
-        this.methodName = "getProductsByVendorAndDept";
+       this.productList.methodName = this.methodName = "getProductsByVendorAndDept";
         this._productService.getProductsByVendorAndDept(0, this.selectedMenu, this.selectedSideMenu )
        .subscribe(products => this.productList.productByDepts = products);
    
     }
     //When filtering only by Vendors
     else if(this.selectedMenu != null && this.selectedSideMenu == null){
-          this.methodName = "getProductsByVendor";
+          this.productList.methodName = this.methodName = "getProductsByVendor";
         this._productService.getProductsByVendor(0, this.selectedMenu)
        .subscribe(products => this.productList.productByDepts = products);
     }
     //When filtering only by Side menu
     else if(this.selectedSideMenu != null && this.selectedMenu == null){
-        this.methodName = "getProductsByDept";
+       this.productList.methodName = this.methodName = "getProductsByDept";
         this._productService.getProductsByDept(0, this.selectedSideMenu )
        .subscribe(products => this.productList.productByDepts = products);
     }
@@ -169,7 +169,8 @@ ChangeCountry(country):void{
 
 SearchProducts():void{
     this.showLoader = true;
-     this.methodName = "getProductsBySearchTerm";
+    this.productList.methodName = this.methodName = "getProductsBySearchTerm";
+    this.productList.searchStr = this.searchString;
  this._productService.getProductsBySearchTerm(0, this.searchString )
        .subscribe(products => this.productList.productByDepts = products);
        this.showLoader = false;

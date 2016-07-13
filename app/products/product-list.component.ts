@@ -31,6 +31,8 @@ export class ProductListComponent implements OnInit{
     listFilter: string = "";
     errorMessage: string;
     productByDepts: IProductsByDept[];
+    methodName: string;
+    searchStr: string;
 
      constructor(private _productService: ProductService){
       //  this.userselectedMenu = selectedMenu;
