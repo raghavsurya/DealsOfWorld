@@ -4,8 +4,8 @@ export interface IProductsByDept{
     prodLink :string;
     imgSrc :string;
     productText : string;
-    actualPrice : number;
-    offerPrice : number;
+    actualPrice : string;
+    offerPrice : string;
     starRating: number;
     code: string,
     expiryDate: Date

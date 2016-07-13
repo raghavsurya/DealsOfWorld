@@ -34,6 +34,7 @@ export class ProductListComponent implements OnInit{
     methodName: string = "";
     searchStr: string = "";
     showLoader:boolean;
+    test: IProductsByDept[];
 
      constructor(private _productService: ProductService){
       //  this.userselectedMenu = selectedMenu;
@@ -48,7 +49,7 @@ export class ProductListComponent implements OnInit{
        onRatingClicked(message: string): void {
         this.pageTitle = 'Product List: ' + message;
     } 
-    getNextSetOfProducts(page: number, userselectedMenu: string, userselectedSideMenu: string, searchString: string, methodName: string): void{
+    getNextSetOfProducts(page: number, userselectedMenu: string, userselectedSideMenu: string, searchString: string, methodName: string ): void{
        this.showLoader = true;
         this.currentPage = page;
         if(methodName == "getProductsByVendorAndDept"){
@@ -79,5 +80,25 @@ export class ProductListComponent implements OnInit{
         this.showLoader = false;
            
    }
-      
+
+   SetSortOrder(sortTerm: string): void{
+       
+    //    this.productByDepts = this.productByDepts.sort((obj1: IProductsByDept, obj2: IProductsByDept =>{
+
+    //    });
+    //    );
+ this.productByDepts = this.
+ SortArray(this.productByDepts);
+   }
+ SortArray<T extends IProductsByDept>(items: Array<T>): Array<T> {
+    var vals = items.slice(0);
+    vals.sort((a, b): number => {
+        if (a.offerPrice < b.offerPrice) return -1;
+        if (a.offerPrice > b.offerPrice) return 1;
+        return 0;
+    });
+
+    return vals;
+
+}
 }

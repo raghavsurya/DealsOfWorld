@@ -79,6 +79,24 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', '../pipes/productF
                     }
                     this.showLoader = false;
                 };
+                ProductListComponent.prototype.SetSortOrder = function (sortTerm) {
+                    //    this.productByDepts = this.productByDepts.sort((obj1: IProductsByDept, obj2: IProductsByDept =>{
+                    //    });
+                    //    );
+                    this.productByDepts = this.
+                        SortArray(this.productByDepts);
+                };
+                ProductListComponent.prototype.SortArray = function (items) {
+                    var vals = items.slice(0);
+                    vals.sort(function (a, b) {
+                        if (a.offerPrice < b.offerPrice)
+                            return -1;
+                        if (a.offerPrice > b.offerPrice)
+                            return 1;
+                        return 0;
+                    });
+                    return vals;
+                };
                 ProductListComponent = __decorate([
                     core_1.Component({
                         selector: 'dw-products',

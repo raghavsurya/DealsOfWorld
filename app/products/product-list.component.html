@@ -10,6 +10,23 @@
   <div class="breadcrumbNav" *ngIf="userselectedMenu || userselectedSideMenu">
     Products showing under: <span>{{userselectedMenu}}</span> > <span>{{userselectedSideMenu}}</span>
     </div>
+     <div class="sortByDropDown">
+ 
+   
+    <div class="dropdown">Sort By
+        <button class="btn btn-danger dropdown-toggle" type="button" data-toggle="dropdown">Relevance
+  <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+          
+          <li>
+            <a href="#" (click)="SetSortOrder('-')"><span>Price: Low to High</span></a>
+          </li>
+          <li>
+            <a href="#" (click)="SetSortOrder('+')"><span>Price: High to Low</span></a>
+          </li>
+        </ul>
+      </div>
+    </div>
 <div *ngFor='#prodByDept of productByDepts | productFilter : searchString'>
     <div class="col-lg-4 products wrapper"> 
         <div class="ribbon-wrapper-green"><div class="ribbon-green">DEAL</div></div>
