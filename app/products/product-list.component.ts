@@ -23,7 +23,7 @@ import {Observable} from 'rxjs/Observable'
 export class ProductListComponent implements OnInit{
   
      private totalItems: number = 50;
-    private currentPage: number = 0;
+    currentPage: number = 0;
      userselectedMenu: string;
   userselectedSideMenu: string;
     pageTitle: string = 'Product List';
@@ -64,7 +64,7 @@ export class ProductListComponent implements OnInit{
        .subscribe(products => this.productByDepts = this.productByDepts.concat(products),
        error => this.errorMessage = <any>error); 
         }
-        else if(methodName == "getProductsBySearchTerm" && !searchString && searchString != ""){
+        else if(methodName == "getProductsBySearchTerm"){
             this._productService.getProductsBySearchTerm(page, searchString )
        .subscribe(products => this.productByDepts = this.productByDepts.concat(products),
        error => this.errorMessage = <any>error); 

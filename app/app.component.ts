@@ -131,6 +131,7 @@ export class AppComponent  {
 LoadProductsAndMenus(menu: string, isMainMenu: boolean) : void{
 this.showLoader = true;
 this.isMainMenu = isMainMenu;
+this.productList.currentPage = 0;
     if(this.isMainMenu){
         this.selectedMenu = menu;
         this.productList.userselectedMenu = this.selectedMenu;
@@ -161,6 +162,7 @@ this.isMainMenu = isMainMenu;
     this.showLoader = false;
 }
 ChangeCountry(country):void{
+    this.productList.currentPage = 0;
     this.showLoader = true;
     sessionStorage["countryCode"] = country;
     window.location.reload();
@@ -168,6 +170,7 @@ ChangeCountry(country):void{
 }
 
 SearchProducts():void{
+    this.productList.currentPage = 0;
     this.showLoader = true;
     this.productList.methodName = "getProductsBySearchTerm";
     this.productList.searchStr = this.searchString;

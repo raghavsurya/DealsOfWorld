@@ -68,7 +68,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', '../pipes/productF
                         this._productService.getProductsByDept(page, userselectedSideMenu)
                             .subscribe(function (products) { return _this.productByDepts = _this.productByDepts.concat(products); }, function (error) { return _this.errorMessage = error; });
                     }
-                    else if (methodName == "getProductsBySearchTerm" && !searchString && searchString != "") {
+                    else if (methodName == "getProductsBySearchTerm") {
                         this._productService.getProductsBySearchTerm(page, searchString)
                             .subscribe(function (products) { return _this.productByDepts = _this.productByDepts.concat(products); }, function (error) { return _this.errorMessage = error; });
                     }

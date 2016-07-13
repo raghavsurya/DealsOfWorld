@@ -55,6 +55,7 @@ System.register(['angular2/core', './products/product-list.component', 'angular2
                     var _this = this;
                     this.showLoader = true;
                     this.isMainMenu = isMainMenu;
+                    this.productList.currentPage = 0;
                     if (this.isMainMenu) {
                         this.selectedMenu = menu;
                         this.productList.userselectedMenu = this.selectedMenu;
@@ -82,12 +83,14 @@ System.register(['angular2/core', './products/product-list.component', 'angular2
                     this.showLoader = false;
                 };
                 AppComponent.prototype.ChangeCountry = function (country) {
+                    this.productList.currentPage = 0;
                     this.showLoader = true;
                     sessionStorage["countryCode"] = country;
                     window.location.reload();
                 };
                 AppComponent.prototype.SearchProducts = function () {
                     var _this = this;
+                    this.productList.currentPage = 0;
                     this.showLoader = true;
                     this.productList.methodName = "getProductsBySearchTerm";
                     this.productList.searchStr = this.searchString;
