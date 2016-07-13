@@ -41,6 +41,8 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', '../pipes/productF
                     this.pageTitle = 'Product List';
                     this.headerOfPanel = 'Deals of the world. ';
                     this.listFilter = "";
+                    this.methodName = "";
+                    this.searchStr = "";
                     //  this.userselectedMenu = selectedMenu;
                 }
                 ProductListComponent.prototype.ngOnInit = function () {
@@ -63,10 +65,10 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', '../pipes/productF
                             .subscribe(function (products) { return _this.productByDepts = _this.productByDepts.concat(products); }, function (error) { return _this.errorMessage = error; });
                     }
                     else if (methodName == "getProductsByDept") {
-                        this._productService.getProductsByDept(page, userselectedMenu)
+                        this._productService.getProductsByDept(page, userselectedSideMenu)
                             .subscribe(function (products) { return _this.productByDepts = _this.productByDepts.concat(products); }, function (error) { return _this.errorMessage = error; });
                     }
-                    else if (methodName == "getProductsBySearchTerm") {
+                    else if (methodName == "getProductsBySearchTerm" && !searchString && searchString != "") {
                         this._productService.getProductsBySearchTerm(page, searchString)
                             .subscribe(function (products) { return _this.productByDepts = _this.productByDepts.concat(products); }, function (error) { return _this.errorMessage = error; });
                     }

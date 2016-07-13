@@ -24,15 +24,15 @@ export class ProductListComponent implements OnInit{
   
      private totalItems: number = 50;
     private currentPage: number = 0;
-     userselectedMenu: string
-  userselectedSideMenu: string
+     userselectedMenu: string;
+  userselectedSideMenu: string;
     pageTitle: string = 'Product List';
     headerOfPanel: string = 'Deals of the world. ';
     listFilter: string = "";
     errorMessage: string;
     productByDepts: IProductsByDept[];
-    methodName: string;
-    searchStr: string;
+    methodName: string = "";
+    searchStr: string = "";
 
      constructor(private _productService: ProductService){
       //  this.userselectedMenu = selectedMenu;
@@ -60,11 +60,11 @@ export class ProductListComponent implements OnInit{
        error => this.errorMessage = <any>error); 
         }
         else if(methodName == "getProductsByDept"){
-            this._productService.getProductsByDept(page, userselectedMenu)
+            this._productService.getProductsByDept(page, userselectedSideMenu)
        .subscribe(products => this.productByDepts = this.productByDepts.concat(products),
        error => this.errorMessage = <any>error); 
         }
-        else if(methodName == "getProductsBySearchTerm"){
+        else if(methodName == "getProductsBySearchTerm" && !searchString && searchString != ""){
             this._productService.getProductsBySearchTerm(page, searchString )
        .subscribe(products => this.productByDepts = this.productByDepts.concat(products),
        error => this.errorMessage = <any>error); 
