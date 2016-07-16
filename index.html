@@ -7,6 +7,7 @@
     
     <link href="../node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
     <link href="../app/app.component.css" rel="stylesheet" />
+    <link href="../app/mobile.css" rel="stylesheet" />
      <link href="../app/reset.css" rel="stylesheet" />
       <link href="../app/style.css" rel="stylesheet" />
         <link href="../app/menu-vertical.css" rel="stylesheet" />
@@ -25,9 +26,10 @@
       <script src="../node_modules/jquery/dist/jquery-2.1.4.js"></script>
      <script src="../node_modules/bootstrap/dist/js/bootstrap.js"></script>
       <script src="../node_modules/angular2/bundles/http.dev.js"></script>
-      <script src="../app/scripts/menu-vertical.js"></script>
-        <script src="../app/scripts/scroll.js"></script>
-   
+     
+      <script src="../app/scripts/raf.js"></script>
+      <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Intl.~locale.en"></script>
+     
 
       
     <script>
@@ -43,15 +45,15 @@
                 }
         });
         System.import('app/main')
-            .then((module) => {
-    module.main(rootVar);
-          });
+        .then(null, console.error.bind(console));
+    //         .then((module)=> {
+    // module.main(rootVar);
+    //       });
     </script>
     </head>
 
 <body>
-    <html>
-<head>
+   
 <script type="text/javascript">
 
 
@@ -157,9 +159,7 @@ function geolocate(timezone, cityPrecision, objectVar) {
  var rootVar;
 </script>
 
-</head>
- 
-<body>
+
 <script type="text/javascript">
 
 var visitorGeolocation = new geolocate(false, true, 'visitorGeolocation');
@@ -190,38 +190,15 @@ if(rootVar == "gb") rootVar = "uk";
 
 
 </script>
-</body>
-</html>
 
-  <div class="googleAdsTop">
-  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- header -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-2821335634646729"
-     data-ad-slot="3529835691"
-     data-ad-format="auto"></ins>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-</div>
+
+  
   <dw-app>
     <!--<div id="overlay"><img style="margin:15% 0 0 40%" src="app/Assets/Images/output_UFLiPX.gif" /></div>
     -->
     <div class="modal"></div>
   </dw-app>
-  <div class="googleAds">
-                  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-                    <!-- Daily Deals -->
-                    <ins class="adsbygoogle"
-                        style="display:block"
-                        data-ad-client="ca-pub-2821335634646729"
-                        data-ad-slot="7006887296"
-                        data-ad-format="auto"></ins>
-                    <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
-				  </div>
+ 
 
 </body>
 

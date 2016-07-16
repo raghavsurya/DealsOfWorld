@@ -10,8 +10,12 @@ import {Observable} from 'rxjs/Observable'
 @Injectable()
 export class ProductService implements OnInit{
      countryCode: string;
-    constructor(private _http: Http, @Inject('rootVar') rootVar:string){
-        this.countryCode = rootVar;
+     rootVar: string = "us";
+    // constructor(private _http: Http, @Inject('rootVar') rootVar:string){
+    //     this.countryCode = rootVar;
+    // }
+    constructor(private _http: Http){
+        this.countryCode = this.rootVar;
     }
     
       getProducts(startIndex: number): Observable<IProductsByDept[]>{

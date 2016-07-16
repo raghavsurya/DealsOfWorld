@@ -20,13 +20,13 @@ import {Observable} from 'rxjs/Observable'
 	<div id="sticky-anchor"></div>
 <div id="sticky" class="menuSection">
 
-  <span class="showMenuOnMobile">Show on Mobile</span>
-  <div>
+  <span class="showMenuOnMobile"></span>
     <a href="#">
       <div class="logoSection">
 
-
+<span>Your trusted cost saver</span>
       </div>
+      
     </a>
     
     <div id="footnote">
@@ -41,6 +41,20 @@ import {Observable} from 'rxjs/Observable'
       <div class="showMoreButton red">
         <div class="shine"></div><a href="#">Sign in</a></div>
     </div>
+    <div class="dropdown vendorDropdown">
+        <button class="btn btn-danger dropdown-toggle " type="button" data-toggle="dropdown">Vendors
+  <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+         <li *ngFor='#menu of menus'><a href="#" (click)="LoadProductsAndMenus(menu, true)"><span class="glyphicon glyphicon-tag"></span>{{menu}}</a></li>
+        </ul>
+        </div>
+          <div class="dropdown categoryDropdown">
+        <button class="btn btn-danger dropdown-toggle " type="button" data-toggle="dropdown">Categories
+  <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+          <li *ngFor='#menu of sideMenus'><a href="#" (click)="LoadProductsAndMenus(menu, false)"><span class="glyphicon glyphicon-tag"></span>{{menu}}</a></li>
+        </ul>
+        </div>
     <div style="padding-top:2%">
       <div class="dropdown">
         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><img src="app/Assets/Images/{{country}}.png" />
@@ -73,7 +87,6 @@ import {Observable} from 'rxjs/Observable'
         </ul>
       </div>
     </div>
-  </div>
 </div>
 <div class="bodyWrapper">
   <div id="sideMenu">
@@ -82,21 +95,21 @@ import {Observable} from 'rxjs/Observable'
     </ul>
 
   </div>
-  <div style="float:left;width:73%;">
+  <div class="productWrapper">
     <dw-products [selectedMenu]="userselectedMenu">
-      <div class="modal"></div>
+    
     </dw-products>
   </div>
 
 
 </div>
 
-<div>
-   <div class="modal" *ngIf=""></div>  `
+`
     
 })
 
 export class AppComponent  {
+  rootVar: string = "us";
     methodName: string;
  showLoader:boolean;
     menus: any[];
@@ -119,12 +132,12 @@ export class AppComponent  {
   }
     
     pageTitle: string = 'Deals of World Application';
-     constructor(http: Http, @Inject('rootVar') rootVar:string, private _productService: ProductService  ){
-            http.get('http://DealsOfWorld.com:3000/api/v1/Menus/'+ rootVar).map(res => res.json())
+     constructor(http: Http, private _productService: ProductService  ){
+            http.get('http://DealsOfWorld.com:3000/api/v1/Menus/'+ this.rootVar).map(res => res.json())
     .subscribe(allMenus => this.menus = allMenus) ;
-      http.get('http://DealsOfWorld.com:3000/api/v1/SideMenus/'+ rootVar + '/all').map(res => res.json())
+      http.get('http://DealsOfWorld.com:3000/api/v1/SideMenus/'+ this.rootVar + '/all').map(res => res.json())
     .subscribe(allSideMenus => this.sideMenus = allSideMenus) ;
-    this.country = rootVar.toUpperCase();
+    this.country = this.rootVar.toUpperCase();
    
     }
  

@@ -13,7 +13,7 @@
      <div class="sortByDropDown">
  
    
-    <div class="dropdown">Sort By
+    <div class="dropdown SortByDrpDwn">Sort By
         <button class="btn btn-danger dropdown-toggle" type="button" data-toggle="dropdown">Relevance
   <span class="caret"></span></button>
         <ul class="dropdown-menu">
@@ -27,8 +27,7 @@
         </ul>
       </div>
     </div>
-<div *ngFor='#prodByDept of productByDepts | productFilter : searchString'>
-    <div class="col-lg-4 products wrapper"> 
+    <div class="col-lg-4 products wrapper" *ngFor='#prodByDept of productByDepts | productFilter : searchString'> 
         <div class="ribbon-wrapper-green"><div class="ribbon-green">DEAL</div></div>
         <a [href]='prodByDept.prodLink' target="_blank"><img [src]='prodByDept.imgSrc' />
             <h5>{{prodByDept.productText}}</h5>
@@ -38,7 +37,6 @@
         <p style="color:green;" *ngIf="prodByDept.code">Coupon Code: <strong style="color:red;font-weight:bold"> {{prodByDept.code}}</strong></p> 
         <p style="color:green;padding-top:2%;font-size:9pt" *ngIf="prodByDept.expiryDate">Expires by: <strong style="color:red;font-weight:normal;font-size:9pt"> {{prodByDept.expiryDate}}</strong></p>
           <!--<ai-star [rating]='prodByDept.starRating' (ratingClicked)='onRatingClicked($event)'> </ai-star>-->
-    </div>
    
 </div>
 <div class="modal" *ngIf="showLoader"></div>

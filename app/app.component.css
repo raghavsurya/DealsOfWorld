@@ -1,4 +1,4 @@
-
+@media screen and (max-width:1280px) {
 html {
     background-color: #ffffff;
     margin: 0;
@@ -209,6 +209,9 @@ writing-mode: lr-tb;
 .btn-primary{
     color:#000000 !important;
 }
+.vendorDropdown{
+    display: none;
+}
 .dropdown button{
  background-color: #ffffff;
  border:0;
@@ -231,124 +234,13 @@ writing-mode: lr-tb;
 
 
 /*Menu Section ****CUSTOM** MOBILE* START */
-@media screen and (max-width: 400px) {
-    html {
-           
-    -moz-background-size: cover;
-    -webkit-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-        font-family: 'Cabin', helvetica, arial, sans-serif;
-    }
-    *,
-*:after,
-*::before {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
-
-    .menuLists {
-    width: 250px;
-        min-height: 100px;
-    margin: 0 0 15% 0%;
-    padding: 1% 0 1% 0;
-        background-color: #9b59b6;
-        position: relative;
-        border-radius: 5px;
-        -webkit-box-shadow: 3px 3px 5px 0px #787878;
-        display: none;
-        color: #ffffff;
-
-}
-    .menuSection {
-         min-height: 50px;
-    background-color: #9b59b6;
-        max-height: 50px;
-    }
-  
-    .showMenuOnMobile {
-        display: block;
-    }
-    .menuSection > span:hover + div {
-        display: block;
-    }
-    .menuLists:hover {
-        display: block;
-    }
-    .menuLists > ul >li {
-    background: url('http://lorempixel.com/output/technics-q-c-32-32-1.jpg') no-repeat;
-    display: table;
-    padding: 5px;
-    font-size: 8pt !important;
-    color: #ffffff;
-    font-weight: lighter;
-}
 
 
-    /*Menu on Mobile Start*/
-    .menuLists a {
-	padding: 10px;
-	text-shadow: none;
-	-webkit-transition: color 0.3s;
-	-moz-transition: color 0.3s;
-	transition: color 0.3s;
-     font-size: 10pt !important;
-        color: #ffffff;
-}
 
-.menuLists a::before,
-.menuLists a::after {
-	position: absolute;
-	left: 0;
-	width: 100%;
-	height: 2px;
-	background: #dbfabe;
-    content: '';
-	opacity: 0;
-	-webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
-	-moz-transition: opacity 0.3s, -moz-transform 0.3s;
-	transition: opacity 0.3s, transform 0.3s;
-	-webkit-transform: translateY(-10px);
-	-moz-transform: translateY(-10px);
-	transform: translateY(-10px);
+.bodyWrapper .productWrapper{
+     float:left;width:73%;
+ 
 }
-.menuLists li:after {
-    background: #dbfabe;
-}
-.menuLists a::before {
-	top: 0;
-	-webkit-transform: translateY(-10px);
-	-moz-transform: translateY(-10px);
-	transform: translateY(-10px);
-}
-
-.menuLists a::after {
-	bottom: 0;
-	-webkit-transform: translateY(10px);
-	-moz-transform: translateY(10px);
-	transform: translateY(10px);
-}
-
-.menuLists a:hover,
-.menuLists a:focus {
-	color: #dbfabe;
-}
-
-.menuLists a:hover::before,
-.menuLists a:focus::before,
-.menuLists a:hover::after,
-.menuLists a:focus::after {
-	opacity: 1;
-	-webkit-transform: translateY(0px);
-	-moz-transform: translateY(0px);
-	transform: translateY(0px);
-}
-/*Menu on Mobile End*/
-
-}
-
-
 
 
 
@@ -497,6 +389,10 @@ writing-mode: lr-tb;
 .ribbon-green:after {
   right: 0;
 }​
+.productWrapper{
+   float:left;
+   width:73%;
+}
 #footnote{
     width: 135px !important;
     height: 50px !important;
@@ -839,4 +735,6 @@ body.loading .modal {
 }
 .sortByDropDown .dropdown button{
     background-color: #222;
+}
+
 }
