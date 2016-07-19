@@ -29,8 +29,12 @@
     </div>
     <div class="col-lg-4 products wrapper" *ngFor='#prodByDept of productByDepts | productFilter : searchString'> 
         <div class="ribbon-wrapper-green"><div class="ribbon-green">DEAL</div></div>
+        
       <img class="waitingimg" *ngIf="prodByDept.imgSrc" [src]='prodByDept.imgSrc' />
-      <img class="waitingimg" *ngIf="!prodByDept.imgSrc" src="app/Assets/Images/awaiting.png" />
+     <div  *ngIf="!prodByDept.imgSrc" class="image">
+      <img class="waitingimg" style="opacity:0.2" src="app/Assets/Images/awaiting.png" />
+           <h2>{{prodByDept.merchantName}}</h2>
+     </div>
        
             <h5>{{prodByDept.productText}}</h5>
       

@@ -1,5 +1,6 @@
 export interface IProductsByDept{
    deptId: number;
+   merchantName:string;
     department : string;
     prodLink :string;
     imgSrc :string;
@@ -8,5 +9,5 @@ export interface IProductsByDept{
     offerPrice : string;
     starRating: number;
     code: string,
-    expiryDate: Date
+    expiryDate: Date 
 }
