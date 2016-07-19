@@ -104,13 +104,14 @@ import myGlobals = require('./globals');
 
       <div class="menuLists">
         <ul>
-          <li *ngFor='#menu of menus'>
+          <li *ngFor='#menuItem of menus'>
             <div class="dropdown">
-  	          <button class="button button1 " on-mouseover="LoadProductsAndMenus(menu, true)" type="button" data-toggle="dropdown">{{menu}}
+  	          <button class="button button1 " on-mouseover="LoadProductsAndMenus(menuItem, true)" type="button" data-toggle="dropdown">{{menuItem}}
           </button>
         <ul class="dropdown-menu">
           <li *ngFor='#menu of sideMenus'><a href="#" (click)="LoadProductsAndMenus(menu, false)"><span class="glyphicon glyphicon-tag"></span>{{menu}}</a></li>
         </ul>
+       
         </div>
           
           </li>
@@ -188,8 +189,7 @@ export class AppComponent {
       this.productList.methodName = "getProductsByVendorAndDept";
       this._productService.getProductsByVendorAndDept(0, this.selectedMenu, this.selectedSideMenu)
         .subscribe(products => this.productList.productByDepts = products);
-      this._productService.getSubMenusByVendor(this.selectedMenu)
-        .subscribe(products => this.sideMenus = products);
+     
 
     }
     //When filtering only by Vendors
@@ -197,8 +197,7 @@ export class AppComponent {
       this.productList.methodName = "getProductsByVendor";
       this._productService.getProductsByVendor(0, this.selectedMenu)
         .subscribe(products => this.productList.productByDepts = products);
-      this._productService.getSubMenusByVendor(this.selectedMenu)
-        .subscribe(products => this.sideMenus = products);
+     
 
     }
     //When filtering only by Side menu
@@ -207,6 +206,8 @@ export class AppComponent {
       this._productService.getProductsByDept(0, this.selectedSideMenu)
         .subscribe(products => this.productList.productByDepts = products);
     }
+     this._productService.getSubMenusByVendor(this.selectedMenu)
+        .subscribe(products => this.sideMenus = products);
     this.productList.showLoader = false;
   }
   ChangeCountry(country: string): void {

@@ -41,6 +41,9 @@ body {
     position: fixed;
     margin: 15% 0 0 87%;
 }
+.dropdown:hover .dropdown-menu, .dropdown-menu:hover {
+    display: block;
+}
 /*Menu Section ****CUSTOM** DESKTOP* START */
 .menuSection {
           min-height: 167px;
