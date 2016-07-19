@@ -104,7 +104,16 @@ import myGlobals = require('./globals');
 
       <div class="menuLists">
         <ul>
-          <li *ngFor='#menu of menus'><button class="button button1" (click)="LoadProductsAndMenus(menu, true)"><span>{{menu}}</span></button></li>
+          <li *ngFor='#menu of menus'>
+            <div class="dropdown">
+  	          <button class="button button1 " on-mouseover="LoadProductsAndMenus(menu, true)" type="button" data-toggle="dropdown">{{menu}}
+          </button>
+        <ul class="dropdown-menu">
+          <li *ngFor='#menu of sideMenus'><a href="#" (click)="LoadProductsAndMenus(menu, false)"><span class="glyphicon glyphicon-tag"></span>{{menu}}</a></li>
+        </ul>
+        </div>
+          
+          </li>
         </ul>
       </div>
     </div>
@@ -148,13 +157,13 @@ export class AppComponent {
   }
 
   pageTitle: string = 'Deals of World Application';
-  constructor(http: Http,@Inject('rootVar') rootVar:string, private _productService: ProductService) {
+  constructor(http: Http, @Inject('rootVar') rootVar: string, private _productService: ProductService) {
     http.get('http://DealsOfWorld.com:3000/api/v1/Menus/' + rootVar).map(res => res.json())
       .subscribe(allMenus => this.menus = allMenus);
     http.get('http://DealsOfWorld.com:3000/api/v1/SideMenus/' + rootVar + '/all').map(res => res.json())
       .subscribe(allSideMenus => this.sideMenus = allSideMenus);
     this.country = rootVar.toUpperCase();
-   
+
     // _productService.getDeptLinks(0).subscribe(products =>this.deptLinks = products);
     //    console.log(this.deptLinks)
 
@@ -179,8 +188,8 @@ export class AppComponent {
       this.productList.methodName = "getProductsByVendorAndDept";
       this._productService.getProductsByVendorAndDept(0, this.selectedMenu, this.selectedSideMenu)
         .subscribe(products => this.productList.productByDepts = products);
-           this._productService.getSubMenusByVendor(this.selectedMenu)
-        .subscribe(products =>this.sideMenus = products);
+      this._productService.getSubMenusByVendor(this.selectedMenu)
+        .subscribe(products => this.sideMenus = products);
 
     }
     //When filtering only by Vendors
@@ -188,9 +197,9 @@ export class AppComponent {
       this.productList.methodName = "getProductsByVendor";
       this._productService.getProductsByVendor(0, this.selectedMenu)
         .subscribe(products => this.productList.productByDepts = products);
-         this._productService.getSubMenusByVendor(this.selectedMenu)
-        .subscribe(products =>this.sideMenus = products);
-         
+      this._productService.getSubMenusByVendor(this.selectedMenu)
+        .subscribe(products => this.sideMenus = products);
+
     }
     //When filtering only by Side menu
     else if (this.selectedSideMenu != null && this.selectedMenu == null) {
@@ -200,7 +209,7 @@ export class AppComponent {
     }
     this.productList.showLoader = false;
   }
-  ChangeCountry(country:string): void {
+  ChangeCountry(country: string): void {
     this.productList.currentPage = 0;
     this.productList.showLoader = true;
     sessionStorage["countryCode"] = country;

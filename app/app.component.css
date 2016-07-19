@@ -34,12 +34,12 @@ body {
 }
 .googleAds{
         float: right;
-    
-    width: 14%;
+    width: 13%;
     background-color: #ffffff;
     height: 500px;
-   
-     -webkit-box-shadow: 4px 0px 2px -2px #787878;
+    -webkit-box-shadow: 4px 0px 2px -2px #787878;
+    position: fixed;
+    margin: 15% 0 0 87%;
 }
 /*Menu Section ****CUSTOM** DESKTOP* START */
 .menuSection {
