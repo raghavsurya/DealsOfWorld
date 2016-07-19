@@ -76,6 +76,8 @@ System.register(['angular2/core', './products/product-list.component', 'angular2
                         this.productList.methodName = "getProductsByVendor";
                         this._productService.getProductsByVendor(0, this.selectedMenu)
                             .subscribe(function (products) { return _this.productList.productByDepts = products; });
+                        this._productService.getSubMenusByVendor(this.selectedMenu)
+                            .subscribe(function (products) { return _this.sideMenus = products; });
                     }
                     else if (this.selectedSideMenu != null && this.selectedMenu == null) {
                         this.productList.methodName = "getProductsByDept";

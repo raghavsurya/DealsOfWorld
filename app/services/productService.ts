@@ -36,7 +36,12 @@ getDeptLinks(startIndex: number){
        //   .do(data => console.log('Data returned: ' +JSON.stringify(data)))
    
        }
+         getSubMenusByVendor(vendor: string):any{
+               return this._http.get('http://DealsOfWorld.com:3000/api/v1/Menus/'+  this.countryCode + "/" + vendor) 
+        
+          .map(res => res.json())
 
+}
        getProductsByVendor(page:number, mainMenu:string): Observable<IProductsByDept[]>{
           return this._http.get('http://DealsOfWorld.com:3000/api/v1/ProductsByVendor/'+ page + "/" + this.countryCode + '/' + mainMenu) 
         

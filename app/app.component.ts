@@ -184,6 +184,9 @@ export class AppComponent {
       this.productList.methodName = "getProductsByVendor";
       this._productService.getProductsByVendor(0, this.selectedMenu)
         .subscribe(products => this.productList.productByDepts = products);
+         this._productService.getSubMenusByVendor(this.selectedMenu)
+        .subscribe(products =>this.sideMenus = products);
+         
     }
     //When filtering only by Side menu
     else if (this.selectedSideMenu != null && this.selectedMenu == null) {

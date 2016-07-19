@@ -43,6 +43,10 @@ System.register(['angular2/core', 'angular2/http'], function(exports_1, context_
                         .map(function (res) { return res.json(); });
                     //   .do(data => console.log('Data returned: ' +JSON.stringify(data)))
                 };
+                ProductService.prototype.getSubMenusByVendor = function (vendor) {
+                    return this._http.get('http://DealsOfWorld.com:3000/api/v1/Menus/' + this.countryCode + "/" + vendor)
+                        .map(function (res) { return res.json(); });
+                };
                 ProductService.prototype.getProductsByVendor = function (page, mainMenu) {
                     return this._http.get('http://DealsOfWorld.com:3000/api/v1/ProductsByVendor/' + page + "/" + this.countryCode + '/' + mainMenu)
                         .map(function (res) { return res.json(); });
