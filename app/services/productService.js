@@ -10,6 +10,9 @@ System.register(['angular2/core', 'angular2/http'], function(exports_1, context_
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
+    var __param = (this && this.__param) || function (paramIndex, decorator) {
+        return function (target, key) { decorator(target, key, paramIndex); }
+    };
     var core_1, http_1;
     var ProductService;
     return {
@@ -22,14 +25,19 @@ System.register(['angular2/core', 'angular2/http'], function(exports_1, context_
             }],
         execute: function() {
             ProductService = (function () {
-                // constructor(private _http: Http, @Inject('rootVar') rootVar:string){
-                //     this.countryCode = rootVar;
-                // }
-                function ProductService(_http) {
+                // rootVar: string = "us";
+                function ProductService(_http, rootVar) {
                     this._http = _http;
-                    this.rootVar = "us";
-                    this.countryCode = this.rootVar;
+                    this.countryCode = rootVar;
                 }
+                // constructor(private _http: Http){
+                //     this.countryCode = this.rootVar;
+                // }
+                ProductService.prototype.getDeptLinks = function (startIndex) {
+                    return this._http.get('http://DealsOfWorld.com:3000/api/v1/GetAllSideMenus/' + this.countryCode)
+                        .map(function (res) { return res.json(); });
+                    //   .do(data => console.log('Data returned: ' +JSON.stringify(data)))
+                };
                 ProductService.prototype.getProducts = function (startIndex) {
                     return this._http.get('http://DealsOfWorld.com:3000/api/v1/Products/' + startIndex + '/' + this.countryCode)
                         .map(function (res) { return res.json(); });
@@ -56,8 +64,9 @@ System.register(['angular2/core', 'angular2/http'], function(exports_1, context_
                 };
                 ProductService = __decorate([
                     core_1.Component({}),
-                    core_1.Injectable(), 
-                    __metadata('design:paramtypes', [http_1.Http])
+                    core_1.Injectable(),
+                    __param(1, core_1.Inject('rootVar')), 
+                    __metadata('design:paramtypes', [http_1.Http, String])
                 ], ProductService);
                 return ProductService;
             }());

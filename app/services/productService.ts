@@ -2,6 +2,7 @@ import { Component, OnInit, Injectable, Inject } from 'angular2/core'
 import { Http, HTTP_PROVIDERS } from 'angular2/http'
 import { IProductsByDept } from '../Interfaces/productByDepts'
 import {Observable} from 'rxjs/Observable'
+import {IDepartments} from '../Interfaces/Departments'
 
 @Component({
 
@@ -10,14 +11,23 @@ import {Observable} from 'rxjs/Observable'
 @Injectable()
 export class ProductService implements OnInit{
      countryCode: string;
-     rootVar: string = "us";
-    // constructor(private _http: Http, @Inject('rootVar') rootVar:string){
-    //     this.countryCode = rootVar;
-    // }
-    constructor(private _http: Http){
-        this.countryCode = this.rootVar;
+    // rootVar: string = "us";
+    constructor(private _http: Http, @Inject('rootVar') rootVar:string){
+        this.countryCode = rootVar;
     }
+    // constructor(private _http: Http){
+    //     this.countryCode = this.rootVar;
+    // }
     
+getDeptLinks(startIndex: number){
+          return this._http.get('http://DealsOfWorld.com:3000/api/v1/GetAllSideMenus/' + this.countryCode) 
+        
+          .map(res => res.json())
+           
+       //   .do(data => console.log('Data returned: ' +JSON.stringify(data)))
+   
+       }
+
       getProducts(startIndex: number): Observable<IProductsByDept[]>{
           return this._http.get('http://DealsOfWorld.com:3000/api/v1/Products/'+ startIndex + '/' + this.countryCode) 
         

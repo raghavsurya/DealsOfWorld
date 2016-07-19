@@ -9,54 +9,48 @@ import {IProductType} from './Interfaces/Departments'
 import {Observer} from 'rxjs/Observer';
 import {ProductService} from './services/productService'
 import {Observable} from 'rxjs/Observable'
+import myGlobals = require('./globals');
 
 
 @Component({
-    selector: 'dw-app',
-    //viewProviders: [HTTP_PROVIDERS],
-    directives: [ProductListComponent],
-    providers: [ProductService, HTTP_PROVIDERS],//define it only once here so it will be a singleton instance
-    template: `
+  selector: 'dw-app',
+  //viewProviders: [HTTP_PROVIDERS],
+  directives: [ProductListComponent],
+  providers: [ProductService, HTTP_PROVIDERS],//define it only once here so it will be a singleton instance
+  template: `
+
+
+
+
 	<div id="sticky-anchor"></div>
 <div id="sticky" class="menuSection">
+<div class="allCategories">
 
-  <span class="showMenuOnMobile"></span>
-    <a href="#">
-      <div class="logoSection">
 
-<span>Your trusted cost saver</span>
-      </div>
-      
-    </a>
+<div style="padding: 3px 0 0 54%;float:left">
+
+<div class="dropdown">
+<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-menu-hamburger" ></span> All Categories</button>
+    <ul class="dropdown-menu">
+  
+      <li *ngFor='#menu of sideMenus'><a href="#" (click)="LoadProductsAndMenus(menu, false)"><span class="glyphicon glyphicon-tag"></span> {{menu}} </a></li>
+    </ul>
+
+  </div>
+   <div class="socialIcons">
     
-    <div id="footnote">
-      <div class="clearfix">
-        <div class="connect">
-          <a href="http://www.facebook.com/sharer.php?u=http://dealsofworld.com/" target="_blank" title="Share on Facebook" class="facebook"></a>
+        <div class="">
+          <a href="http://www.facebook.com/sharer.php?u=http://dealsofworld.com/" target="_blank" title="Share on Facebook" class="facebook"><img src="app/Assets/Images/Icon_facebook.png" height="20" /></a>
           <a href="http://twitter.com/home?status=Currently reading http://dealsofworld.com/" target="_blank" title="Share on Twitter"
-            class="twitter"></a>
-          <a href="https://plus.google.com/share?url=http://dealsofworld.com/" target="_blank" title="Share on Google+" class="googleplus"></a>
+            class="twitter"><img src="app/Assets/Images/twitter.png" height="20" /></a>
+          <a href="https://plus.google.com/share?url=http://dealsofworld.com/" target="_blank" title="Share on Google+" class="googleplus">
+          <img src="app/Assets/Images/Google_plus.png" height="20" /></a>
         </div>
-      </div>
-      <div class="showMoreButton red">
-        <div class="shine"></div><a href="#">Sign in</a></div>
+    
+    
     </div>
-    <div class="dropdown vendorDropdown">
-        <button class="btn btn-danger dropdown-toggle " type="button" data-toggle="dropdown">Vendors
-  <span class="caret"></span></button>
-        <ul class="dropdown-menu">
-         <li *ngFor='#menu of menus'><a href="#" (click)="LoadProductsAndMenus(menu, true)"><span class="glyphicon glyphicon-tag"></span>{{menu}}</a></li>
-        </ul>
-        </div>
-          <div class="dropdown categoryDropdown">
-        <button class="btn btn-danger dropdown-toggle " type="button" data-toggle="dropdown">Categories
-  <span class="caret"></span></button>
-        <ul class="dropdown-menu">
-          <li *ngFor='#menu of sideMenus'><a href="#" (click)="LoadProductsAndMenus(menu, false)"><span class="glyphicon glyphicon-tag"></span>{{menu}}</a></li>
-        </ul>
-        </div>
-    <div style="padding-top:2%">
-      <div class="dropdown">
+</div>
+   <div class="dropdown">
         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><img src="app/Assets/Images/{{country}}.png" />
   <span class="caret"></span></button>
         <ul class="dropdown-menu">
@@ -71,6 +65,33 @@ import {Observable} from 'rxjs/Observable'
           </li>
         </ul>
       </div>
+</div>
+  <span class="showMenuOnMobile"></span>
+    <a href="#">
+      <div class="logoSection">
+
+
+      </div>
+      
+    </a>
+    
+   
+    <div class="dropdown vendorDropdown">
+        <button class="btn btn-danger dropdown-toggle " type="button" data-toggle="dropdown">Vendors
+  <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+         <li *ngFor='#menu of menus'><a href="#" (click)="LoadProductsAndMenus(menu, true)"><span class="glyphicon glyphicon-tag"></span>{{menu}}</a></li>
+        </ul>
+        </div>
+          <div class="dropdown categoryDropdown">
+        <button class="btn btn-danger dropdown-toggle " type="button" data-toggle="dropdown">Categories
+  <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+          <li *ngFor='#menu of sideMenus'><a href="#" (click)="LoadProductsAndMenus(menu, false)"><span class="glyphicon glyphicon-tag"></span>{{menu}}</a></li>
+        </ul>
+        </div>
+    <div style="padding-top:2%;margin-top: -10%;">
+   
       <section class="webdesigntuts-workshop">
 
         <form>
@@ -89,12 +110,7 @@ import {Observable} from 'rxjs/Observable'
     </div>
 </div>
 <div class="bodyWrapper">
-  <div id="sideMenu">
-    <ul id="menu-v">
-      <li *ngFor='#menu of sideMenus'><a href="#" (click)="LoadProductsAndMenus(menu, false)"><span class="glyphicon glyphicon-tag"></span> {{menu}} </a></li>
-    </ul>
-
-  </div>
+  
   <div class="productWrapper">
     <dw-products [selectedMenu]="userselectedMenu">
     
@@ -105,96 +121,99 @@ import {Observable} from 'rxjs/Observable'
 </div>
 
 `
-    
+
 })
 
-export class AppComponent  {
-  rootVar: string = "us";
-    methodName: string;
- showLoader:boolean;
-    menus: any[];
-    searchString: string
-    sideMenus: any[];
-    deptLinks: IDepartments[];
-    country: string;
+export class AppComponent {
+  testRootVar: string
+  methodName: string;
+  showLoader: boolean;
+  menus: any[];
+  searchString: string
+  sideMenus: any[];
+  deptLinks: IDepartments[];
+  country: string;
   selectedMenu: string;
-     selectedSideMenu: string;
-    isMainMenu: boolean;
-     @ViewChild(ProductListComponent) productList:ProductListComponent;
+  selectedSideMenu: string;
+  isMainMenu: boolean;
+  @ViewChild(ProductListComponent) productList: ProductListComponent;
   ngAfterViewInit() {
-      this.getChildProperty();
+    this.getChildProperty();
   }
   getChildProperty() {
-     console.log(this.productList.productByDepts);
-     if(this.searchString != undefined){
+    console.log(this.productList.productByDepts);
+    if (this.searchString != undefined) {
       this.productList.listFilter = this.searchString;
-     }
+    }
   }
-    
-    pageTitle: string = 'Deals of World Application';
-     constructor(http: Http, private _productService: ProductService  ){
-            http.get('http://DealsOfWorld.com:3000/api/v1/Menus/'+ this.rootVar).map(res => res.json())
-    .subscribe(allMenus => this.menus = allMenus) ;
-      http.get('http://DealsOfWorld.com:3000/api/v1/SideMenus/'+ this.rootVar + '/all').map(res => res.json())
-    .subscribe(allSideMenus => this.sideMenus = allSideMenus) ;
-    this.country = this.rootVar.toUpperCase();
+
+  pageTitle: string = 'Deals of World Application';
+  constructor(http: Http,@Inject('rootVar') rootVar:string, private _productService: ProductService) {
+    http.get('http://DealsOfWorld.com:3000/api/v1/Menus/' + rootVar).map(res => res.json())
+      .subscribe(allMenus => this.menus = allMenus);
+    http.get('http://DealsOfWorld.com:3000/api/v1/SideMenus/' + rootVar + '/all').map(res => res.json())
+      .subscribe(allSideMenus => this.sideMenus = allSideMenus);
+    this.country = rootVar.toUpperCase();
    
+    // _productService.getDeptLinks(0).subscribe(products =>this.deptLinks = products);
+    //    console.log(this.deptLinks)
+
+  }
+
+  LoadProductsAndMenus(menu: string, isMainMenu: boolean): void {
+    this.productList.showLoader = true;
+    this.isMainMenu = isMainMenu;
+    this.productList.currentPage = 0;
+    if (this.isMainMenu) {
+      this.selectedMenu = menu;
+      this.productList.userselectedMenu = this.selectedMenu;
     }
- 
-LoadProductsAndMenus(menu: string, isMainMenu: boolean) : void{
-this.productList.showLoader = true;
-this.isMainMenu = isMainMenu;
-this.productList.currentPage = 0;
-    if(this.isMainMenu){
-        this.selectedMenu = menu;
-        this.productList.userselectedMenu = this.selectedMenu;
-    }
-    else{
-        this.selectedSideMenu = menu;
-         this.productList.userselectedSideMenu = this.selectedSideMenu;
+    else {
+      this.selectedSideMenu = menu;
+      this.productList.userselectedSideMenu = this.selectedSideMenu;
     }
     //When filtering both by Vendor and Side menu
-    if(this.selectedMenu != null && this.selectedSideMenu != null){
-       this.productList.methodName =  "getProductsByVendorAndDept";
-        this._productService.getProductsByVendorAndDept(0, this.selectedMenu, this.selectedSideMenu )
-       .subscribe(products => this.productList.productByDepts = products);
-   
+    if (this.selectedMenu != null && this.selectedSideMenu != null) {
+      this.productList.methodName = "getProductsByVendorAndDept";
+      this._productService.getProductsByVendorAndDept(0, this.selectedMenu, this.selectedSideMenu)
+        .subscribe(products => this.productList.productByDepts = products);
+
     }
     //When filtering only by Vendors
-    else if(this.selectedMenu != null && this.selectedSideMenu == null){
-          this.productList.methodName ="getProductsByVendor";
-        this._productService.getProductsByVendor(0, this.selectedMenu)
-       .subscribe(products => this.productList.productByDepts = products);
+    else if (this.selectedMenu != null && this.selectedSideMenu == null) {
+      this.productList.methodName = "getProductsByVendor";
+      this._productService.getProductsByVendor(0, this.selectedMenu)
+        .subscribe(products => this.productList.productByDepts = products);
     }
     //When filtering only by Side menu
-    else if(this.selectedSideMenu != null && this.selectedMenu == null){
-       this.productList.methodName = "getProductsByDept";
-        this._productService.getProductsByDept(0, this.selectedSideMenu )
-       .subscribe(products => this.productList.productByDepts = products);
+    else if (this.selectedSideMenu != null && this.selectedMenu == null) {
+      this.productList.methodName = "getProductsByDept";
+      this._productService.getProductsByDept(0, this.selectedSideMenu)
+        .subscribe(products => this.productList.productByDepts = products);
     }
     this.productList.showLoader = false;
-}
-ChangeCountry(country):void{
+  }
+  ChangeCountry(country:string): void {
     this.productList.currentPage = 0;
     this.productList.showLoader = true;
     sessionStorage["countryCode"] = country;
     window.location.reload();
 
-}
+  }
 
-SearchProducts():void{
+  SearchProducts(): void {
     this.productList.currentPage = 0;
     this.productList.showLoader = true;
     this.productList.methodName = "getProductsBySearchTerm";
     this.productList.searchStr = this.searchString;
-    if(!this.productList.searchStr){
-        this.productList.searchStr = "";
+    if (!this.productList.searchStr) {
+      this.productList.searchStr = "";
     }
- this._productService.getProductsBySearchTerm(0, this.searchString )
-       .subscribe(products => this.productList.productByDepts = products);
-       this.productList.showLoader = false;
-}
-  
+    this._productService.getProductsBySearchTerm(0, this.searchString)
+      .subscribe(products => this.productList.productByDepts = products);
+    this.productList.showLoader = false;
+  }
+
 }
 
 

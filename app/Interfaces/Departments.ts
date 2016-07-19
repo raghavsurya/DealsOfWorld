@@ -1,12 +1,9 @@
 export interface IDepartments{
-    dept_id: number;
-    productType:IProductType[];
-    Department: string;
-  
+   
+  _id:IProductType[];
 }
 
 export interface IProductType{
-    productTypeId: number;
-    name: string;
-    redirectUrl: string
+   Vendor: string;
+    Department: string;
 }

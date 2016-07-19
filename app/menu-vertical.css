@@ -5,11 +5,11 @@
     width: 232px; /* Main Menu Item widths */
     border-top:none;
     position: relative; font-size:0;
-    list-style: none; margin: 0; padding: 0; display:block;
+    list-style: none; margin: 10% 0 0 0; padding: 0; display:block;
     z-index:9;
     
-    background: #222;
-color:#ffffff;
+    background: #fff;
+color:#000;
      -webkit-box-shadow: 4px 0px 2px -2px #787878;
 }
                 
@@ -27,7 +27,7 @@ color:#ffffff;
 }
 #menu-v li:hover {
      background-color: #FFCC00;
-     color:#000
+     color:#009ed9
 }
 #menu-v li a
 {
