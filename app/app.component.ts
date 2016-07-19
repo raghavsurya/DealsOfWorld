@@ -30,7 +30,7 @@ import myGlobals = require('./globals');
 <div style="padding: 3px 0 0 54%;float:left">
 
 <div class="dropdown">
-<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-menu-hamburger" ></span> All Categories</button>
+<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-menu-hamburger" ></span> Categories</button>
     <ul class="dropdown-menu">
   
       <li *ngFor='#menu of sideMenus'><a href="#" (click)="LoadProductsAndMenus(menu, false)"><span class="glyphicon glyphicon-tag"></span> {{menu}} </a></li>
@@ -97,7 +97,7 @@ import myGlobals = require('./globals');
         <form>
 
           <input [(ngModel)]="searchString" type="search" placeholder="What are you looking for?">
-          <button (click)="SearchProducts()">Search</button>
+          <button (click)="SearchProducts()" class="button button1">Search</button>
         </form>
 
       </section>
@@ -167,6 +167,8 @@ export class AppComponent {
     if (this.isMainMenu) {
       this.selectedMenu = menu;
       this.productList.userselectedMenu = this.selectedMenu;
+      this.selectedSideMenu = null
+      this.productList.userselectedSideMenu = null;
     }
     else {
       this.selectedSideMenu = menu;
@@ -177,6 +179,8 @@ export class AppComponent {
       this.productList.methodName = "getProductsByVendorAndDept";
       this._productService.getProductsByVendorAndDept(0, this.selectedMenu, this.selectedSideMenu)
         .subscribe(products => this.productList.productByDepts = products);
+           this._productService.getSubMenusByVendor(this.selectedMenu)
+        .subscribe(products =>this.sideMenus = products);
 
     }
     //When filtering only by Vendors

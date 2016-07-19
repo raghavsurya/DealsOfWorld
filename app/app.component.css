@@ -11,7 +11,7 @@ body {
     border-top: solid 10px #000;
     color: #333;
     font-size: .85em;
-    font-family: 'Cabin', helvetica, arial, sans-serif;
+    font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif !important;
     margin: -10px 0 0 0;
     padding: 0;
     
@@ -162,7 +162,6 @@ body {
 -moz-transform: rotate(312deg);
 -o-transform: rotate(312deg);
 writing-mode: lr-tb;
-    font-family: Stencil;
     color: #CD3333;
     font-size: 19pt;
     
@@ -294,12 +293,19 @@ writing-mode: lr-tb;
      
     }
     .glyphicon{
-        color:#f9a114;
+        color:#000;
         padding: 0 16px 0 0;
        
     }
+    .dropdown-menu {
+        background-color: #ffd564;
+    }
+    .dropdown-menu > li > a{
+        color:#000;
+        font-size: 15pt;
+    }
     .glyphicon:hover{
-        color:#ffffff;
+        color:#000;
         margin:5%
     }
     .products{
@@ -307,7 +313,7 @@ writing-mode: lr-tb;
     color: #222;
     width: 295px;
     height: 250px;
-    margin: 1px 3% 2% 34px;
+    margin: 1px 3% 3% 34px;
     padding: 2%;
         
        
@@ -339,7 +345,9 @@ height: 374px;
     position: relative;
     z-index: 90;
 }
-
+.products .wrapper div{
+    margin-top:83%
+}
 .ribbon-wrapper-green {
   width: 85px;
   height: 88px;
@@ -427,9 +435,14 @@ height: 374px;
 #footnote .connect a.googleplus {
 	background-position: 0 -168px;
 }
-.wrapper > a > img{ 
+.wrapper > a > img,  .waitingimg{ 
     height:143px;
 }
+#left, #right {
+    float: left;
+    max-width: 3em;
+}
+
 .showMoreButton {
     min-height: 1.5em;
     display: inline-block;
@@ -525,7 +538,7 @@ height: 374px;
     font: normal 15px 'Cabin', helvetica, arial, sans-serif;
 }
 .text-ginormous {
-      font-size: 145px;
+      font-size: 52px;
       color:#000
     }
 
@@ -537,9 +550,10 @@ height: 374px;
       float: none;
       margin: 7px auto 0 auto;
     }
-    #noProducts h2{
-        padding:5%;
-        color:#000;
+  
+    #noProducts h2,#noProducts h1{
+        padding:1%;
+        color:#ee1111;
     }
     .breadcrumbNav{
         color:#000;
@@ -587,22 +601,21 @@ height: 374px;
 }
 
 .webdesigntuts-workshop input {
-	background: #222;
+	    background: #222;
     background: linear-gradient(#333, #222);
-    border: 2px solid #009ed9;
+    border: 2px solid #86c840;
     border-radius: 5px 0 0 5px;
-  
     color: #888;
     display: block;
     float: left;
-    font-family: 'Cabin', helvetica, arial, sans-serif;
     font-size: 13px;
     font-weight: 400;
-    height: 40px;
+    height: 47px;
     margin: 0;
     padding: 0 10px;
-    width: 636px;
+    width: 681px;
     background: #ffffff;
+
 }
 
 .ie .webdesigntuts-workshop input {
@@ -627,7 +640,7 @@ height: 374px;
 	color: #efe;
 }
 
-.webdesigntuts-workshop button {
+/*.webdesigntuts-workshop button {
 	background: #009ed9;
 	background: linear-gradient(#009ed9, #009ed9);
 	box-sizing: content-box;
@@ -643,7 +656,7 @@ height: 374px;
 	margin: 0;
 	padding: 0;
 	position: relative;
- -webkit-transition-duration: 0.5s; /* Safari */
+ -webkit-transition-duration: 0.5s; 
     transition-duration: 1s;
 	width: 80px;
       border-radius:5px;
@@ -659,7 +672,7 @@ height: 374px;
     border-right:2px solid #009ed9;
     border-bottom:2px solid #009ed9;
     border-radius:5px;
-    -webkit-transition-duration: 0.5s; /* Safari */
+    -webkit-transition-duration: 0.5s; 
     transition-duration: 1s;
 }
 
@@ -668,7 +681,7 @@ height: 374px;
 	background: linear-gradient(#393939, #292929);
 	box-shadow: 0 1px 0 #000, inset 1px 0 1px #222;
 	top: 1px;
-}
+}*/
 
 #overlay {
   background: #fff;
@@ -737,10 +750,10 @@ body.loading .modal {
     width: 100%;
     /* margin-top: 2%; */
     height: 30px;
-        background: #27446e;
+        background: #86c840;
     position: relative;
     z-index: 5;
-    color:#fff;
+    color:#eee;
    
     }
 .allCategories .dropdown {
@@ -755,7 +768,8 @@ body.loading .modal {
     
 }
 .allCategories .dropdown button img {
-    height:20px;
+        height: 28px;
+    padding-top: 2px;
 }
 .allCategories .dropdown .dropdown-menu{
      position: absolute; 
@@ -772,15 +786,89 @@ body.loading .modal {
  text-decoration: none;
 }
 .allCategories  .glyphicon{
-    padding: 0;
-    color: #fff;
+   padding: 5px;
+    color: #222;
 }
 .socialIcons{
     position:absolute;
     width:15%;
-    margin-left:15%
+    margin-left:15%;
+    padding-top: 5px;
 }
 .socialIcons a{
     padding-left:5%
 }
+
+
+.button {
+    display: inline-block;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#86c840), color-stop(100%,#86c840));
+    background: -moz-linear-gradient(center top, #86c840 0%, #86c840 100%);
+    -webkit-box-shadow: 0px -5px 15px #a6ed3d inset, 0px 0px 0px 1px #569400, 0px 0px 0px 1px #c4fb6d inset;
+    -moz-box-shadow: 0px -5px 15px #a6ed3d inset, 0px 0px 0px 1px #569400, 0px 0px 0px 1px #c4fb6d inset;
+    box-shadow: 0px -5px 15px #a6ed3d inset, 0px 0px 0px 1px #569400, 0px 0px 0px 1px #c4fb6d inset;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    text-shadow: 1px 1px 0px #66a820;
+    padding: 13px 18px;
+    display: inline-block;
+    text-align: center;
+    font-family: Lucida Grande;
+    font-size: 16px;
+    color: #ffffff;
+    font-weight: bold;
+}
+.button:hover {
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffd564), color-stop(100%,#ffd564));
+    background: -moz-linear-gradient(center top, #ffd564 0%, #ffd564 100%);
+    -webkit-box-shadow: 0px -5px 15px #ffd564 inset, 0px 0px 0px 1px #ffd564, 0px 0px 0px 1px #ffd564 inset;
+    -moz-box-shadow: 0px -5px 15px #ffd564 inset, 0px 0px 0px 1px #ffd564, 0px 0px 0px 1px #ffd564 inset;
+    box-shadow: 0px -5px 15px #ffd564 inset, 0px 0px 0px 1px #ffd564, 0px 0px 0px 1px #ffd564 inset;
+    text-shadow: 1px 1px 0px #000;
+}
+
+
+.buttonGetDeal {
+    display: inline-block;
+    background: #ffc835;
+    -webkit-box-shadow: 0px 1px 0px 0px #ffd564 inset, 0px 0px 0px 4px #e6e6e6;
+    -moz-box-shadow: 0px 1px 0px 0px #ffd564 inset, 0px 0px 0px 4px #e6e6e6;
+    box-shadow: 0px 1px 0px 0px #ffd564 inset, 0px 0px 0px 4px #e6e6e6;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    text-shadow: 0px 1px 0px #ffe6a5;
+    padding: 6px 30px;
+    border-color: #ebae3e;
+    border-width: 1px;
+    border-style: solid;
+    font-family: Arial, Helvetica, Sans-serfi;
+    font-size: 14px;
+    color: #4f2f2f;
+    font-weight: bold;
+}
+.buttonGetDeal:hover {
+    background: #ffd200;
+    -webkit-box-shadow: 0px 1px 0px 0px #ffe04f inset, 0px 0px 0px 4px #ffed99;
+    -moz-box-shadow: 0px 1px 0px 0px #ffe04f inset, 0px 0px 0px 4px #ffed99;
+    box-shadow: 0px 1px 0px 0px #ffe04f inset, 0px 0px 0px 4px #ffed99;
+    border-color: #ffc835;
+}
+
+
+.button:active {
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff0000), color-stop(100%,#c41313));
+    background: -moz-linear-gradient(center top, #ff0000 0%, #c41313 100%);
+    -webkit-box-shadow: 0px -5px 15px #ff6956 inset, 0px 0px 0px 1px #e81313, 0px 0px 0px 1px #ff7669 inset;
+    -moz-box-shadow: 0px -5px 15px #ff6956 inset, 0px 0px 0px 1px #e81313, 0px 0px 0px 1px #ff7669 inset;
+    box-shadow: 0px -5px 15px #ff6956 inset, 0px 0px 0px 1px #e81313, 0px 0px 0px 1px #ff7669 inset;
+    text-shadow: 1px 1px 0px #c41313;
+}
+
+
 }
