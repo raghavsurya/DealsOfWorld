@@ -29,14 +29,7 @@ import myGlobals = require('./globals');
 
 <div style="padding: 3px 0 0 54%;float:left">
 
-<div class="dropdown">
-<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><span class="glyphicon glyphicon-menu-hamburger" ></span> Categories</button>
-    <ul class="dropdown-menu">
-  
-      <li *ngFor='#menu of sideMenus'><a href="#" (click)="LoadProductsAndMenus(menu, false)"><span class="glyphicon glyphicon-tag"></span> {{menu}} </a></li>
-    </ul>
 
-  </div>
    <div class="socialIcons">
     
         <div class="">

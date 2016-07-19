@@ -11,7 +11,7 @@ body {
     border-top: solid 10px #000;
     color: #333;
     font-size: .85em;
-    font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif !important;
+    font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif !important;
     margin: -10px 0 0 0;
     padding: 0;
     
@@ -41,13 +41,28 @@ body {
     position: fixed;
     margin: 15% 0 0 87%;
 }
-.dropdown:hover .dropdown-menu, .dropdown-menu:hover {
+.dropdown:hover .dropdown-menu{
     display: block;
+}
+.dropdown-menu:hover{
+    display: block;
+} 
+.dropdown-menu li > a:hover, .dropdown-menu li > a:focus, .dropdown-submenu:hover > a{
+    background-color: #C0392B;color: #fff;
+    font-size:17pt;
+     text-shadow: 0 0 10px #fff; 
+     font-weight: bold;
+     -webkit-transition: text-shadow 0.5s linear;
+    -moz-transition: text-shadow 0.5s linear;
+    -ms-transition: text-shadow 0.5s linear;
+    -o-transition: text-shadow 0.5s linear;
+    transition: text-shadow 0.5s linear;
+    
 }
 /*Menu Section ****CUSTOM** DESKTOP* START */
 .menuSection {
           min-height: 167px;
-    /* background-color: #CD3333; */
+    /* background-color: #D91E18; */
     float: left;
     width: 100%;
     /* background-image: url('Assets/Images/ecommBanner.png'); */
@@ -165,14 +180,14 @@ body {
 -moz-transform: rotate(312deg);
 -o-transform: rotate(312deg);
 writing-mode: lr-tb;
-    color: #CD3333;
+    color: #D91E18;
     font-size: 19pt;
     
 }
 .searchSection {
      
     margin: 0% 0 0 18%;
- /*   background-color: #CD3333*/
+ /*   background-color: #D91E18*/
     color: #ffffff !important;
     width:640px;
 
@@ -183,7 +198,7 @@ writing-mode: lr-tb;
     box-sizing: border-box;
     padding: 3px 0 0 20px;
    
-    border: 2px solid #222;
+    border: 2px solid #D91E18;
     border-radius: 4px;
     font-size: 16px;
     background-color: #ffffff;
@@ -296,21 +311,18 @@ writing-mode: lr-tb;
      
     }
     .glyphicon{
-        color:#000;
+        color:#fff;
         padding: 0 16px 0 0;
        
     }
     .dropdown-menu {
-        background-color: #ffd564;
+        background-color: #C0392B;
     }
     .dropdown-menu > li > a{
-        color:#000;
-        font-size: 15pt;
+        color:#fff;
+        font-size: 10pt;
     }
-    .glyphicon:hover{
-        color:#000;
-        margin:5%
-    }
+    
     .products{
           border-radius: 5px;
     color: #222;
@@ -572,10 +584,11 @@ height: 374px;
 
 .webdesigntuts-workshop {
 
-	height: 52px;
-	position: absolute;
-	text-align: right;
-	width:  79%;
+	    height: 52px;
+    position: absolute;
+    /* text-align: right; */
+    width: 79%;
+    left: 19%;
 }
 
 
@@ -606,17 +619,17 @@ height: 374px;
 .webdesigntuts-workshop input {
 	    background: #222;
     background: linear-gradient(#333, #222);
-    border: 2px solid #86c840;
+    border: 2px solid #D91E18;
     border-radius: 5px 0 0 5px;
     color: #888;
     display: block;
     float: left;
     font-size: 13px;
     font-weight: 400;
-    height: 47px;
+    height: 35px;
     margin: 0;
-    padding: 0 10px;
-    width: 681px;
+    padding: 0 16px;
+    width: 600px;
     background: #ffffff;
 
 }
@@ -753,7 +766,7 @@ body.loading .modal {
     width: 100%;
     /* margin-top: 2%; */
     height: 30px;
-        background: #86c840;
+        background: #D91E18;
     position: relative;
     z-index: 5;
     color:#eee;
@@ -775,11 +788,11 @@ body.loading .modal {
     padding-top: 2px;
 }
 .allCategories .dropdown .dropdown-menu{
-     position: absolute; 
+     position: relative; 
 }
 .allCategories a{
     color:#fff;
-    cursor:pointer;
+    cursor:pointer; 
 }
 .allCategories a + .sideMenuNav{
     display: block;
@@ -831,21 +844,21 @@ body.loading .modal {
 
 
 .button {
-    display: inline-block;
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#86c840), color-stop(100%,#86c840));
-    background: -moz-linear-gradient(center top, #86c840 0%, #86c840 100%);
-    -webkit-box-shadow: 0px -5px 15px #a6ed3d inset, 0px 0px 0px 1px #569400, 0px 0px 0px 1px #c4fb6d inset;
-    -moz-box-shadow: 0px -5px 15px #a6ed3d inset, 0px 0px 0px 1px #569400, 0px 0px 0px 1px #c4fb6d inset;
-    box-shadow: 0px -5px 15px #a6ed3d inset, 0px 0px 0px 1px #569400, 0px 0px 0px 1px #c4fb6d inset;
+   display: inline-block;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#D91E18), color-stop(100%,#D91E18));
+    background: -moz-linear-gradient(center top, #D91E18 0%, #D91E18 100%);
+    -webkit-box-shadow: 0px -5px 15px #D91E18 inset, 0px 0px 0px 1px #D91E18, 0px 0px 0px 1px #D91E18 inset;
+    -moz-box-shadow: 0px -5px 15px #D91E18 inset, 0px 0px 0px 1px #D91E18, 0px 0px 0px 1px #D91E18 inset;
+    box-shadow: 0px -5px 15px #D91E18 inset, 0px 0px 0px 1px #D91E18, 0px 0px 0px 1px #D91E18 inset;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
-    text-shadow: 1px 1px 0px #66a820;
-    padding: 13px 18px;
+    text-shadow: 1px 1px 0px #D91E18;
+    padding: 8px 10px;
     display: inline-block;
     text-align: center;
-    font-family: Lucida Grande;
-    font-size: 16px;
+    font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-size: 13px;
     color: #ffffff;
     font-weight: bold;
 }
@@ -877,7 +890,7 @@ body.loading .modal {
     border-color: #ebae3e;
     border-width: 1px;
     border-style: solid;
-    font-family: Arial, Helvetica, Sans-serfi;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
     font-size: 14px;
     color: #4f2f2f;
     font-weight: bold;
