@@ -7,9 +7,13 @@
     testing
 </div>-->
 
-  <div class="breadcrumbNav" *ngIf="userselectedMenu || userselectedSideMenu">
-    Products showing under: <span>{{userselectedMenu}}</span> > <span>{{userselectedSideMenu}}</span>
-    </div>
+<div  *ngIf="userselectedMenu || userselectedSideMenu" class="breadcrumb flat">
+  
+	<a  *ngIf="userselectedMenu" href="#" class="active">{{userselectedMenu}}</a>
+	<a   *ngIf="userselectedSideMenu" href="#">{{userselectedSideMenu}}</a>
+	
+</div>
+
      <div class="sortByDropDown">
  
    
