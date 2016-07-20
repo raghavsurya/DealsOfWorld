@@ -165,14 +165,13 @@ body {
     display: none;
 }
 .logoSection {
-                height: 149px;
+        height: 122px;
     width: 173px;
- 
-    margin-top: 0%;
+    margin: 2% 0 0 1%;
     background-image: url('Assets/Images/Logo1.png');
     background-repeat: no-repeat;
-    background-size: 100% 125px;
-  
+    background-size: 100% 77px;
+
 }
 
 .logoSection div {
@@ -353,11 +352,12 @@ writing-mode: lr-tb;
 
     .wrapper {
 height: 374px;
+max-height:400px;
     background: white;
     border-radius: 10px;
     width: 275px;
     -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.3);
-    box-shadow: 0px 0px 8px rgba(0,0,0,0.3);
+   /* box-shadow: 0px 0px 8px rgba(0,0,0,0.3);*/
     position: relative;
     z-index: 90;
 }
@@ -737,6 +737,7 @@ body.loading .modal {
     display: block;
 }
 .googleAdsTop{
+    display: none;
      width: 150px;
     height: 61px;
     position: absolute;

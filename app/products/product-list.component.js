@@ -84,14 +84,18 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', '../pipes/productF
                     //    });
                     //    );
                     this.productByDepts = this.
-                        SortArray(this.productByDepts);
+                        SortArray(this.productByDepts, sortTerm);
+                    if (sortTerm == "+")
+                        this.productByDepts = this.productByDepts.reverse();
                 };
-                ProductListComponent.prototype.SortArray = function (items) {
-                    var vals = items.slice(0);
+                ProductListComponent.prototype.SortArray = function (items, sortTerm) {
+                    var vals = items.slice(3);
                     vals.sort(function (a, b) {
-                        if (a.offerPrice < b.offerPrice)
+                        var leftOfferPrice = Number.parseInt(a.offerPrice.substring(1).split(".")[0]);
+                        var rightOfferPrice = Number.parseInt(b.offerPrice.substring(1).split(".")[0]);
+                        if (leftOfferPrice < rightOfferPrice)
                             return -1;
-                        if (a.offerPrice > b.offerPrice)
+                        if (leftOfferPrice > rightOfferPrice)
                             return 1;
                         return 0;
                     });

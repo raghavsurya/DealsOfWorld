@@ -88,14 +88,21 @@ export class ProductListComponent implements OnInit{
     //    });
     //    );
  this.productByDepts = this.
- SortArray(this.productByDepts);
+ SortArray(this.productByDepts, sortTerm);
+ if(sortTerm == "+") this.productByDepts = this.productByDepts.reverse();
    }
- SortArray<T extends IProductsByDept>(items: Array<T>): Array<T> {
-    var vals = items.slice(0);
+ SortArray<T extends IProductsByDept>(items: Array<T>, sortTerm: string): Array<T> {
+    var vals = items.slice(3);
     vals.sort((a, b): number => {
-        if (a.offerPrice < b.offerPrice) return -1;
-        if (a.offerPrice > b.offerPrice) return 1;
+        let leftOfferPrice: number = Number.parseInt(a.offerPrice.substring(1).split(".")[0])
+         let rightOfferPrice: number = Number.parseInt(b.offerPrice.substring(1).split(".")[0])
+        
+        if (leftOfferPrice < rightOfferPrice) return -1;
+         if (leftOfferPrice > rightOfferPrice) return 1;
         return 0;
+         
+         
+
     });
 
     return vals;
