@@ -1014,7 +1014,7 @@ body.loading .modal {
     color: #fff;
 }
 .flat a, .flat a:after {
-	background: #9EEB62;
+	background: #D91E18;
 	color: #fff;
 	transition: all 0.5s;
     font-weight: bold
@@ -1025,7 +1025,10 @@ body.loading .modal {
 }
 .flat a:hover, .flat a.active, 
 .flat a:hover:after, .flat a.active:after{
-	background: #9EEB62;
+	background: #D91E18;
 }
-
+.dropdown.SortByDrpDwn {
+    margin-right: 46%;
+    margin-top: -9.5%;
+}
 }
