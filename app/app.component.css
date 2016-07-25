@@ -44,8 +44,27 @@ body {
 }
 .dropdown:hover .dropdown-menu{
     display: block;
+   
+   
+  animation-duration:.2s;
+  animation-iteration-count: 1;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
+
+
+  -webkit-animation-duration:.2s;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-timing-function: ease;
+  -webkit-animation-fill-mode: forwards;
+
+
+  -moz-animation-duration:.2s;
+  -moz-animation-iteration-count: 1;
+  -moz-animation-timing-function: ease;
+  -moz-animation-fill-mode: forwards;
  
 }
+
 .dropdown-menu:hover{
     display: block;
 } 
@@ -61,6 +80,7 @@ body {
     transition: text-shadow 0.5s linear;
     
 }
+
 /*Menu Section ****CUSTOM** DESKTOP* START */
 .menuSection {
           min-height: 167px;
@@ -318,6 +338,7 @@ writing-mode: lr-tb;
     }
     .dropdown-menu {
         background-color: #C0392B;
+        margin-top:-1px !important;
     }
     .dropdown-menu > li > a{
         color:#fff;

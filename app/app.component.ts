@@ -99,9 +99,9 @@ import myGlobals = require('./globals');
         <ul>
           <li *ngFor='#menuItem of menus'>
             <div class="dropdown">
-  	          <button class="button button1 " on-mouseover="LoadProductsAndMenus(menuItem, true)" type="button" data-toggle="dropdown">{{menuItem}}
+  	          <button class="button button1 " on-mouseover="LoadProductsAndMenus(menuItem, true, true)" type="button" data-toggle="dropdown">{{menuItem}}
           </button>
-        <ul class="dropdown-menu">
+        <ul class="dropdown-menu" *ngIf="showDropdown">
           <li *ngFor='#menu of sideMenus'><a href="#" (click)="LoadProductsAndMenus(menu, false)"><span class="glyphicon glyphicon-tag"></span>{{menu}}</a></li>
         </ul>
        
@@ -139,6 +139,7 @@ export class AppComponent {
   selectedMenu: string;
   selectedSideMenu: string;
   isMainMenu: boolean;
+  showDropdown: boolean = true;
   @ViewChild(ProductListComponent) productList: ProductListComponent;
   ngAfterViewInit() {
     this.getChildProperty();
@@ -163,7 +164,8 @@ export class AppComponent {
 
   }
 
-  LoadProductsAndMenus(menu: string, isMainMenu: boolean): void {
+  LoadProductsAndMenus(menu: string, isMainMenu: boolean, isHover:boolean=false): void {
+     this.showDropdown = true;
     this.productList.showLoader = true;
     this.isMainMenu = isMainMenu;
     this.productList.currentPage = 0;
@@ -172,25 +174,30 @@ export class AppComponent {
       this.productList.userselectedMenu = this.selectedMenu;
       this.selectedSideMenu = null
       this.productList.userselectedSideMenu = null;
+      
     }
     else {
       this.selectedSideMenu = menu;
       this.productList.userselectedSideMenu = this.selectedSideMenu;
+      this.showDropdown = false;
     }
     //When filtering both by Vendor and Side menu
     if (this.selectedMenu != null && this.selectedSideMenu != null) {
+     
       this.productList.methodName = "getProductsByVendorAndDept";
       this._productService.getProductsByVendorAndDept(0, this.selectedMenu, this.selectedSideMenu)
         .subscribe(products => this.productList.productByDepts = products);
+     
      
 
     }
     //When filtering only by Vendors
     else if (this.selectedMenu != null && this.selectedSideMenu == null) {
+       if(!isHover){
       this.productList.methodName = "getProductsByVendor";
       this._productService.getProductsByVendor(0, this.selectedMenu)
         .subscribe(products => this.productList.productByDepts = products);
-     
+       }
 
     }
     //When filtering only by Side menu

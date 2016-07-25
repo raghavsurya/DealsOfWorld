@@ -36,6 +36,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', '../pipes/productF
             ProductListComponent = (function () {
                 function ProductListComponent(_productService) {
                     this._productService = _productService;
+                    this.showDropdown = true;
                     this.totalItems = 50;
                     this.currentPage = 0;
                     this.pageTitle = 'Product List';
@@ -83,6 +84,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', '../pipes/productF
                     //    this.productByDepts = this.productByDepts.sort((obj1: IProductsByDept, obj2: IProductsByDept =>{
                     //    });
                     //    );
+                    this.showDropdown = false;
                     this.productByDepts = this.
                         SortArray(this.productByDepts, sortTerm);
                     if (sortTerm == "+")

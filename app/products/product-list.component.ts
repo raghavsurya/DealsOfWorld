@@ -21,7 +21,7 @@ import {Observable} from 'rxjs/Observable'
 
 
 export class ProductListComponent implements OnInit{
-  
+  showDropdown: boolean = true;
      private totalItems: number = 50;
     currentPage: number = 0;
      userselectedMenu: string;
@@ -87,6 +87,7 @@ export class ProductListComponent implements OnInit{
 
     //    });
     //    );
+    this.showDropdown = false;
  this.productByDepts = this.
  SortArray(this.productByDepts, sortTerm);
  if(sortTerm == "+") this.productByDepts = this.productByDepts.reverse();
