@@ -42,14 +42,26 @@ body {
     width: 27%;
     display: none;
 }
-.googleAds{
-        float: right;
-    
-    width: 14%;
+.googleAdsTop{
+/*       
+    width: 13%;
     background-color: #ffffff;
-    height: 500px;
-   
-     -webkit-box-shadow: 4px 0px 2px -2px #787878;
+    height: 50px;
+    -webkit-box-shadow: 4px 0px 2px -2px #787878;
+    position: fixed;
+    margin: 15% 0 0 87%;*/
+     height: 41px; 
+    position: fixed; 
+    bottom:0%;
+    width:100%; 
+    background-color: #393838; 
+    opacity: 1;
+    margin: 0%
+    
+}
+
+.googleAds{
+    display: none;
 }
 
 .menuSection {
@@ -223,31 +235,40 @@ body {
 }
 
 .button {
-     /* Green */
-    border: none;
-    color: white;
-    padding: 10px 2px;
-    text-align: center;
-    text-decoration: none;
+   display: inline-block;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#D91E18), color-stop(100%,#D91E18));
+    background: -moz-linear-gradient(center top, #D91E18 0%, #D91E18 100%);
+    -webkit-box-shadow: 0px -5px 15px #D91E18 inset, 0px 0px 0px 1px #D91E18, 0px 0px 0px 1px #D91E18 inset;
+    -moz-box-shadow: 0px -5px 15px #D91E18 inset, 0px 0px 0px 1px #D91E18, 0px 0px 0px 1px #D91E18 inset;
+    box-shadow: 0px -5px 15px #D91E18 inset, 0px 0px 0px 1px #D91E18, 0px 0px 0px 1px #D91E18 inset;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    text-shadow: 1px 1px 0px #D91E18;
+    padding: 8px 10px;
     display: inline-block;
-    font-size: 16px;
-   -webkit-transition-duration: 0.5s; /* Safari */
-    transition-duration: 0.5s;
-    cursor: pointer;
-    font: normal 10px 'Cabin', helvetica, arial, sans-serif;
-    font-weight: bold
-} 
+    text-align: center;
+    font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-size: 13px;
+    color: #ffffff;
+    font-weight: bold;
+}
+.button:hover {
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffd564), color-stop(100%,#ffd564));
+    background: -moz-linear-gradient(center top, #ffd564 0%, #ffd564 100%);
+    -webkit-box-shadow: 0px -5px 15px #ffd564 inset, 0px 0px 0px 1px #ffd564, 0px 0px 0px 1px #ffd564 inset;
+    -moz-box-shadow: 0px -5px 15px #ffd564 inset, 0px 0px 0px 1px #ffd564, 0px 0px 0px 1px #ffd564 inset;
+    box-shadow: 0px -5px 15px #ffd564 inset, 0px 0px 0px 1px #ffd564, 0px 0px 0px 1px #ffd564 inset;
+    text-shadow: 1px 1px 0px #000;
+}
+
 
 .button span {
     padding:5px
 }
 
     .button1 {
-    background-color:#222;
-    color: #ffffff;
-    border-radius: 2px;
-    
-    border: 1px solid #ffffff;
+  
 }
     
 .button1:hover {
@@ -298,13 +319,14 @@ body {
 
 
 .webdesigntuts-workshop {
-    height: 52px;
+
+	  height: 52px;
     position: absolute;
     /* text-align: right; */
-    width: 97%;
-    margin: -35% 0 0 0%;
+    width: 100%;
+    left: 8%;
+    top: 8%;
 }
-
 
 
 .webdesigntuts-workshop:before {
@@ -320,106 +342,37 @@ body {
 }
 
 .webdesigntuts-workshop form {
-background: #111;
-    background: linear-gradient(#1b1b1b, #111);
-    border: 1px solid #000;
+
     border-radius: 5px;
-    box-shadow: inset 0 0 0 1px #272727;
+ 
     display: inline-block;
     font-size: 0px;
-    margin: 0px auto 0;
+    margin: 13px auto 0;
     /* padding: 20px; */
     position: relative;
     z-index: 1;
 }
 
 .webdesigntuts-workshop input {
-	background: #222;
+	    background: #222;
     background: linear-gradient(#333, #222);
-    border: 1px solid #444;
+    border: 2px solid #D91E18;
     border-radius: 5px 0 0 5px;
-    box-shadow: 0 2px 0 #000;
     color: #888;
     display: block;
     float: left;
-    font-family: 'Cabin', helvetica, arial, sans-serif;
     font-size: 13px;
     font-weight: 400;
-    height: 40px;
+    height: 35px;
     margin: 0;
-    padding: 0 10px;
-    width: 231px;
+    padding: 0 16px;
+    width: 212px;
     background: #ffffff;
+
 }
-
-.ie .webdesigntuts-workshop input {
-	line-height: 40px;
+.searchWrapper{
+    padding-top:2%;margin-top: 15%;
 }
-
-.webdesigntuts-workshop input::-webkit-input-placeholder {
-   color: #888;
-}
-
-.webdesigntuts-workshop input:-moz-placeholder {
-   color: #888;
-}
-
-.webdesigntuts-workshop input:focus {
-	animation: glow 800ms ease-out infinite alternate;
-	background: #fff;
-	
-	border-color: #393;
-	box-shadow: 0 0 5px rgba(0,255,0,.2), inset 0 0 5px rgba(0,255,0,.1), 0 2px 0 #000;
-	color: #000;
-	outline: none;
-}
-
-.webdesigntuts-workshop input:focus::-webkit-input-placeholder { 
-	color: #efe;
-}
-
-.webdesigntuts-workshop input:focus:-moz-placeholder {
-	color: #efe;
-}
-
-.webdesigntuts-workshop button {
-	background: #222;
-	background: linear-gradient(#333, #222);
-	box-sizing: content-box;
-	border: 1px solid #444;
-	border-left-color: #000;
-	border-radius: 0 5px 5px 0;
-	box-shadow: 0 2px 0 #000;
-	color: #fff;
-	display: block;
-	float: left;
-	font-family: 'Cabin', helvetica, arial, sans-serif;
-	font-size: 13px;
-	font-weight: 400;
-	height: 38px;
-	line-height: 40px;
-	margin: 0;
-	padding: 0;
-	position: relative;
-	text-shadow: 0 -1px 0 #000;
-	width: 80px;
-}	
-
-.webdesigntuts-workshop button:hover,
-.webdesigntuts-workshop button:focus {
-	background: #292929;
-	background: linear-gradient(#393939, #292929);
-	color: #5f5;
-	outline: none;
-}
-
-.webdesigntuts-workshop button:active {
-	background: #292929;
-	background: linear-gradient(#393939, #292929);
-	box-shadow: 0 1px 0 #000, inset 1px 0 1px #222;
-	top: 1px;
-}
-
 
 .showMoreButton {
     min-height: 1.5em;
@@ -581,12 +534,12 @@ background: #111;
     width: 31px;
 }
 .logoSection {
-   width: 350px !important;
+      width: 441px !important;
     float: left;
-    margin: 5%;
-    background-image: url('Assets/Images/logo1_medium_Mob.png');
+    margin: 7px 0 23px 23%;
+    background-image: url('Assets/Images/Logo1.png');
     background-repeat: no-repeat;
-    background-size: 58px 50px;
+    background-size: 186px 39px;
 }
 .logoSection span{
          margin: 5% 0 0 19%;
@@ -597,12 +550,12 @@ background: #111;
     font-size: 12pt;
 }
 .vendorDropdown{
-   margin: -15% 41% 6px 0% !important;
+   margin: -13% 44% 6px 0% !important;
    display: block;
    
 }
 .categoryDropdown{
- margin: -15% -3% 6px 0% !important;
+ margin: -13% -4% 0 0 !important;
     display: block;
     width: 151px;
 }
@@ -627,7 +580,7 @@ background: #111;
     width: 100%;
 }
 .categoryDropdown button, .vendorDropdown button{
-    background-color: #222;
+    background-color: #D91E18;
     color:#fff !important
 }
 
@@ -708,17 +661,19 @@ strong{
     font-size: 10pt !important;
 }
     .wrapper {
- height: 254px;
+ height: auto;
     background: white;
     border-radius: 10px;
-    width: 323px;
+    width: auto;
     -moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.3);
     box-shadow: 0px 0px 8px rgba(0,0,0,0.3);
     position: relative;
     z-index: 90;
     margin: 8% 0 0 5%;
 }
-
+.waitingimg{
+    height:219px;
+}
 .ribbon-wrapper-green {
   width: 85px;
   height: 88px;
@@ -758,23 +713,105 @@ strong{
     width: 100%;
     /* margin-top: 2%; */
     height: 30px;
-        background: #27446e;
+        background: #D91E18;
     position: relative;
     z-index: 5;
     color:#fff;
 }
-.allCategories .dropdown {
-    margin:0
+.socialIcons {
+    
+   position: absolute;
+    width: 41%;
+    margin-left: 0 !important;
+}
+
+.scWrapper{
+padding:0;
 }
 .allCategories .dropdown button{    background-color: transparent;
+      background-color: transparent;
     border: 0;
-    height: 31px;
-    margin-top: -34%;
+    height: 30px;
+    margin-top: 0%;
 }
 .allCategories .dropdown button img {
     height:20px;
 }
 .allCategories a{
     color:#fff;
+}
+.allCategories .dropdown .dropdown-menu{
+     position: absolute; 
+}
+.breadcrumb {
+
+    padding: 0px 5px;
+     margin: -9% 9px 26px 0%;
+     width: 100%;
+}
+.dropdown.SortByDrpDwn {
+    margin-right: 47px;
+    display: block;
+    /* margin-top: -9.5%; */
+}
+.dropdown.SortByDrpDwn {
+    /* margin-right: 46%; */
+    margin-top: -171px;
+}
+.buttonGetDeal {
+    display: inline-block;
+    background: #ffc835;
+    -webkit-box-shadow: 0px 1px 0px 0px #ffd564 inset, 0px 0px 0px 4px #e6e6e6;
+    -moz-box-shadow: 0px 1px 0px 0px #ffd564 inset, 0px 0px 0px 4px #e6e6e6;
+    box-shadow: 0px 1px 0px 0px #ffd564 inset, 0px 0px 0px 4px #e6e6e6;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    text-shadow: 0px 1px 0px #ffe6a5;
+    padding: 6px 30px;
+    border-color: #ebae3e;
+    border-width: 1px;
+    border-style: solid;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-size: 14px;
+    color: #4f2f2f;
+    font-weight: bold;
+}
+.buttonGetDeal:hover {
+    background: #ffd200;
+    -webkit-box-shadow: 0px 1px 0px 0px #ffe04f inset, 0px 0px 0px 4px #ffed99;
+    -moz-box-shadow: 0px 1px 0px 0px #ffe04f inset, 0px 0px 0px 4px #ffed99;
+    box-shadow: 0px 1px 0px 0px #ffe04f inset, 0px 0px 0px 4px #ffed99;
+    border-color: #ffc835;
+}
+
+.getDealBtn{
+    margin-top:3%;
+}
+.button:active {
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ff0000), color-stop(100%,#c41313));
+    background: -moz-linear-gradient(center top, #ff0000 0%, #c41313 100%);
+    -webkit-box-shadow: 0px -5px 15px #ff6956 inset, 0px 0px 0px 1px #e81313, 0px 0px 0px 1px #ff7669 inset;
+    -moz-box-shadow: 0px -5px 15px #ff6956 inset, 0px 0px 0px 1px #e81313, 0px 0px 0px 1px #ff7669 inset;
+    box-shadow: 0px -5px 15px #ff6956 inset, 0px 0px 0px 1px #e81313, 0px 0px 0px 1px #ff7669 inset;
+    text-shadow: 1px 1px 0px #c41313;
+}
+.breadcrumb a:last-child {
+    border-radius: 0 5px 5px 0;
+   padding-left: 47px;
+    width: auto;
+}
+.breadcrumb a:first-child {
+   padding-right: 2px;
+    border-radius: 5px 0 0 5px;
+    width: auto;
+    padding-left: 0;
+}
+.breadcrumb a{
+    padding: 0;
 }
 }

@@ -44,6 +44,7 @@ body {
 }
 .dropdown:hover .dropdown-menu{
     display: block;
+ 
 }
 .dropdown-menu:hover{
     display: block;
@@ -52,7 +53,7 @@ body {
     background-color: #C0392B;color: #fff;
     font-size:17pt;
      text-shadow: 0 0 10px #fff; 
-     font-weight: bold;
+     font-weight: bold; 
      -webkit-transition: text-shadow 0.5s linear;
     -moz-transition: text-shadow 0.5s linear;
     -ms-transition: text-shadow 0.5s linear;
@@ -634,7 +635,9 @@ max-height:400px;
     background: #ffffff;
 
 }
-
+.scWrapper{
+    padding: 3px 0 0 54%;float:left
+}
 .ie .webdesigntuts-workshop input {
 	line-height: 40px;
 }
@@ -709,6 +712,9 @@ max-height:400px;
   left: 0;
   opacity: .8;
 }
+.searchWrapper{
+    padding-top:2%;margin-top: -10%;
+}
 
 .modal {
     display:    block;
@@ -737,19 +743,20 @@ body.loading .modal {
     display: block;
 }
 .googleAdsTop{
-    display: none;
-     width: 150px;
+  
+     /*width: 150px;
     height: 61px;
     position: absolute;
     border: 0;
     float: left;
     width: 40%;
     /* height: 100%; */
-    /* position: absolute; */
+    /* position: absolute; 
     top: 0;
     left: 0;
+      display: none;
     z-index: 10;
-    margin-left: 24%;
+    margin-left: 24%;*/
 }
 
 .sortByDropDown{
@@ -914,7 +921,9 @@ body.loading .modal {
     box-shadow: 0px -5px 15px #ff6956 inset, 0px 0px 0px 1px #e81313, 0px 0px 0px 1px #ff7669 inset;
     text-shadow: 1px 1px 0px #c41313;
 }
-
+.getDealBtn{
+    margin: 20% 0 0 25%;
+}
 .breadcrumb {
 	/*centering*/
 	display: inline-block;

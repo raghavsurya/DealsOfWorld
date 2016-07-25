@@ -27,7 +27,7 @@ import myGlobals = require('./globals');
 <div class="allCategories">
 
 
-<div style="padding: 3px 0 0 54%;float:left">
+<div class="scWrapper">
 
 
    <div class="socialIcons">
@@ -83,7 +83,7 @@ import myGlobals = require('./globals');
           <li *ngFor='#menu of sideMenus'><a href="#" (click)="LoadProductsAndMenus(menu, false)"><span class="glyphicon glyphicon-tag"></span>{{menu}}</a></li>
         </ul>
         </div>
-    <div style="padding-top:2%;margin-top: -10%;">
+    <div class="searchWrapper">
    
       <section class="webdesigntuts-workshop">
 
