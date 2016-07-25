@@ -153,9 +153,9 @@ export class AppComponent {
 
   pageTitle: string = 'Deals of World Application';
   constructor(http: Http, @Inject('rootVar') rootVar: string, private _productService: ProductService) {
-    http.get('http://DealsOfWorld.com:3000/api/v1/Menus/' + rootVar).map(res => res.json())
+    http.get('http://DealsOfWorld.com/api/v1/Menus/' + rootVar).map(res => res.json())
       .subscribe(allMenus => this.menus = allMenus);
-    http.get('http://DealsOfWorld.com:3000/api/v1/SideMenus/' + rootVar + '/all').map(res => res.json())
+    http.get('http://DealsOfWorld.com/api/v1/SideMenus/' + rootVar + '/all').map(res => res.json())
       .subscribe(allSideMenus => this.sideMenus = allSideMenus);
     this.country = rootVar.toUpperCase();
 
