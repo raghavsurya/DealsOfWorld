@@ -70,7 +70,7 @@ import myGlobals = require('./globals');
     
    
     <div class="dropdown vendorDropdown">
-        <button class="btn btn-danger dropdown-toggle " type="button" data-toggle="dropdown">Vendors
+        <button class="btn btn-danger dropdown-toggle " type="button" data-toggle="dropdown">Stores
   <span class="caret"></span></button>
         <ul class="dropdown-menu">
          <li *ngFor='#menu of menus'><a href="#" (click)="LoadProductsAndMenus(menu, true)"><span class="glyphicon glyphicon-tag"></span>{{menu}}</a></li>
