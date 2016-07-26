@@ -102,7 +102,7 @@ import myGlobals = require('./globals');
   	          <button class="button button1 " on-mouseover="LoadProductsAndMenus(menuItem, true, true)" type="button" data-toggle="dropdown">{{menuItem}}
           </button>
         <ul class="dropdown-menu" *ngIf="showDropdown">
-          <li *ngFor='#menu of sideMenus'><a href="#" (click)="LoadProductsAndMenus(menu, false)"><span class="glyphicon glyphicon-tag"></span>{{menu}}</a></li>
+          <li *ngFor='#menu of sideMenus'><a href="#{{menuItem}}/#{{menu}}" (click)="LoadProductsAndMenus(menu, false)"><span class="glyphicon glyphicon-tag"></span>{{menu}}</a></li>
         </ul>
        
         </div>
