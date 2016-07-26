@@ -108,14 +108,17 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', '../pipes/productF
                 ProductListComponent.prototype.IsDealGood = function (actualPrice, offerPrice) {
                     var leftOfferPrice = Number.parseInt(offerPrice.substring(1).split(".")[0]);
                     var rightOfferPrice = Number.parseInt(actualPrice.substring(1).split(".")[0]);
-                    if (Number(leftOfferPrice / rightOfferPrice) * 100 > 30) {
-                        this.dealPercent = Math.round((leftOfferPrice / rightOfferPrice) * 100);
-                        return true;
+                    if (!leftOfferPrice && !rightOfferPrice) {
+                        if (Number(leftOfferPrice / rightOfferPrice) * 100 > 30) {
+                            this.dealPercent = Math.round((leftOfferPrice / rightOfferPrice) * 100);
+                            return true;
+                        }
+                        else {
+                            this.dealPercent = Math.round((leftOfferPrice / rightOfferPrice) * 100);
+                            return true;
+                        }
                     }
-                    else {
-                        this.dealPercent = Math.round((leftOfferPrice / rightOfferPrice) * 100);
-                        return true;
-                    }
+                    return false;
                 };
                 ProductListComponent = __decorate([
                     core_1.Component({

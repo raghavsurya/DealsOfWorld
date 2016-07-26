@@ -114,6 +114,7 @@ export class ProductListComponent implements OnInit{
 IsDealGood(actualPrice, offerPrice): boolean{
  let leftOfferPrice: number = Number.parseInt(offerPrice.substring(1).split(".")[0])
          let rightOfferPrice: number = Number.parseInt(actualPrice.substring(1).split(".")[0])
+         if(!leftOfferPrice && !rightOfferPrice){
          if(Number(leftOfferPrice/rightOfferPrice) * 100 > 30){
                 this.dealPercent = Math.round((leftOfferPrice/rightOfferPrice) *100);
                 return true;
@@ -121,8 +122,9 @@ IsDealGood(actualPrice, offerPrice): boolean{
          else{
               this.dealPercent = Math.round((leftOfferPrice/rightOfferPrice) *100);
                 return true;
-         }
-        
+         } 
+        }
+        return false;
         
 }
 }
