@@ -33,7 +33,7 @@
     </div>
     <div class="col-lg-4 products wrapper" *ngFor='#prodByDept of productByDepts | productFilter : searchString'>
         <span *ngIf="IsDealGood(prodByDept.actualPrice, prodByDept.offerPrice) && dealPercent >= 30" class="saving">Save {{dealPercent}}%</span>
-         <span *ngIf="IsDealGood(prodByDept.actualPrice, prodByDept.offerPrice) && dealPercent < 30" class="saving lessThan30">Save {{dealPercent}}%</span>
+         
         <div class="ribbon-wrapper-green"><div class="ribbon-green">DEAL</div></div>
         
       <img class="waitingimg" *ngIf="prodByDept.imgSrc" [src]='prodByDept.imgSrc' />
