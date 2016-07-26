@@ -49,7 +49,6 @@ System.register(['angular2/core', './products/product-list.component', 'angular2
                     this.getChildProperty();
                 };
                 AppComponent.prototype.getChildProperty = function () {
-                    console.log(this.productList.productByDepts);
                     if (this.searchString != undefined) {
                         this.productList.listFilter = this.searchString;
                     }

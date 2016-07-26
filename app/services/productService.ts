@@ -68,6 +68,5 @@ getDeptLinks(startIndex: number){
  
 
  ngOnInit(): void {
-       console.log('In OnInit');
    }
 }

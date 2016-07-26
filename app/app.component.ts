@@ -145,7 +145,6 @@ export class AppComponent {
     this.getChildProperty();
   }
   getChildProperty() {
-    console.log(this.productList.productByDepts);
     if (this.searchString != undefined) {
       this.productList.listFilter = this.searchString;
     }

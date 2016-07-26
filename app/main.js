@@ -20,6 +20,7 @@ System.register(['angular2/platform/browser', './app.component', 'angular2/core'
                 core_1 = core_1_1;
             }],
         execute: function() {
+            core_1.enableProdMode();
         }
     }
 });

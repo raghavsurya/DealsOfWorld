@@ -64,7 +64,6 @@ System.register(['angular2/core', 'angular2/http'], function(exports_1, context_
                         .map(function (res) { return res.json(); });
                 };
                 ProductService.prototype.ngOnInit = function () {
-                    console.log('In OnInit');
                 };
                 ProductService = __decorate([
                     core_1.Component({}),

@@ -97,7 +97,6 @@ function geolocate(timezone, cityPrecision, objectVar) {
   //Check if cookie already exist. If not, query IPInfoDB
   this.checkcookie = function(callback) {
     geolocationCookie = getCookie('geolocation');
-    console.log(geolocationCookie);
     callbackFunc = callback;
     if (!geolocationCookie) {
       getGeolocation();
@@ -186,7 +185,6 @@ else{
 } 
 
 
-console.log(rootVar);
 if(rootVar == "gb") rootVar = "uk";
 
 
