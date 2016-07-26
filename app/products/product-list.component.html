@@ -7,7 +7,7 @@
     testing
 </div>-->
 
-<div  *ngIf="userselectedMenu || userselectedSideMenu" class="breadcrumb flat">
+<div  *ngIf="!ishover && (userselectedMenu || userselectedSideMenu)" class="breadcrumb flat">
   
 	<a  *ngIf="userselectedMenu" href="#" class="active">{{userselectedMenu}}</a>
 	<a   *ngIf="userselectedSideMenu" href="#">{{userselectedSideMenu}}</a>

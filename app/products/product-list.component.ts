@@ -21,6 +21,7 @@ import {Observable} from 'rxjs/Observable'
 
 
 export class ProductListComponent implements OnInit{
+    ishover:boolean;
   showDropdown: boolean = true;
      private totalItems: number = 50;
     currentPage: number = 0;

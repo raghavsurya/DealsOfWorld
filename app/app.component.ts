@@ -168,6 +168,7 @@ export class AppComponent {
     this.productList.showLoader = true;
     this.isMainMenu = isMainMenu;
     this.productList.currentPage = 0;
+    this.productList.ishover = isHover;
     if (this.isMainMenu) {
       this.selectedMenu = menu;
       this.productList.userselectedMenu = this.selectedMenu;
