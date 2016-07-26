@@ -35,7 +35,9 @@ export class ProductListComponent implements OnInit{
     searchStr: string = "";
     showLoader:boolean;
     test: IProductsByDept[];
-
+    isSearch:boolean = false;
+    showHeart:boolean = false;
+    dealPercent: number ;
      constructor(private _productService: ProductService){
       //  this.userselectedMenu = selectedMenu;
      }
@@ -108,5 +110,19 @@ export class ProductListComponent implements OnInit{
 
     return vals;
 
+}
+IsDealGood(actualPrice, offerPrice): boolean{
+ let leftOfferPrice: number = Number.parseInt(offerPrice.substring(1).split(".")[0])
+         let rightOfferPrice: number = Number.parseInt(actualPrice.substring(1).split(".")[0])
+         if(Number(leftOfferPrice/rightOfferPrice) * 100 > 30){
+                this.dealPercent = Math.round((leftOfferPrice/rightOfferPrice) *100);
+                return true;
+         }
+         else{
+              this.dealPercent = Math.round((leftOfferPrice/rightOfferPrice) *100);
+                return true;
+         }
+        
+        
 }
 }

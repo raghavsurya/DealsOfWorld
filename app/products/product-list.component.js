@@ -44,6 +44,8 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', '../pipes/productF
                     this.listFilter = "";
                     this.methodName = "";
                     this.searchStr = "";
+                    this.isSearch = false;
+                    this.showHeart = false;
                     //  this.userselectedMenu = selectedMenu;
                 }
                 ProductListComponent.prototype.ngOnInit = function () {
@@ -102,6 +104,18 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', '../pipes/productF
                         return 0;
                     });
                     return vals;
+                };
+                ProductListComponent.prototype.IsDealGood = function (actualPrice, offerPrice) {
+                    var leftOfferPrice = Number.parseInt(offerPrice.substring(1).split(".")[0]);
+                    var rightOfferPrice = Number.parseInt(actualPrice.substring(1).split(".")[0]);
+                    if (Number(leftOfferPrice / rightOfferPrice) * 100 > 30) {
+                        this.dealPercent = Math.round((leftOfferPrice / rightOfferPrice) * 100);
+                        return true;
+                    }
+                    else {
+                        this.dealPercent = Math.round((leftOfferPrice / rightOfferPrice) * 100);
+                        return true;
+                    }
                 };
                 ProductListComponent = __decorate([
                     core_1.Component({

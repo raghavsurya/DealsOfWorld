@@ -554,6 +554,9 @@ body {
    display: block;
    
 }
+.dropdown.categoryDropdown {
+    display: BLOCK;
+}
 .categoryDropdown{
  margin: -13% -4% 0 0 !important;
     display: block;

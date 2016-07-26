@@ -102,6 +102,7 @@ System.register(['angular2/core', './products/product-list.component', 'angular2
                 AppComponent.prototype.SearchProducts = function () {
                     var _this = this;
                     this.productList.currentPage = 0;
+                    this.productList.isSearch = true;
                     this.productList.showLoader = true;
                     this.productList.methodName = "getProductsBySearchTerm";
                     this.productList.searchStr = this.searchString;

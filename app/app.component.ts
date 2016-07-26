@@ -219,6 +219,7 @@ export class AppComponent {
 
   SearchProducts(): void {
     this.productList.currentPage = 0;
+    this.productList.isSearch = true;
     this.productList.showLoader = true;
     this.productList.methodName = "getProductsBySearchTerm";
     this.productList.searchStr = this.searchString;

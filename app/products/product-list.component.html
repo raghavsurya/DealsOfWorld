@@ -31,12 +31,14 @@
         </ul>
       </div>
     </div>
-    <div class="col-lg-4 products wrapper" *ngFor='#prodByDept of productByDepts | productFilter : searchString'> 
-        <!--<div class="ribbon-wrapper-green"><div class="ribbon-green">DEAL</div></div>-->
+    <div class="col-lg-4 products wrapper" *ngFor='#prodByDept of productByDepts | productFilter : searchString'>
+        <span *ngIf="IsDealGood(prodByDept.actualPrice, prodByDept.offerPrice) && dealPercent >= 30" class="saving">Save {{dealPercent}}%</span>
+         <span *ngIf="IsDealGood(prodByDept.actualPrice, prodByDept.offerPrice) && dealPercent < 30" class="saving lessThan30">Save {{dealPercent}}%</span>
+        <div class="ribbon-wrapper-green"><div class="ribbon-green">DEAL</div></div>
         
       <img class="waitingimg" *ngIf="prodByDept.imgSrc" [src]='prodByDept.imgSrc' />
      <div  *ngIf="!prodByDept.imgSrc" class="image">
-      <img class="waitingimg" style="opacity:0.2" src="app/Assets/Images/awaiting.png" />
+      <img class="waitingimg" style="opacity:0.2" src="app/Assets/Images/balls.svg" />
            <h2>{{prodByDept.merchantName}}</h2>
      </div>
        
@@ -57,12 +59,23 @@
    
 </div>
 <div class="modal" *ngIf="showLoader"></div>
- <div *ngIf="productByDepts && productByDepts.length > 0" class="showMoreButton blue"><div class="shine"></div><a (click)="getNextSetOfProducts(currentPage + 1, userselectedMenu, userselectedSideMenu, searchStr, methodName)">Show More</a></div>   
+<a  (click)="getNextSetOfProducts(currentPage + 1, userselectedMenu, userselectedSideMenu, searchStr, methodName)">
+ <div *ngIf="productByDepts && productByDepts.length > 0 && productByDepts.length >= 50" class="showMoreButton blue">
+     <div class="shine"></div>Show More</div>   </a>
 <!--<div class="is-text-centered">
     <pagination-controls (pageChange)="page = $event"></pagination-controls>
 </div>-->
 
-    <div  *ngIf="!productByDepts || productByDepts.length <= 0" class="page-container page-container-responsive">
+<div *ngIf="productByDepts && (productByDepts.length > 0 && productByDepts.length < 50)" class="showMoreButton gray">
+         <div class="shine"></div>No more products to show</div>   
+
+  <div  *ngIf="!isSearch && (!productByDepts || productByDepts.length <= 0)" class="page-container page-container-responsive">
+       <div id="noProducts" class="col-12 col-middle text-center">
+            <img src="app/Assets/Images/wheel.svg" width="313" height="428" alt="Loading">
+           </div>
+      </div>
+
+    <div  *ngIf="isSearch && (!productByDepts || productByDepts.length <= 0)" class="page-container page-container-responsive">
     <div class="row row-space-top-8 row-space-8 row-table">
       
         <div id="noProducts" class="col-12 col-middle text-center">
