@@ -28,12 +28,14 @@ app.use('/api/v1/', departments);
  
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
+     res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     var err = new Error('Not Found');
     err.status = 404;
     next(err);
 });
  
-var server = app.listen(3000, function() {
+var server = app.listen(80, function() {
     var host = 'localhost';
     var port = server.address().port;
     console.log('App listening at http://%s:%s', host, port);

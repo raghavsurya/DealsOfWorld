@@ -2,11 +2,16 @@ var express = require('express');
 var router = express.Router();
 var mongojs = require('mongojs');
 var db = mongojs('mongodb://localhost:27017/Products');
-console.log('hi');
-console.log(db);
+
+router.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 /* GET All Todos */
 router.get('/Departments', function (req, res, next) {
+    
     var collection = db.collection('Departments');
     collection.find().toArray(function (err, departments) {
         if (err) {
