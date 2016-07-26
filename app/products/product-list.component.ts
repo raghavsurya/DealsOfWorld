@@ -112,6 +112,8 @@ export class ProductListComponent implements OnInit{
 
 }
 IsDealGood(actualPrice, offerPrice): boolean{
+    if(offerPrice && actualPrice)
+    {
  let leftOfferPrice: number = Number.parseInt(offerPrice.substring(1).split(".")[0])
          let rightOfferPrice: number = Number.parseInt(actualPrice.substring(1).split(".")[0])
          if(leftOfferPrice && rightOfferPrice){
@@ -124,6 +126,7 @@ IsDealGood(actualPrice, offerPrice): boolean{
                 return false;
          } 
         }
+    }
         return false;
         
 }
