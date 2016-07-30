@@ -51,8 +51,16 @@ System.register(['angular2/core', 'angular2/http'], function(exports_1, context_
                     return this._http.get('http://DealsOfWorld.com/api/v1/ProductsByVendor/' + page + "/" + this.countryCode + '/' + mainMenu)
                         .map(function (res) { return res.json(); });
                 };
-                ProductService.prototype.getProductsByVendorAndDept = function (page, mainMenu, department) {
-                    return this._http.get('http://DealsOfWorld.com/api/v1/ProductsByDeptByVendor/' + page + "/" + this.countryCode + '/' + department + "/" + mainMenu)
+                ProductService.prototype.getProductsByVendorAndDept = function (page, mainMenu, department, sortByPrice) {
+                    if (sortByPrice === void 0) { sortByPrice = null; }
+                    var apiUrl;
+                    if (sortByPrice != null) {
+                        apiUrl = 'http://DealsOfWorld.com/api/v1/ProductsByDeptByVendor/' + page + "/" + this.countryCode + '/' + department + "/" + mainMenu;
+                    }
+                    else {
+                        apiUrl = 'http://DealsOfWorld.com/api/v1/ProductsByDeptByVendor/' + page + "/" + this.countryCode + '/' + department + "/" + mainMenu + "/" + sortByPrice;
+                    }
+                    return this._http.get(apiUrl)
                         .map(function (res) { return res.json(); });
                 };
                 ProductService.prototype.getProductsByDept = function (page, department) {

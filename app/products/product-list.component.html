@@ -23,16 +23,17 @@
         <ul class="dropdown-menu" *ngIf="showDropdown">
           
           <li>
-            <a href="#" (click)="SetSortOrder('-')"><span>Price: Low to High</span></a>
+            <a href="#" (click)="SetSortOrder('-',userselectedMenu,userselectedSideMenu,currentPage + 1)"><span>Price: Low to High</span></a>
           </li>
           <li>
-            <a href="#" (click)="SetSortOrder('+')"><span>Price: High to Low</span></a>
+            <a href="#" (click)="SetSortOrder('+',userselectedMenu,userselectedSideMenu,currentPage + 1)"><span>Price: High to Low</span></a>
           </li>
         </ul>
       </div>
     </div>
     <div class="col-lg-4 products wrapper" *ngFor='#prodByDept of productByDepts | productFilter : searchString'>
         <span *ngIf="IsDealGood(prodByDept.actualPrice, prodByDept.offerPrice) && dealPercent >= 30" class="saving">Save {{dealPercent}}%</span>
+            <span *ngIf="dealPercent < 30" class="savingLessThan30">-{{dealPercent}}%</span>
          
         <div class="ribbon-wrapper-green"><div class="ribbon-green">DEAL</div></div>
         

@@ -82,15 +82,16 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', '../pipes/productF
                     }
                     this.showLoader = false;
                 };
-                ProductListComponent.prototype.SetSortOrder = function (sortTerm) {
+                ProductListComponent.prototype.SetSortOrder = function (sortTerm, page) {
                     //    this.productByDepts = this.productByDepts.sort((obj1: IProductsByDept, obj2: IProductsByDept =>{
+                    var _this = this;
                     //    });
                     //    );
                     this.showDropdown = false;
-                    this.productByDepts = this.
-                        SortArray(this.productByDepts, sortTerm);
-                    if (sortTerm == "+")
-                        this.productByDepts = this.productByDepts.reverse();
+                    this.currentPage = page;
+                    this._productService.getProductsByVendorAndDept(page, this.userselectedMenu, this.userselectedSideMenu, sortTerm == "+" ? "Hhightolow" : "lowtohigh")
+                        .subscribe(function (products) { return _this.productByDepts = _this.productByDepts.concat(products); }, function (error) { return _this.errorMessage = error; });
+                    //if(sortTerm == "+") this.productByDepts = this.productByDepts.reverse();
                 };
                 ProductListComponent.prototype.SortArray = function (items, sortTerm) {
                     var vals = items.slice(3);
@@ -103,12 +104,13 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', '../pipes/productF
                             return 1;
                         return 0;
                     });
+                    console.log(vals.length);
                     return vals;
                 };
                 ProductListComponent.prototype.IsDealGood = function (actualPrice, offerPrice) {
                     if (offerPrice && actualPrice) {
-                        var leftOfferPrice = Number.parseInt(offerPrice.substring(1).split(".")[0]);
-                        var rightOfferPrice = Number.parseInt(actualPrice.substring(1).split(".")[0]);
+                        var leftOfferPrice = Number.parseInt(offerPrice.replace(/^\D+/g, '').split(".")[0]);
+                        var rightOfferPrice = Number.parseInt(actualPrice.replace(/^\D+/g, '').split(".")[0]);
                         if (leftOfferPrice && rightOfferPrice) {
                             if (100 - ((leftOfferPrice / rightOfferPrice) * 100) > 30) {
                                 this.dealPercent = 100 - Math.round((leftOfferPrice / rightOfferPrice) * 100);

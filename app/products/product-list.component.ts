@@ -84,18 +84,22 @@ export class ProductListComponent implements OnInit{
            
    }
 
-   SetSortOrder(sortTerm: string): void{
+   SetSortOrder(sortTerm: string, page:number): void{
        
     //    this.productByDepts = this.productByDepts.sort((obj1: IProductsByDept, obj2: IProductsByDept =>{
 
     //    });
     //    );
     this.showDropdown = false;
- this.productByDepts = this.
- SortArray(this.productByDepts, sortTerm);
- if(sortTerm == "+") this.productByDepts = this.productByDepts.reverse();
+ this.currentPage = page;
+  this._productService.getProductsByVendorAndDept(page, this.userselectedMenu, this.userselectedSideMenu, sortTerm == "+"? "Hhightolow":"lowtohigh")
+     .subscribe(products => this.productByDepts = this.productByDepts.concat(products),
+       error => this.errorMessage = <any>error); 
+        
+ //if(sortTerm == "+") this.productByDepts = this.productByDepts.reverse();
    }
  SortArray<T extends IProductsByDept>(items: Array<T>, sortTerm: string): Array<T> {
+   
     var vals = items.slice(3);
     vals.sort((a, b): number => {
         let leftOfferPrice: number = Number.parseInt(a.offerPrice.substring(1).split(".")[0])
@@ -108,15 +112,15 @@ export class ProductListComponent implements OnInit{
          
 
     });
-
+console.log(vals.length)
     return vals;
 
 }
 IsDealGood(actualPrice, offerPrice): boolean{
     if(offerPrice && actualPrice)
     {
- let leftOfferPrice: number = Number.parseInt(offerPrice.substring(1).split(".")[0])
-         let rightOfferPrice: number = Number.parseInt(actualPrice.substring(1).split(".")[0])
+ let leftOfferPrice: number = Number.parseInt(offerPrice.replace( /^\D+/g, '').split(".")[0])
+         let rightOfferPrice: number = Number.parseInt(actualPrice.replace( /^\D+/g, '').split(".")[0])
          if(leftOfferPrice && rightOfferPrice){
          if(100-((leftOfferPrice/rightOfferPrice) * 100) > 30){
                 this.dealPercent = 100 - Math.round((leftOfferPrice/rightOfferPrice) *100);

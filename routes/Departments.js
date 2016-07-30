@@ -3,15 +3,15 @@ var router = express.Router();
 var mongojs = require('mongojs');
 var db = mongojs('mongodb://localhost:27017/Products');
 
-router.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
+router.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
 });
 
 /* GET All Todos */
 router.get('/Departments', function (req, res, next) {
-    
+
     var collection = db.collection('Departments');
     collection.find().toArray(function (err, departments) {
         if (err) {
@@ -132,22 +132,49 @@ router.get('/ProductsBySearchTerm/:startIndex/:country/:searchTerm', function (r
 
 });
 
-router.get('/ProductsByDeptByVendor/:startIndex/:country/:department/:vendor', function (req, res, next) {
+router.get('/ProductsByDeptByVendor/:startIndex/:country/:department/:vendor/:sortBy', function (req, res, next) {
     var country = new RegExp([req.params.country].join(""), "i");
     var dept = new RegExp([req.params.department].join(""), "i");
     var vendor = new RegExp([req.params.vendor].join(""), "i");
+    var sortBy = new RegExp([req.params.vendor]);
     var startIndex = req.params.startIndex;
     var collection = db.collection('ProductsByDepartment');
 
-    collection.find({ country: country, department: dept, vendor: vendor }).skip(startIndex * 50).limit(50).toArray(function (err, departments) {
-        if (err) {
-            res.send(err);
-        } else {
-            res.json(departments);
+
+    if (sortBy != undefined) {
+        if (sortBy = 'hightolow') {
+            collection.find({ country: country, department: dept, vendor: vendor }).sort( { offerPrice: -1 } ).skip(startIndex * 50).limit(50).toArray(function (err, departments) {
+                if (err) {
+                    res.send(err);
+                } else {
+                    res.json(departments);
+                }
+            });
         }
-    });
+        else {
+            collection.find({ country: country, department: dept, vendor: vendor }).sort( { offerPrice: 1 } ).skip(startIndex * 50).limit(50).toArray(function (err, departments) {
+                if (err) {
+                    res.send(err);
+                } else {
+                    res.json(departments);
+                }
+            });
+        }
+    }
+    else {
+        collection.find({ country: country, department: dept, vendor: vendor }).skip(startIndex * 50).limit(50).toArray(function (err, departments) {
+            if (err) {
+                res.send(err);
+            } else {
+                res.json(departments);
+            }
+        });
+    }
+
 
 });
+
+
 
 router.get('/ProductsByVendor/:startIndex/:country/:vendor', function (req, res, next) {
     var country = new RegExp([req.params.country].join(""), "i");

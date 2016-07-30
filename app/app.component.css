@@ -221,6 +221,23 @@ writing-mode: lr-tb;
     width: 93px;
     margin-right: 79%;
 }
+
+.savingLessThan30 {
+            background-color:#ee1111;
+    border-radius: 100% 100% 100% 100%;
+    color: #FFFFFF;
+    display: block;
+    font-size: 12px;
+    font-weight: bold;
+    height: 100px;
+    line-height: 77px;
+    position: absolute;
+    right: 10px;
+    text-align: center;
+    top: -33px;
+    width: 93px;
+    margin-right: 79%;
+}
 .lessThan30{
     /*background-image: url("Assets/Images/happy.png");*/
 }
@@ -326,18 +343,14 @@ writing-mode: lr-tb;
 }
 
     .button1 {
-    background-color:#009ed9;
+ 
     color: #ffffff;
     border-radius: 2px;
-    
+    background-color: #ffffff !important;
     border: 1px solid #ffffff;
 }
     
-.button1:hover {
-    background-color: #FFCC00;
-    color: white;
-    border: 1px solid #f9a114;
-}   
+
 .moreButton {
          background-color: #e11111;
     color: #ffffff;
@@ -432,7 +445,7 @@ max-height:400px;
   top: 15px;
   width: 120px;
   background-color: #e11111;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#e111116e8900), to(#e11111)); 
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ee1111), to(#e11111)); 
   background-image: -webkit-linear-gradient(top, #e11111, #e11111); 
   background-image:    -moz-linear-gradient(top, #e11111, #e11111); 
   background-image:     -ms-linear-gradient(top, #e11111, #e11111); 
@@ -496,7 +509,8 @@ max-height:400px;
 	background-position: 0 -168px;
 }
 .wrapper > a > img,  .waitingimg{ 
-    height:143px;
+    height:auto;
+    max-height: 143px;
 }
 #left, #right {
     float: left;
@@ -885,37 +899,41 @@ body.loading .modal {
 
 
 .button {
-   display: inline-block;
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#D91E18), color-stop(100%,#D91E18));
+  display: inline-block;
+    /* background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#D91E18), color-stop(100%,#D91E18)); */
     background: -moz-linear-gradient(center top, #D91E18 0%, #D91E18 100%);
-    -webkit-box-shadow: 0px -5px 15px #D91E18 inset, 0px 0px 0px 1px #D91E18, 0px 0px 0px 1px #D91E18 inset;
+    /* -webkit-box-shadow: 0px -5px 15px #D91E18 inset, 0px 0px 0px 1px #D91E18, 0px 0px 0px 1px #D91E18 inset; */
     -moz-box-shadow: 0px -5px 15px #D91E18 inset, 0px 0px 0px 1px #D91E18, 0px 0px 0px 1px #D91E18 inset;
-    box-shadow: 0px -5px 15px #D91E18 inset, 0px 0px 0px 1px #D91E18, 0px 0px 0px 1px #D91E18 inset;
-    -webkit-border-radius: 3px;
+    /* box-shadow: 0px -5px 15px #D91E18 inset, 0px 0px 0px 1px #D91E18, 0px 0px 0px 1px #D91E18 inset; */
+    /* -webkit-border-radius: 3px; */
     -moz-border-radius: 3px;
     border-radius: 3px;
-    text-shadow: 1px 1px 0px #D91E18;
+    /* text-shadow: 1px 1px 0px #D91E18; */
     padding: 8px 10px;
     display: inline-block;
     text-align: center;
-    font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
     font-size: 13px;
-    color: #ffffff;
+    color: #D91E18;
     font-weight: bold;
+    border: 1px solid #D91E18 !important;
 }
-.button:hover {
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffd564), color-stop(100%,#ffd564));
-    background: -moz-linear-gradient(center top, #ffd564 0%, #ffd564 100%);
-    -webkit-box-shadow: 0px -5px 15px #ffd564 inset, 0px 0px 0px 1px #ffd564, 0px 0px 0px 1px #ffd564 inset;
+.button:hover, .button .button1 .active {
+    /*background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#D91E18), color-stop(100%,#D91E18));*/
+  
+    color:#ffffff !important;
+    background: -moz-linear-gradient(center top, #D91E18 0%, #D91E18 100%)  !important;
+      background-color:#D91E18  !important;
+    /*-webkit-box-shadow: 0px -5px 15px #ffd564 inset, 0px 0px 0px 1px #ffd564, 0px 0px 0px 1px #ffd564 inset;
     -moz-box-shadow: 0px -5px 15px #ffd564 inset, 0px 0px 0px 1px #ffd564, 0px 0px 0px 1px #ffd564 inset;
     box-shadow: 0px -5px 15px #ffd564 inset, 0px 0px 0px 1px #ffd564, 0px 0px 0px 1px #ffd564 inset;
-    text-shadow: 1px 1px 0px #000;
+    text-shadow: 1px 1px 0px #000;*/
 }
 
 
 .buttonGetDeal {
     display: inline-block;
-    background: #ffc835;
+    background: #ffc835 !important;
     -webkit-box-shadow: 0px 1px 0px 0px #ffd564 inset, 0px 0px 0px 4px #e6e6e6;
     -moz-box-shadow: 0px 1px 0px 0px #ffd564 inset, 0px 0px 0px 4px #e6e6e6;
     box-shadow: 0px 1px 0px 0px #ffd564 inset, 0px 0px 0px 4px #e6e6e6;

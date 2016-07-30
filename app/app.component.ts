@@ -99,7 +99,7 @@ import myGlobals = require('./globals');
         <ul>
           <li *ngFor='#menuItem of menus'>
             <div class="dropdown">
-  	          <button class="button button1 " on-mouseover="LoadProductsAndMenus(menuItem, true, true)" type="button" data-toggle="dropdown">{{menuItem}}
+  	          <button class="button button1 active" on-mouseover="LoadProductsAndMenus(menuItem, true, true)" type="button" data-toggle="dropdown">{{menuItem}}
           </button>
         <ul class="dropdown-menu" *ngIf="showDropdown">
           <li *ngFor='#menu of sideMenus'><a href="#{{menuItem}}/#{{menu}}" (click)="LoadProductsAndMenus(menu, false)"><span class="glyphicon glyphicon-tag"></span>{{menu}}</a></li>
@@ -140,6 +140,7 @@ export class AppComponent {
   selectedSideMenu: string;
   isMainMenu: boolean;
   showDropdown: boolean = true;
+  isHover:boolean= false;
   @ViewChild(ProductListComponent) productList: ProductListComponent;
   ngAfterViewInit() {
     this.getChildProperty();
@@ -168,7 +169,7 @@ export class AppComponent {
     this.productList.showLoader = true;
     this.isMainMenu = isMainMenu;
     this.productList.currentPage = 0;
-    this.productList.ishover = isHover;
+    this.isHover = this.productList.ishover = isHover;
     if (this.isMainMenu) {
       this.selectedMenu = menu;
       this.productList.userselectedMenu = this.selectedMenu;
