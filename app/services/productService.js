@@ -55,10 +55,10 @@ System.register(['angular2/core', 'angular2/http'], function(exports_1, context_
                     if (sortByPrice === void 0) { sortByPrice = null; }
                     var apiUrl;
                     if (sortByPrice != null) {
-                        apiUrl = 'http://DealsOfWorld.com/api/v1/ProductsByDeptByVendor/' + page + "/" + this.countryCode + '/' + department + "/" + mainMenu;
+                        apiUrl = 'http://DealsOfWorld.com/api/v1/ProductsByDeptByVendor/' + page + "/" + this.countryCode + '/' + department + "/" + mainMenu + "/" + sortByPrice;
                     }
                     else {
-                        apiUrl = 'http://DealsOfWorld.com/api/v1/ProductsByDeptByVendor/' + page + "/" + this.countryCode + '/' + department + "/" + mainMenu + "/" + sortByPrice;
+                        apiUrl = 'http://DealsOfWorld.com/api/v1/ProductsByDeptByVendor/' + page + "/" + this.countryCode + '/' + department + "/" + mainMenu;
                     }
                     return this._http.get(apiUrl)
                         .map(function (res) { return res.json(); });

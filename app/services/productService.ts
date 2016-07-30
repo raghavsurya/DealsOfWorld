@@ -51,10 +51,10 @@ export class ProductService implements OnInit {
   getProductsByVendorAndDept(page: number, mainMenu: string, department: string, sortByPrice: string = null): Observable<IProductsByDept[]> {
     var apiUrl;
     if (sortByPrice != null) {
-      apiUrl = 'http://DealsOfWorld.com/api/v1/ProductsByDeptByVendor/' + page + "/" + this.countryCode + '/' + department + "/" + mainMenu;
+      apiUrl = 'http://DealsOfWorld.com/api/v1/ProductsByDeptByVendor/' + page + "/" + this.countryCode + '/' + department + "/" + mainMenu + "/" + sortByPrice; 
     }
     else {
-      apiUrl = 'http://DealsOfWorld.com/api/v1/ProductsByDeptByVendor/' + page + "/" + this.countryCode + '/' + department + "/" + mainMenu + "/" + sortByPrice;
+      apiUrl = 'http://DealsOfWorld.com/api/v1/ProductsByDeptByVendor/' + page + "/" + this.countryCode + '/' + department + "/" + mainMenu ;
     }
     return this._http.get(apiUrl)
 

@@ -142,7 +142,7 @@ router.get('/ProductsByDeptByVendor/:startIndex/:country/:department/:vendor/:so
 
 
     if (sortBy != undefined) {
-        if (sortBy = 'hightolow') {
+        if (sortBy == 'hightolow') {
             collection.find({ country: country, department: dept, vendor: vendor }).sort( { offerPrice: -1 } ).skip(startIndex * 50).limit(50).toArray(function (err, departments) {
                 if (err) {
                     res.send(err);
