@@ -80,6 +80,7 @@ import myGlobals = require('./globals');
         <button class="btn btn-danger dropdown-toggle " type="button" data-toggle="dropdown">Categories
   <span class="caret"></span></button>
         <ul class="dropdown-menu">
+      
           <li *ngFor='#menu of sideMenus'><a href="#" (click)="LoadProductsAndMenus(menu, false)"><span class="glyphicon glyphicon-tag"></span>{{menu}}</a></li>
         </ul>
         </div>
@@ -99,9 +100,10 @@ import myGlobals = require('./globals');
         <ul>
           <li *ngFor='#menuItem of menus'>
             <div class="dropdown">
-  	          <button class="button button1 active" on-mouseover="LoadProductsAndMenus(menuItem, true, true)" type="button" data-toggle="dropdown">{{menuItem}}
+  	          <button class="button button1 active" (click)="LoadProductsAndMenus(menuItem, true, false)"  on-mouseover="LoadProductsAndMenus(menuItem, true, true)" type="button" data-toggle="dropdown">{{menuItem}}
           </button>
         <ul class="dropdown-menu" *ngIf="showDropdown">
+         
           <li *ngFor='#menu of sideMenus'><a href="#{{menuItem}}/#{{menu}}" (click)="LoadProductsAndMenus(menu, false)"><span class="glyphicon glyphicon-tag"></span>{{menu}}</a></li>
         </ul>
        
@@ -111,6 +113,11 @@ import myGlobals = require('./globals');
         </ul>
       </div>
     </div>
+      <div  *ngIf="showLoader" class="page-container page-container-responsive">
+       <div id="noProducts" class="col-12 col-middle text-center">
+            <img src="app/Assets/Images/wheel.svg" width="313" height="428" alt="Loading">
+           </div>
+      </div>
 </div>
 <div class="bodyWrapper">
   
@@ -165,6 +172,7 @@ export class AppComponent {
   }
 
   LoadProductsAndMenus(menu: string, isMainMenu: boolean, isHover:boolean=false): void {
+    
      this.showDropdown = true;
     this.productList.showLoader = true;
     this.isMainMenu = isMainMenu;

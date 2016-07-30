@@ -54,7 +54,7 @@ export class ProductService implements OnInit {
       apiUrl = 'http://DealsOfWorld.com/api/v1/ProductsByDeptByVendor/' + page + "/" + this.countryCode + '/' + department + "/" + mainMenu + "/" + sortByPrice; 
     }
     else {
-      apiUrl = 'http://DealsOfWorld.com/api/v1/ProductsByDeptByVendor/' + page + "/" + this.countryCode + '/' + department + "/" + mainMenu ;
+      apiUrl = 'http://DealsOfWorld.com/api/v1/ProductsByDeptByVendor/' + page + "/" + this.countryCode + '/' + department + "/" + mainMenu + "/none" ;
     }
     return this._http.get(apiUrl)
 
