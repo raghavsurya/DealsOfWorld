@@ -89,7 +89,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', '../pipes/productF
                     //    );
                     this.showDropdown = false;
                     this.currentPage = page;
-                    this._productService.getProductsByVendorAndDept(page, this.userselectedMenu, this.userselectedSideMenu, sortTerm == "+" ? "Hhightolow" : "lowtohigh")
+                    this._productService.getProductsByVendorAndDept(page, this.userselectedMenu, this.userselectedSideMenu, sortTerm == "+" ? "hightolow" : "lowtohigh")
                         .subscribe(function (products) { return _this.productByDepts = _this.productByDepts.concat(products); }, function (error) { return _this.errorMessage = error; });
                     //if(sortTerm == "+") this.productByDepts = this.productByDepts.reverse();
                 };

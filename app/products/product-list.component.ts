@@ -92,7 +92,7 @@ export class ProductListComponent implements OnInit{
     //    );
     this.showDropdown = false;
  this.currentPage = page;
-  this._productService.getProductsByVendorAndDept(page, this.userselectedMenu, this.userselectedSideMenu, sortTerm == "+"? "Hhightolow":"lowtohigh")
+  this._productService.getProductsByVendorAndDept(page, this.userselectedMenu, this.userselectedSideMenu, sortTerm == "+"? "hightolow":"lowtohigh")
      .subscribe(products => this.productByDepts = this.productByDepts.concat(products),
        error => this.errorMessage = <any>error); 
         
