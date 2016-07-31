@@ -108,7 +108,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', '../pipes/productF
                     return vals;
                 };
                 ProductListComponent.prototype.IsDealGood = function (actualPrice, offerPrice) {
-                    if (offerPrice && actualPrice) {
+                    if (offerPrice && actualPrice && typeof offerPrice == 'string') {
                         var leftOfferPrice = Number.parseInt(offerPrice.replace(/^\D+/g, '').split(".")[0]);
                         var rightOfferPrice = Number.parseInt(actualPrice.replace(/^\D+/g, '').split(".")[0]);
                         if (leftOfferPrice && rightOfferPrice) {

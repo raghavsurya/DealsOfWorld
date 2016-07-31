@@ -11,22 +11,22 @@ import {Observable} from 'rxjs/Observable'
 // import {PaginatePipe, PaginationService, PaginationControlsCmp, IPaginationInstance} from 'ng2-pagination';
 
 @Component({
-    selector : 'dw-products',
+    selector: 'dw-products',
     viewProviders: [HTTP_PROVIDERS],
     templateUrl: 'app/products/product-list.component.html',
     pipes: [ProductFilterPipe],
-     directives: [StarComponent],
- 
+    directives: [StarComponent],
+
 })
 
 
-export class ProductListComponent implements OnInit{
-    ishover:boolean;
-  showDropdown: boolean = true;
-     private totalItems: number = 50;
+export class ProductListComponent implements OnInit {
+    ishover: boolean;
+    showDropdown: boolean = true;
+    private totalItems: number = 50;
     currentPage: number = 0;
-     userselectedMenu: string;
-  userselectedSideMenu: string;
+    userselectedMenu: string;
+    userselectedSideMenu: string;
     pageTitle: string = 'Product List';
     headerOfPanel: string = 'Deals of the world. ';
     listFilter: string = "";
@@ -34,105 +34,104 @@ export class ProductListComponent implements OnInit{
     productByDepts: IProductsByDept[];
     methodName: string = "";
     searchStr: string = "";
-    showLoader:boolean;
+    showLoader: boolean;
     test: IProductsByDept[];
-    isSearch:boolean = false;
-    showHeart:boolean = false;
-    dealPercent: number ;
-     constructor(private _productService: ProductService){
-      //  this.userselectedMenu = selectedMenu;
-     }
-      
-    
-   ngOnInit(): void {
-  this._productService.getProducts(0)
-       .subscribe(products => this.productByDepts = products,
-       error => this.errorMessage = <any>error);
-   }
-       onRatingClicked(message: string): void {
+    isSearch: boolean = false;
+    showHeart: boolean = false;
+    dealPercent: number;
+    constructor(private _productService: ProductService) {
+        //  this.userselectedMenu = selectedMenu;
+    }
+
+
+    ngOnInit(): void {
+        this._productService.getProducts(0)
+            .subscribe(products => this.productByDepts = products,
+            error => this.errorMessage = <any>error);
+    }
+    onRatingClicked(message: string): void {
         this.pageTitle = 'Product List: ' + message;
-    } 
-    getNextSetOfProducts(page: number, userselectedMenu: string, userselectedSideMenu: string, searchString: string, methodName: string ): void{
-       this.showLoader = true;
+    }
+    getNextSetOfProducts(page: number, userselectedMenu: string, userselectedSideMenu: string, searchString: string, methodName: string): void {
+        this.showLoader = true;
         this.currentPage = page;
-        if(methodName == "getProductsByVendorAndDept"){
+        if (methodName == "getProductsByVendorAndDept") {
             this._productService.getProductsByVendorAndDept(page, userselectedMenu, userselectedSideMenu)
-       .subscribe(products => this.productByDepts = this.productByDepts.concat(products),
-       error => this.errorMessage = <any>error); 
+                .subscribe(products => this.productByDepts = this.productByDepts.concat(products),
+                error => this.errorMessage = <any>error);
         }
-        else if(methodName == "getProductsByVendor"){
+        else if (methodName == "getProductsByVendor") {
             this._productService.getProductsByVendor(page, userselectedMenu)
-       .subscribe(products => this.productByDepts = this.productByDepts.concat(products),
-       error => this.errorMessage = <any>error); 
+                .subscribe(products => this.productByDepts = this.productByDepts.concat(products),
+                error => this.errorMessage = <any>error);
         }
-        else if(methodName == "getProductsByDept"){
+        else if (methodName == "getProductsByDept") {
             this._productService.getProductsByDept(page, userselectedSideMenu)
-       .subscribe(products => this.productByDepts = this.productByDepts.concat(products),
-       error => this.errorMessage = <any>error); 
+                .subscribe(products => this.productByDepts = this.productByDepts.concat(products),
+                error => this.errorMessage = <any>error);
         }
-        else if(methodName == "getProductsBySearchTerm"){
-            this._productService.getProductsBySearchTerm(page, searchString )
-       .subscribe(products => this.productByDepts = this.productByDepts.concat(products),
-       error => this.errorMessage = <any>error); 
+        else if (methodName == "getProductsBySearchTerm") {
+            this._productService.getProductsBySearchTerm(page, searchString)
+                .subscribe(products => this.productByDepts = this.productByDepts.concat(products),
+                error => this.errorMessage = <any>error);
         }
-        else{
-        this._productService.getProducts(page)
-       .subscribe(products => this.productByDepts = this.productByDepts.concat(products),
-       error => this.errorMessage = <any>error); 
+        else {
+            this._productService.getProducts(page)
+                .subscribe(products => this.productByDepts = this.productByDepts.concat(products),
+                error => this.errorMessage = <any>error);
         }
         this.showLoader = false;
-           
-   }
 
-   SetSortOrder(sortTerm: string, page:number): void{
-       
-    //    this.productByDepts = this.productByDepts.sort((obj1: IProductsByDept, obj2: IProductsByDept =>{
-
-    //    });
-    //    );
-    this.showDropdown = false;
- this.currentPage = page;
-  this._productService.getProductsByVendorAndDept(page, this.userselectedMenu, this.userselectedSideMenu, sortTerm == "+"? "hightolow":"lowtohigh")
-     .subscribe(products => this.productByDepts = this.productByDepts.concat(products),
-       error => this.errorMessage = <any>error); 
-        
- //if(sortTerm == "+") this.productByDepts = this.productByDepts.reverse();
-   }
- SortArray<T extends IProductsByDept>(items: Array<T>, sortTerm: string): Array<T> {
-   
-    var vals = items.slice(3);
-    vals.sort((a, b): number => {
-        let leftOfferPrice: number = Number.parseInt(a.offerPrice.substring(1).split(".")[0])
-         let rightOfferPrice: number = Number.parseInt(b.offerPrice.substring(1).split(".")[0])
-        
-        if (leftOfferPrice < rightOfferPrice) return -1;
-         if (leftOfferPrice > rightOfferPrice) return 1;
-        return 0;
-         
-         
-
-    });
-console.log(vals.length)
-    return vals;
-
-}
-IsDealGood(actualPrice, offerPrice): boolean{
-    if(offerPrice && actualPrice)
-    {
- let leftOfferPrice: number = Number.parseInt(offerPrice.replace( /^\D+/g, '').split(".")[0])
-         let rightOfferPrice: number = Number.parseInt(actualPrice.replace( /^\D+/g, '').split(".")[0])
-         if(leftOfferPrice && rightOfferPrice){
-         if(100-((leftOfferPrice/rightOfferPrice) * 100) > 30){
-                this.dealPercent = 100 - Math.round((leftOfferPrice/rightOfferPrice) *100);
-                return true;
-         }
-         else{
-              this.dealPercent = Math.round((leftOfferPrice/rightOfferPrice) *100);
-                return false;
-         } 
-        }
     }
+
+    SetSortOrder(sortTerm: string, page: number): void {
+
+        //    this.productByDepts = this.productByDepts.sort((obj1: IProductsByDept, obj2: IProductsByDept =>{
+
+        //    });
+        //    );
+        this.showDropdown = false;
+        this.currentPage = page;
+        this._productService.getProductsByVendorAndDept(page, this.userselectedMenu, this.userselectedSideMenu, sortTerm == "+" ? "hightolow" : "lowtohigh")
+            .subscribe(products => this.productByDepts = this.productByDepts.concat(products),
+            error => this.errorMessage = <any>error);
+
+        //if(sortTerm == "+") this.productByDepts = this.productByDepts.reverse();
+    }
+    SortArray<T extends IProductsByDept>(items: Array<T>, sortTerm: string): Array<T> {
+
+        var vals = items.slice(3);
+        vals.sort((a, b): number => {
+            let leftOfferPrice: number = Number.parseInt(a.offerPrice.substring(1).split(".")[0])
+            let rightOfferPrice: number = Number.parseInt(b.offerPrice.substring(1).split(".")[0])
+
+            if (leftOfferPrice < rightOfferPrice) return -1;
+            if (leftOfferPrice > rightOfferPrice) return 1;
+            return 0;
+
+
+
+        });
+        console.log(vals.length)
+        return vals;
+
+    }
+    IsDealGood(actualPrice, offerPrice): boolean {
+        if (offerPrice && actualPrice && typeof offerPrice == 'string') {
+            let leftOfferPrice: number = Number.parseInt(offerPrice.replace(/^\D+/g, '').split(".")[0])
+            let rightOfferPrice: number = Number.parseInt(actualPrice.replace(/^\D+/g, '').split(".")[0])
+            if (leftOfferPrice && rightOfferPrice) {
+                if (100 - ((leftOfferPrice / rightOfferPrice) * 100) > 30) {
+                    this.dealPercent = 100 - Math.round((leftOfferPrice / rightOfferPrice) * 100);
+                    return true;
+                }
+                else {
+                    this.dealPercent = Math.round((leftOfferPrice / rightOfferPrice) * 100);
+                    return false;
+                }
+            }
+        }
         return false;
-        
-}
+
+    }
 }

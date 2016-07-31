@@ -9,5 +9,7 @@ export interface IProductsByDept{
     offerPrice : string;
     starRating: number;
     code: string,
-    expiryDate: Date 
+    expiryDate: Date,
+    offerPriceDec: string,
+    currency: string 
 }
