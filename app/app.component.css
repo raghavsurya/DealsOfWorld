@@ -710,13 +710,31 @@ max-height:400px;
 
 }
 .vendorName{
-        padding: 0%;
+          padding: 5% 0 0 0;
     /* top: 90%; */
     /* font-style: italic; */
     font-weight: bold;
     clear: both;
     color: #D91E18;
+    font-size: 11pt;
 }
+
+.shopTopBrand {
+  color: #fff;
+  font-family: Monoton;
+  -webkit-animation: neon1 1.5s ease-in-out infinite alternate;
+  -moz-animation: neon1 1.5s ease-in-out infinite alternate;
+  animation: neon1 1.5s ease-in-out infinite alternate;
+}
+
+.shopTopBrand:hover {
+  color: #FF1177;
+  -webkit-animation: none;
+  -moz-animation: none;
+  animation: none;
+}
+
+
 .scWrapper{
     padding: 3px 0 0 54%;float:left
 }
