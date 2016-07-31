@@ -395,8 +395,9 @@ writing-mode: lr-tb;
     .dropdown-menu {
         background-color: #C0392B;
         margin-top:-1px !important;
+        height: auto;
         max-height: 400px !important;
-        overflow-y: scroll;
+        overflow: auto;
     }
     .dropdown-menu > li > a{
         color:#fff;
@@ -707,6 +708,14 @@ max-height:400px;
     width: 600px;
     background: #ffffff;
 
+}
+.vendorName{
+        padding: 0%;
+    /* top: 90%; */
+    /* font-style: italic; */
+    font-weight: bold;
+    clear: both;
+    color: #D91E18;
 }
 .scWrapper{
     padding: 3px 0 0 54%;float:left

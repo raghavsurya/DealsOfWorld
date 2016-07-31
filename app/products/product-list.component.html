@@ -50,11 +50,16 @@
         <p style="color:green;" *ngIf="prodByDept.code">Coupon Code: <strong style="color:red;font-weight:bold"> {{prodByDept.code}}</strong></p> 
         <p style="color:green;padding-top:2%;font-size:9pt" *ngIf="prodByDept.expiryDate">Expires by: <strong style="color:red;font-weight:normal;font-size:9pt"> {{prodByDept.expiryDate}}</strong></p>
           <!--<ai-star [rating]='prodByDept.starRating' (ratingClicked)='onRatingClicked($event)'> </ai-star>-->
-          <div id="left"></div>
+             <span class="vendorName" *ngIf="prodByDept.deptId"> at {{prodByDept.deptId}}</span> 
+          <div id="left">
+             
+          </div>
+            
           <div class="getDealBtn">
-
-              <a [href]='prodByDept.prodLink'  class="buttonGetDeal button1" target="_blank">GET DEAL
+                
+              <a [href]='prodByDept.prodLink'  class="buttonGetDeal button1" target="_blank">GET DEAL 
               </a>
+              
           </div>
           <div id="right"></div>
    
