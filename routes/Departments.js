@@ -141,37 +141,27 @@ router.get('/ProductsByDeptByVendor/:startIndex/:country/:department/:vendor/:so
     var collection = db.collection('ProductsByDepartment');
 
 
-
-   
-        var bCollection = collection.find({ country: country, department: dept, vendor: vendor }).skip(startIndex * 50).limit(50);
-        bCollection.array.forEach(function (x) {
-            bCollection.update({ _id: x._id },
-                {
-                    $set: {
-                        offerPrice: NumberInt(x.offerPrice)
-                    }
-                });
-        });
-         if (sortBy == 'hightolow') {
-        bCollection.sort({"offerPrice": 1}).toArray(function (err, departments) {
-            if (err) {
-                res.send(err);
-            } else {
-                res.json(departments);
-            }
-        });
-    }
-    else if (sortBy == 'lowtohigh') {
-        bCollection.sort({"offerPrice": -1}).toArray(function (err, departments) {
-            if (err) {
-                res.send(err);
-            } else {
-                res.json(departments);
-            }
-        });
-    }
+  
+        if (sortBy == 'hightolow') {
+            collection.find({ country: country, department: dept, vendor: vendor }).sort( { offerPrice: -1 } ).skip(startIndex * 50).limit(50).toArray(function (err, departments) {
+                if (err) {
+                    res.send(err);
+                } else {
+                    res.json(departments);
+                }
+            });
+        }
+        else if (sortBy == 'lowtohigh') {
+            collection.find({ country: country, department: dept, vendor: vendor }).sort( { offerPrice: 1 } ).skip(startIndex * 50).limit(50).toArray(function (err, departments) {
+                if (err) {
+                    res.send(err);
+                } else {
+                    res.json(departments);
+                }
+            });
+        }
     else {
-        bCollection.toArray(function (err, departments) {
+        collection.find({ country: country, department: dept, vendor: vendor }).skip(startIndex * 50).limit(50).toArray(function (err, departments) {
             if (err) {
                 res.send(err);
             } else {
