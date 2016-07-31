@@ -39,6 +39,7 @@ export class ProductListComponent implements OnInit {
     isSearch: boolean = false;
     showHeart: boolean = false;
     dealPercent: number;
+    sortTerm: string;
     constructor(private _productService: ProductService) {
         //  this.userselectedMenu = selectedMenu;
     }
@@ -56,7 +57,7 @@ export class ProductListComponent implements OnInit {
         this.showLoader = true;
         this.currentPage = page;
         if (methodName == "getProductsByVendorAndDept") {
-            this._productService.getProductsByVendorAndDept(page, userselectedMenu, userselectedSideMenu)
+            this._productService.getProductsByVendorAndDept(page, userselectedMenu, userselectedSideMenu, this.sortTerm)
                 .subscribe(products => this.productByDepts = this.productByDepts.concat(products),
                 error => this.errorMessage = <any>error);
         }
@@ -90,10 +91,11 @@ export class ProductListComponent implements OnInit {
 
         //    });
         //    );
+        this.sortTerm = sortTerm;
         this.showDropdown = false;
         this.currentPage = page;
         this._productService.getProductsByVendorAndDept(0, this.userselectedMenu, this.userselectedSideMenu, sortTerm == "+" ? "hightolow" : "lowtohigh")
-            .subscribe(products => this.productByDepts = this.productByDepts.concat(products),
+            .subscribe(products => this.productByDepts = products,
             error => this.errorMessage = <any>error); 
 
         //if(sortTerm == "+") this.productByDepts = this.productByDepts.reverse();

@@ -61,7 +61,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', '../pipes/productF
                     this.showLoader = true;
                     this.currentPage = page;
                     if (methodName == "getProductsByVendorAndDept") {
-                        this._productService.getProductsByVendorAndDept(page, userselectedMenu, userselectedSideMenu)
+                        this._productService.getProductsByVendorAndDept(page, userselectedMenu, userselectedSideMenu, this.sortTerm)
                             .subscribe(function (products) { return _this.productByDepts = _this.productByDepts.concat(products); }, function (error) { return _this.errorMessage = error; });
                     }
                     else if (methodName == "getProductsByVendor") {
@@ -87,10 +87,11 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', '../pipes/productF
                     var _this = this;
                     //    });
                     //    );
+                    this.sortTerm = sortTerm;
                     this.showDropdown = false;
                     this.currentPage = page;
                     this._productService.getProductsByVendorAndDept(0, this.userselectedMenu, this.userselectedSideMenu, sortTerm == "+" ? "hightolow" : "lowtohigh")
-                        .subscribe(function (products) { return _this.productByDepts = _this.productByDepts.concat(products); }, function (error) { return _this.errorMessage = error; });
+                        .subscribe(function (products) { return _this.productByDepts = products; }, function (error) { return _this.errorMessage = error; });
                     //if(sortTerm == "+") this.productByDepts = this.productByDepts.reverse();
                 };
                 ProductListComponent.prototype.SortArray = function (items, sortTerm) {

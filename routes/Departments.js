@@ -26,7 +26,7 @@ router.get('/Products/:startIndex/:country', function (req, res, next) {
     var startIndex = req.params.startIndex;
     var countryToFind = new RegExp([req.params.country].join(""), "i");
     var collection = db.collection('ProductsByDepartment')
-    collection.find({ country: countryToFind }).skip(startIndex * 50).limit(50).toArray(function (err, departments) {
+    collection.find({ country: countryToFind }).skip(startIndex * 200).limit(200).toArray(function (err, departments) {
         if (err) {
             res.send(err);
         } else {
@@ -105,7 +105,7 @@ router.get('/ProductsByDept/:startIndex/:country/:department', function (req, re
     var startIndex = req.params.startIndex;
     var collection = db.collection('ProductsByDepartment');
 
-    collection.find({ country: country, department: dept }).skip(startIndex * 50).limit(50).toArray(function (err, departments) {
+    collection.find({ country: country, department: dept }).skip(startIndex * 200).limit(200).toArray(function (err, departments) {
         if (err) {
             res.send(err);
         } else {
@@ -122,7 +122,7 @@ router.get('/ProductsBySearchTerm/:startIndex/:country/:searchTerm', function (r
     var regex = new RegExp([".*", search, ".*"].join(""), "i");
     var collection = db.collection('ProductsByDepartment');
 
-    collection.find({ country: country, productText: regex }).skip(startIndex * 50).limit(50).toArray(function (err, departments) {
+    collection.find({ country: country, productText: regex }).skip(startIndex * 200).limit(200).toArray(function (err, departments) {
         if (err) {
             res.send(err);
         } else {
@@ -143,7 +143,7 @@ router.get('/ProductsByDeptByVendor/:startIndex/:country/:department/:vendor/:so
 
   
         if (sortBy == 'hightolow') {
-            collection.find({ country: country, department: dept, vendor: vendor }).sort( { offerPrice: -1 } ).skip(startIndex * 50).limit(50).toArray(function (err, 
+            collection.find({ country: country, department: dept, vendor: vendor }).sort( { offerPrice: -1 } ).skip(startIndex * 200).limit(200).toArray(function (err, 
 
 departments) {
                 if (err) {
@@ -154,7 +154,7 @@ departments) {
             });
         }
         else if (sortBy == 'lowtohigh') {
-            collection.find({ country: country, department: dept, vendor: vendor }).sort( { offerPrice: 1 } ).skip(startIndex * 50).limit(50).toArray(function (err, 
+            collection.find({ country: country, department: dept, vendor: vendor }).sort( { offerPrice: 1 } ).skip(startIndex * 200).limit(200).toArray(function (err, 
 
 departments) {
                 if (err) {
@@ -165,7 +165,7 @@ departments) {
             });
         }
     else {
-        collection.find({ country: country, department: dept, vendor: vendor }).skip(startIndex * 50).limit(50).toArray(function (err, departments) {
+        collection.find({ country: country, department: dept, vendor: vendor }).skip(startIndex * 200).limit(200).toArray(function (err, departments) {
             if (err) {
                 res.send(err);
             } else {
@@ -186,7 +186,7 @@ router.get('/ProductsByVendor/:startIndex/:country/:vendor', function (req, res,
 
     var collection = db.collection('ProductsByDepartment');
 
-    collection.find({ country: country, vendor: vendor }).skip(startIndex * 50).limit(50).toArray(function (err, departments) {
+    collection.find({ country: country, vendor: vendor }).skip(startIndex * 200).limit(200).toArray(function (err, departments) {
         if (err) {
             res.send(err);
         } else {
