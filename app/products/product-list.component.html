@@ -46,7 +46,8 @@
             <h5>{{prodByDept.productText}}</h5>
       
         <strike style="color:red;font-weight:bold">{{prodByDept.actualPrice}}</strike>
-        <strong style="color:Green;">{{prodByDept.currency}}{{prodByDept.offerPrice }}{{prodByDept.offPriceDec == 0 ? ".00" : "."+prodByDept.offPriceDec}}</strong>
+
+        <strong *ngIf="prodByDept.offerPrice > 0" style="color:Green;">{{prodByDept.currency}}{{prodByDept.offerPrice }}{{prodByDept.offPriceDec == 0 ? ".00" : "."+prodByDept.offPriceDec}}</strong>
         <p style="color:green;" *ngIf="prodByDept.code">Coupon Code: <strong style="color:red;font-weight:bold"> {{prodByDept.code}}</strong></p> 
         <p style="color:green;padding-top:2%;font-size:9pt" *ngIf="prodByDept.expiryDate">Expires by: <strong style="color:red;font-weight:normal;font-size:9pt"> {{prodByDept.expiryDate}}</strong></p>
           <!--<ai-star [rating]='prodByDept.starRating' (ratingClicked)='onRatingClicked($event)'> </ai-star>-->
