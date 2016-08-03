@@ -1,5 +1,5 @@
 //Directive Component
-import {ChangeDetectionStrategy, Component, Input, OnInit } from 'angular2/core'
+import {ChangeDetectionStrategy, Component, Input, OnInit,Inject } from 'angular2/core'
 import { Http, HTTP_PROVIDERS } from 'angular2/http'
 import 'rxjs/Rx';
 import { IProductsByDept } from '../Interfaces/productByDepts'
@@ -7,6 +7,7 @@ import {ProductFilterPipe} from '../pipes/productFilter'
 import { StarComponent } from '../stars/star.component';
 import {ProductService} from '../services/productService'
 import {Observable} from 'rxjs/Observable'
+import { ROUTER_DIRECTIVES, RouteParams } from 'angular2/router';
 // import {PaginatePipe, PaginationControlsCmp} from 'ng2-pagination';
 // import {PaginatePipe, PaginationService, PaginationControlsCmp, IPaginationInstance} from 'ng2-pagination';
 
@@ -15,7 +16,7 @@ import {Observable} from 'rxjs/Observable'
     viewProviders: [HTTP_PROVIDERS],
     templateUrl: 'app/products/product-list.component.html',
     pipes: [ProductFilterPipe],
-    directives: [StarComponent],
+    directives: [ROUTER_DIRECTIVES],
 
 })
 
@@ -40,15 +41,56 @@ export class ProductListComponent implements OnInit {
     showHeart: boolean = false;
     dealPercent: number;
     sortTerm: string;
-    constructor(private _productService: ProductService) {
-        //  this.userselectedMenu = selectedMenu;
+    country:string;
+    constructor(private _productService: ProductService,@Inject('rootVar') rootVar: string, private _routeParams:RouteParams) {
+        this.country = rootVar;
+        this.userselectedMenu = _routeParams.get('brand');
+        if( this.userselectedMenu){
+             this.userselectedMenu =  this.userselectedMenu.split('-').join(' ');
+        }
+        this.userselectedSideMenu = _routeParams.get('category');
+            if( this.userselectedSideMenu){
+             this.userselectedSideMenu =  this.userselectedSideMenu.split('-').join(' ');
+        }
+        //  this.userselectedMenu = userselectedMenu;
+        if (this.userselectedMenu != null && this.userselectedSideMenu != null) {
+
+      this.methodName = "getProductsByVendorAndDept";
+      this._productService.getProductsByVendorAndDept(0, this.userselectedMenu, this.userselectedSideMenu)
+        .subscribe(products => this.productByDepts = products);
+
+
+
     }
+    //When filtering only by Vendors
+    else if (this.userselectedMenu != null && this.userselectedSideMenu == null) {
+     
+        this.methodName = "getProductsByVendor";
+        this._productService.getProductsByVendor(0, this.userselectedMenu)
+          .subscribe(products => this.productByDepts = products);
+      
+
+    }
+    //When filtering only by Side menu
+    else if (this.userselectedSideMenu != null && this.userselectedMenu == null) {
+      this.methodName = "getProductsByDept";
+      this._productService.getProductsByDept(0, this.userselectedSideMenu)
+        .subscribe(products => this.productByDepts = products);
+    }
+      else if (!this.userselectedSideMenu && !this.userselectedMenu) {
+          this._productService.getProducts(0)
+            .subscribe(products => this.productByDepts = products,
+            error => this.errorMessage = <any>error);
+      }
+    
+  }
+    
 
 
     ngOnInit(): void {
-        this._productService.getProducts(0)
-            .subscribe(products => this.productByDepts = products,
-            error => this.errorMessage = <any>error);
+        // this._productService.getProducts(0)
+        //     .subscribe(products => this.productByDepts = products,
+        //     error => this.errorMessage = <any>error);
     }
     onRatingClicked(message: string): void {
         this.pageTitle = 'Product List: ' + message;
@@ -85,7 +127,7 @@ export class ProductListComponent implements OnInit {
 
     }
 
-    SetSortOrder(sortTerm: string, page: number): void {
+    SetSortOrder(sortTerm: string,userselectedMenu:string, userselectedSideMenu:string, page: number): void {
 
         //    this.productByDepts = this.productByDepts.sort((obj1: IProductsByDept, obj2: IProductsByDept =>{
 
@@ -94,7 +136,7 @@ export class ProductListComponent implements OnInit {
         this.sortTerm = sortTerm;
         this.showDropdown = false;
         this.currentPage = page;
-        this._productService.getProductsByVendorAndDept(0, this.userselectedMenu, this.userselectedSideMenu, sortTerm == "+" ? "hightolow" : "lowtohigh")
+        this._productService.getProductsByVendorAndDept(0, userselectedMenu, userselectedSideMenu, sortTerm == "+" ? "hightolow" : "lowtohigh")
             .subscribe(products => this.productByDepts = products,
             error => this.errorMessage = <any>error); 
 
@@ -136,4 +178,6 @@ export class ProductListComponent implements OnInit {
         return false;
 
     }
+
+    
 }

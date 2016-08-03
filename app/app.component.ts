@@ -9,14 +9,20 @@ import {IProductType} from './Interfaces/Departments'
 import {Observer} from 'rxjs/Observer';
 import {ProductService} from './services/productService'
 import {Observable} from 'rxjs/Observable'
-import myGlobals = require('./globals');
 
+import {ROUTER_PROVIDERS, ROUTER_DIRECTIVES, RouteConfig} from 'angular2/router';
+
+@RouteConfig([
+  { path: '/', name: 'Products', component: ProductListComponent },
+   { path: '/products/:country/:brand', name: 'ProductByCategory', component: ProductListComponent },
+      { path: '/:country/:brand/:category', name: 'ProductByCategoryByBrand', component: ProductListComponent }
+])
 
 @Component({
   selector: 'dw-app',
   //viewProviders: [HTTP_PROVIDERS],
-  directives: [ProductListComponent],
-  providers: [ProductService, HTTP_PROVIDERS],//define it only once here so it will be a singleton instance
+  directives: [ProductListComponent,ROUTER_DIRECTIVES],
+  providers: [ProductService, HTTP_PROVIDERS, ROUTER_PROVIDERS],//define it only once here so it will be a singleton instance
   template: `
 
 
@@ -73,7 +79,7 @@ import myGlobals = require('./globals');
         <button class="btn btn-danger dropdown-toggle " type="button" data-toggle="dropdown">Stores
   <span class="caret"></span></button>
         <ul class="dropdown-menu">
-         <li *ngFor='#menu of menus'><a href="#" (click)="LoadProductsAndMenus(menu, true)"><span class="glyphicon glyphicon-tag"></span>{{menu}}</a></li>
+         <li *ngFor='#menu of menus'><a [routerLink]="['ProductByCategory',{brand: menu,country:country}]"><span class="glyphicon glyphicon-tag"></span>{{menu}}</a></li>
         </ul>
         </div>
           <div class="dropdown categoryDropdown">
@@ -81,7 +87,7 @@ import myGlobals = require('./globals');
   <span class="caret"></span></button>
         <ul class="dropdown-menu">
       
-          <li *ngFor='#menu of sideMenus'><a href="#" (click)="LoadProductsAndMenus(menu, false)"><span class="glyphicon glyphicon-tag"></span>{{menu}}</a></li>
+          <li *ngFor='#menu of sideMenus'><a [routerLink]="['ProductByCategory',{brand: menu,country:country}]" ><span class="glyphicon glyphicon-tag"></span>{{menu}}</a></li>
         </ul>
         </div>
     <div class="searchWrapper">
@@ -100,11 +106,11 @@ import myGlobals = require('./globals');
         <ul>
           <li *ngFor='#menuItem of menus'>
             <div class="dropdown">
-  	          <button class="button button1 active {{menuItem == 'Shop Top Brands' ? 'shopTopBrand' : ''}}"  (click)="LoadProductsAndMenus(menuItem, true, false)"  on-mouseover="LoadProductsAndMenus(menuItem, true, true)" type="button" data-toggle="dropdown">{{menuItem}}
+  	          <button class="button button1 active {{menuItem == 'Shop Top Brands' ? 'shopTopBrand' : ''}}" [routerLink]="['ProductByCategory',{brand: FormatMenu(menuItem),country:country}]" on-mouseover="LoadProductsAndMenus(menuItem, true, true)" type="button" data-toggle="dropdown">{{menuItem}}
           </button>
         <ul class="dropdown-menu" *ngIf="showDropdown">
          
-          <li *ngFor='#menu of sideMenus'><a href="#{{menuItem}}/#{{menu}}" (click)="LoadProductsAndMenus(menu, false)"><span class="glyphicon glyphicon-tag"></span>{{menu}}</a></li>
+          <li *ngFor='#menu of sideMenus'><a [routerLink]="['ProductByCategoryByBrand',{brand: FormatMenu(menuItem),category:FormatMenu(menu),country:country}]"  ><span class="glyphicon glyphicon-tag"></span>{{menu}}</a></li>
         </ul>
        
         </div>
@@ -119,12 +125,11 @@ import myGlobals = require('./globals');
            </div>
       </div>
 </div>
+
 <div class="bodyWrapper">
   
   <div class="productWrapper">
-    <dw-products [selectedMenu]="userselectedMenu">
-    
-    </dw-products>
+    <router-outlet></router-outlet>
   </div>
 
 
@@ -134,7 +139,7 @@ import myGlobals = require('./globals');
 
 })
 
-export class AppComponent {
+export class AppComponent{
   testRootVar: string
   methodName: string;
   showLoader: boolean;
@@ -147,7 +152,7 @@ export class AppComponent {
   selectedSideMenu: string;
   isMainMenu: boolean;
   showDropdown: boolean = true;
-  isHover:boolean= false;
+  isHover: boolean = false;
   @ViewChild(ProductListComponent) productList: ProductListComponent;
   ngAfterViewInit() {
     this.getChildProperty();
@@ -155,13 +160,18 @@ export class AppComponent {
   getChildProperty() {
     if (this.searchString != undefined) {
       this.productList.listFilter = this.searchString;
+      //  this._productService.getProducts(0)
+      //       .subscribe(products => this.productList.productByDepts = products,
+      //       error => this.productList.errorMessage = <any>error);
     }
+    
   }
 
   pageTitle: string = 'Deals of World Application';
   constructor(http: Http, @Inject('rootVar') rootVar: string, private _productService: ProductService) {
     http.get('http://DealsOfWorld.com/api/v1/Menus/' + rootVar).map(res => res.json())
       .subscribe(allMenus => this.menus = allMenus);
+     
     http.get('http://DealsOfWorld.com/api/v1/SideMenus/' + rootVar + '/all').map(res => res.json())
       .subscribe(allSideMenus => this.sideMenus = allSideMenus);
     this.country = rootVar.toUpperCase();
@@ -171,57 +181,60 @@ export class AppComponent {
 
   }
 
-  LoadProductsAndMenus(menu: string, isMainMenu: boolean, isHover:boolean=false): void {
-    
-     this.showDropdown = true;
-    this.productList.showLoader = true;
-    this.isMainMenu = isMainMenu;
-    this.productList.currentPage = 0;
+  LoadProductsAndMenus(menu: string, isMainMenu: boolean, isHover: boolean = false): void {
+
+    // this.showDropdown = true;
+    // this.productList.showLoader = true;
+     this.isMainMenu = isMainMenu;
+    // this.productList.currentPage = 0;
     this.isHover = this.productList.ishover = isHover;
+       
+
     if (this.isMainMenu) {
       this.selectedMenu = menu;
       this.productList.userselectedMenu = this.selectedMenu;
       this.selectedSideMenu = null
       this.productList.userselectedSideMenu = null;
-      
+
     }
     else {
       this.selectedSideMenu = menu;
       this.productList.userselectedSideMenu = this.selectedSideMenu;
       this.showDropdown = false;
     }
-    //When filtering both by Vendor and Side menu
-    if (this.selectedMenu != null && this.selectedSideMenu != null) {
-     
-      this.productList.methodName = "getProductsByVendorAndDept";
-      this._productService.getProductsByVendorAndDept(0, this.selectedMenu, this.selectedSideMenu)
-        .subscribe(products => this.productList.productByDepts = products);
-     
-     
+    // //When filtering both by Vendor and Side menu
+    // if (this.selectedMenu != null && this.selectedSideMenu != null) {
 
-    }
-    //When filtering only by Vendors
-    else if (this.selectedMenu != null && this.selectedSideMenu == null) {
-       if(!isHover){
-      this.productList.methodName = "getProductsByVendor";
-      this._productService.getProductsByVendor(0, this.selectedMenu)
-        .subscribe(products => this.productList.productByDepts = products);
-       }
+    //   this.productList.methodName = "getProductsByVendorAndDept";
+    //   this._productService.getProductsByVendorAndDept(0, this.selectedMenu, this.selectedSideMenu)
+    //     .subscribe(products => this.productList.productByDepts = products);
 
-    }
-    //When filtering only by Side menu
-    else if (this.selectedSideMenu != null && this.selectedMenu == null) {
-      this.productList.methodName = "getProductsByDept";
-      this._productService.getProductsByDept(0, this.selectedSideMenu)
-        .subscribe(products => this.productList.productByDepts = products);
-    }
-     this._productService.getSubMenusByVendor(this.selectedMenu)
-        .subscribe(products => this.sideMenus = products);
-    this.productList.showLoader = false;
+
+
+    // }
+    // //When filtering only by Vendors
+    // else if (this.selectedMenu != null && this.selectedSideMenu == null) {
+    //   if (!isHover) {
+    //     this.productList.methodName = "getProductsByVendor";
+    //     this._productService.getProductsByVendor(0, this.selectedMenu)
+    //       .subscribe(products => this.productList.productByDepts = products);
+    //   }
+
+    // }
+    // //When filtering only by Side menu
+    // else if (this.selectedSideMenu != null && this.selectedMenu == null) {
+    //   this.productList.methodName = "getProductsByDept";
+    //   this._productService.getProductsByDept(0, this.selectedSideMenu)
+    //     .subscribe(products => this.productList.productByDepts = products);
+    // }
+    this._productService.getSubMenusByVendor(this.selectedMenu)
+      .subscribe(products => this.sideMenus = products);
+  
+      console.log(this.sideMenus);
   }
   ChangeCountry(country: string): void {
-    this.productList.currentPage = 0;
-    this.productList.showLoader = true;
+    //this.productList.currentPage = 0;
+    //this.productList.showLoader = true;
     sessionStorage["countryCode"] = country;
     window.location.reload();
 
@@ -240,7 +253,14 @@ export class AppComponent {
       .subscribe(products => this.productList.productByDepts = products);
     this.productList.showLoader = false;
   }
-
+  FormatMenu(menu: string):string{
+    return menu.split(' ').join('-');
+  }
+// ngOnInit(): void {
+//         this._productService.getProducts(0)
+//             .subscribe(products => this.productList.productByDepts = products,
+//             error => this.productList.errorMessage = <any>error);
+//     }
 }
 
 

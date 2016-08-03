@@ -23,10 +23,10 @@
         <ul class="dropdown-menu" *ngIf="showDropdown">
           
           <li>
-            <a href="#" (click)="SetSortOrder('-',userselectedMenu,userselectedSideMenu,currentPage + 1)"><span>Price: Low to High</span></a>
+            <a [routerLink]="['ProductByCategoryByBrand',{brand: userselectedMenu,category:userselectedSideMenu,country:country}]" (click)="SetSortOrder('-',userselectedMenu,userselectedSideMenu,currentPage + 1)"><span>Price: Low to High</span></a>
           </li>
           <li>
-            <a href="#" (click)="SetSortOrder('+',userselectedMenu,userselectedSideMenu,currentPage + 1)"><span>Price: High to Low</span></a>
+            <a [routerLink]="['ProductByCategoryByBrand',{brand: userselectedMenu,category:userselectedSideMenu,country:country}]" (click)="SetSortOrder('+',userselectedMenu,userselectedSideMenu,currentPage + 1)"><span>Price: High to Low</span></a>
           </li>
         </ul>
       </div>
