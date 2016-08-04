@@ -22,9 +22,11 @@ app.use(bodyParser.urlencoded({
 }));
 //app.use(cookieParser());
 app.use(express.static(__dirname));
- 
+
 app.use('/', index);
+
 app.use('/api/v1/', departments);
+ app.all('*', function (req, res) { res.status(200).sendFile(path.join(__dirname, '/index.html')); });
  
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -34,7 +36,7 @@ app.use(function(req, res, next) {
     err.status = 404;
     next(err);
 });
- 
+
 var server = app.listen(80, function() {
     var host = 'localhost';
     var port = server.address().port;
