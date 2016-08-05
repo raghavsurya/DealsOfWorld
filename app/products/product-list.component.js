@@ -41,6 +41,7 @@ System.register(['angular2/core', 'angular2/http', 'rxjs/Rx', '../pipes/productF
                     var _this = this;
                     this._productService = _productService;
                     this._routeParams = _routeParams;
+                    this.showTwoPerRow = false;
                     this.showDropdown = true;
                     this.totalItems = 50;
                     this.currentPage = 0;

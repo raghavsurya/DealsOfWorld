@@ -23,7 +23,7 @@ import {ROUTER_PROVIDERS, ROUTER_DIRECTIVES, RouteConfig} from 'angular2/router'
   //viewProviders: [HTTP_PROVIDERS],
   directives: [ProductListComponent,ROUTER_DIRECTIVES],
   providers: [ProductService, HTTP_PROVIDERS, ROUTER_PROVIDERS],//define it only once here so it will be a singleton instance
-  template: `
+  template: ` 
 
 
 

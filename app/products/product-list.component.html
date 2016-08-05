@@ -13,6 +13,10 @@
 	<a   *ngIf="userselectedSideMenu" href="#">{{userselectedSideMenu}}</a>
 	
 </div>
+<div class="productsView">
+  <button  (click)="showTwoPerRow=true"><span class="glyphicon glyphicon-th"></span></button>
+	<button   (click)="showTwoPerRow=false"><span class="glyphicon glyphicon-th-list"></span></button>
+  </div>
 
      <div class="sortByDropDown">
  
@@ -31,13 +35,13 @@
         </ul>
       </div>
     </div>
-    <div class="col-lg-4 products wrapper" *ngFor='#prodByDept of productByDepts | productFilter : searchString'>
+    <div class="col-lg-4 products {{showTwoPerRow ? 'bigWrapper' : 'wrapper'}}"  *ngFor='#prodByDept of productByDepts | productFilter : searchString'>
         <span *ngIf="IsDealGood(prodByDept.actualPrice, prodByDept.offerPrice) && dealPercent >= 30" class="saving">Save {{dealPercent}}%</span>
             <span *ngIf="dealPercent < 30" class="savingLessThan30">-{{dealPercent}}%</span>
          
         <div class="ribbon-wrapper-green"><div class="ribbon-green">DEAL</div></div>
         
-      <img class="waitingimg" *ngIf="prodByDept.imgSrc" [src]='prodByDept.imgSrc' />
+      <img class="{{showTwoPerRow ? 'waitingimgBig' : 'waitingimg'}}" *ngIf="prodByDept.imgSrc" [src]='prodByDept.imgSrc' />
      <div  *ngIf="!prodByDept.imgSrc" class="image">
       <img class="waitingimg" style="opacity:0.2" src="app/Assets/Images/balls.svg" />
            <h2>{{prodByDept.merchantName}}</h2>

@@ -22,6 +22,7 @@ import { ROUTER_DIRECTIVES, RouteParams } from 'angular2/router';
 
 
 export class ProductListComponent implements OnInit {
+    showTwoPerRow:boolean = false;
     ishover: boolean;
     showDropdown: boolean = true;
     private totalItems: number = 50;
